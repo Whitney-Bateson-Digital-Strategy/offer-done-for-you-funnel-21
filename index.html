@@ -99,6 +99,18 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .pill{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:18px}
 .slabel{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:14px}
 
+/* replay banner */
+[hidden]{display:none!important}
+.replay-banner{background:var(--navy);color:var(--white);padding:44px 0}
+@media(max-width:640px){.replay-banner{padding:32px 0}}
+.replay-cols{display:grid;grid-template-columns:1fr 1.15fr;gap:44px;align-items:center}
+@media(max-width:860px){.replay-cols{grid-template-columns:1fr;gap:26px}}
+.replay-eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:12px}
+.replay-h{font-size:clamp(1.5rem,3vw,2.1rem);color:var(--white);margin-bottom:12px;line-height:1.2}
+.replay-sub{font-size:16px;color:rgba(255,255,255,.82);line-height:1.6;margin:0}
+.replay-frame{position:relative;width:100%;padding-bottom:56.25%;border-radius:var(--r-lg);overflow:hidden;background:var(--navy-dk);box-shadow:0 8px 30px rgba(0,0,0,.28)}
+.replay-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+
 /* hero */
 #hero{padding:96px 0 80px;position:relative;overflow:hidden;background:var(--white)}
 #hero::after{content:'';position:absolute;top:-100px;right:-140px;width:460px;height:460px;border-radius:50%;background:var(--hi);pointer-events:none;z-index:0}
@@ -111,14 +123,10 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .hero-sub{font-size:18px;color:var(--muted);margin-bottom:32px;line-height:1.62}
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
 .hero-note{font-size:14px;color:var(--muted);font-style:italic}
-.hero-video-col{position:relative;z-index:1}
-.hero-video-wrap{position:relative;width:100%;padding-bottom:56.25%;border-radius:var(--r-lg);overflow:hidden;background:var(--navy-dk);box-shadow:var(--sh-md)}
-.hero-video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:var(--r-lg)}
-@media(max-width:860px){.hero-video-col{order:-1}}
-.hero-video-overlay{position:absolute;inset:0;cursor:pointer;border-radius:var(--r-lg);overflow:hidden}
-.hero-overlay-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.hero-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:none;border:none;padding:0;cursor:pointer;width:72px;height:72px;transition:transform .22s ease;filter:drop-shadow(0 4px 18px rgba(0,0,0,0.35))}
-.hero-video-overlay:hover .hero-play-btn{transform:translate(-50%,-50%) scale(1.13)}
+.hero-photo-col{position:relative;z-index:1}
+.hero-photo-wrap{position:relative;width:100%;max-width:430px;margin-left:auto;aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;background:var(--cream);box-shadow:var(--sh-md)}
+.hero-photo{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:860px){.hero-photo-col{order:-1}.hero-photo-wrap{margin:0 auto;max-width:340px}}
 
 /* who-for marquee strip */
 #strip{background:var(--cream);padding:40px 0 0;border-top:1px solid var(--border)}
@@ -550,6 +558,36 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 </nav>
 
 
+<!-- ══ REPLAY BANNER ═══════════════════════════════════════════════════
+     Currently HIDDEN. Three one-line changes control it:
+
+     1. TO SHOW IT ........ delete the word `hidden` on the <section> below.
+     2. TO ADD THE REPLAY . put the embed URL in the iframe's src=""
+                            (e.g. https://www.youtube.com/embed/VIDEO_ID?rel=0).
+     3. TO USE THE OLD OVERVIEW VIDEO INSTEAD, that URL was:
+                            https://www.youtube.com/embed/p16fu7r4zuc?rel=0
+
+     Leave it hidden until the src is filled in - an empty player on a live
+     sales page is worse than no banner. Headline/subhead below are
+     placeholder copy; swap for the real wording.
+════════════════════════════════════════════════════════════════════ -->
+<section class="replay-banner" id="replay" hidden>
+  <div class="wrap">
+    <div class="replay-cols">
+      <div class="replay-copy">
+        <span class="replay-eyebrow">Free replay</span>
+        <h2 class="replay-h">Watch the training before you decide.</h2>
+        <p class="replay-sub">A walkthrough of exactly how the funnel gets built &mdash; and what it looks like once it's running for you.</p>
+      </div>
+      <div class="replay-embed">
+        <div class="replay-frame">
+          <iframe src="" title="Replay" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- HERO -->
 <section id="hero">
   <div class="wrap">
@@ -568,18 +606,11 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         </div>
         <p class="hero-note fi d4">$1,997 one-time. We do the work. You finally get a system bringing in new leads.</p>
       </div>
-      <div class="hero-video-col fi d2">
-        <div class="hero-video-wrap">
-          <iframe id="hero-iframe" src="" title="Watch a quick overview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          <div class="hero-video-overlay" id="hero-overlay" onclick="playHeroVideo()">
-            <img src="video-overlay.png" alt="" class="hero-overlay-img">
-            <button class="hero-play-btn" aria-label="Play video" tabindex="-1">
-              <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="36" cy="36" r="36" fill="white" fill-opacity="0.92"/>
-                <polygon points="29,22 29,50 52,36" fill="#0A1628"/>
-              </svg>
-            </button>
-          </div>
+      <div class="hero-photo-col fi d2">
+        <!-- TO SWAP THE PHOTO: replace hero-practitioner.svg with the real image
+             (any 4:5 portrait crop works) and update the src + alt below. -->
+        <div class="hero-photo-wrap">
+          <img class="hero-photo" src="hero-practitioner.svg" alt="A health practitioner working with a client" />
         </div>
       </div>
     </div>
@@ -1292,10 +1323,6 @@ const io = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.08, rootMargin: '0px 0px -28px 0px' });
 els.forEach(el => io.observe(el));
-function playHeroVideo(){
-  document.getElementById('hero-overlay').style.display='none';
-  document.getElementById('hero-iframe').src='https://www.youtube.com/embed/p16fu7r4zuc?autoplay=1&rel=0';
-}
 </script>
 
 <script>
