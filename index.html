@@ -246,15 +246,6 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 #included{background:var(--soft)}
 #included h2{font-size:clamp(1.75rem,4vw,2.6rem);margin-bottom:10px}
 .inc-sub{font-size:17px;color:var(--muted);max-width:540px;margin-bottom:0}
-.deliverables{display:flex;flex-direction:column;gap:16px;margin-top:48px}
-.d-item{display:grid;grid-template-columns:48px 1fr;gap:0 20px;align-items:start;background:var(--white);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--sh-sm);padding:24px 28px;transition:box-shadow .2s,transform .2s}
-.d-item:hover{box-shadow:var(--sh-md);transform:translateY(-2px)}
-@media(max-width:540px){.d-item{grid-template-columns:1fr;gap:10px;padding:22px}}
-.d-num{font-family:var(--head);font-size:2.2rem;color:var(--coral);line-height:1;font-weight:600;padding-top:4px}
-.d-content h3{font-size:1.1rem;color:var(--navy);margin-bottom:5px}
-.d-content p{font-size:16px;color:var(--muted);line-height:1.62;margin-bottom:8px}
-.d-why{font-size:14px;color:var(--navy);font-weight:700;display:flex;align-items:flex-start;gap:7px}
-.d-why::before{content:'↳';flex-shrink:0}
 
 /* transform */
 #transform{background:var(--soft);padding:80px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -436,7 +427,11 @@ footer a:hover{color:var(--white)}
 .funnel-mock img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
 @media(max-width:620px){.funnel-mock{height:220px}}
 .funnel-step-title{font-family:var(--head);font-size:1.45rem;font-weight:600;color:var(--navy);margin-bottom:8px;line-height:1.2}
-.funnel-step-desc{font-size:15.5px;color:var(--muted);line-height:1.62;margin-bottom:20px}
+.funnel-step-desc{font-size:15.5px;color:var(--muted);line-height:1.62;margin-bottom:12px}
+/* Carries the flow narrative the old #included list used to hold: what this
+   piece changes for the reader, not just what it is. */
+.funnel-why{font-size:14px;color:var(--navy);font-weight:700;line-height:1.5;margin-bottom:20px;display:flex;align-items:flex-start;gap:7px}
+.funnel-why::before{content:'\21B3';flex-shrink:0}
 .funnel-cost{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:auto 0 0;padding-top:16px;border-top:1px solid var(--border)}
 .funnel-cost-full{grid-template-columns:1fr}
 .funnel-cost dt{font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--coral);margin-bottom:5px}
@@ -463,7 +458,6 @@ footer a:hover{color:var(--white)}
 .bonus-item h4{font-family:var(--head);font-size:1rem;font-weight:500;color:var(--navy);margin-bottom:6px}
 .bonus-item p{font-size:14px;color:var(--muted);line-height:1.55;margin:0 0 10px}
 .bonus-value{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--navy);border:1px solid var(--hi-md);background:var(--white);border-radius:4px;padding:2px 8px;margin:6px 0 12px}
-.bonuses-label{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:16px;display:block}
 
 /* price-was */
 .price-was{font-size:14px;color:var(--muted);font-style:italic;margin-bottom:4px}
@@ -471,15 +465,12 @@ footer a:hover{color:var(--white)}
 
 /* no bold inside any card */
 .step-card strong, .step-card b,
-.d-item strong, .d-item b,
-.d-content h3,
 .step-card h3,
 .ba-block strong, .ba-block b,
 .p-box strong, .p-box b,
 .faq-item strong, .faq-item b {
   font-weight: 400;
 }
-.d-content h3 { font-weight: 400; }
 .step-card h3 { font-weight: 400; }
 
 /* ── EMPHASIS STYLES ────────────────────────────────────────── */
@@ -842,35 +833,40 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <span class="funnel-num">01</span>
         <div class="funnel-mock"><img src="lead-magnet_mockup.png" alt="A designed lead magnet PDF guide" loading="lazy" decoding="async" /></div>
         <div class="funnel-step-title">Lead Magnet</div>
-        <div class="funnel-step-desc">The free resource your whole funnel runs on &ndash; researched, written, and designed for your ideal client</div>
+        <div class="funnel-step-desc">A free, useful resource your ideal client actually wants. We improve an existing one, or create it from scratch from your expertise.</div>
+        <p class="funnel-why">Without something worth signing up for, you can't get leads.</p>
         <dl class="funnel-cost"><div><dt>Time to DIY</dt><dd>12&ndash;20 hrs</dd></div><div><dt>Cost to outsource</dt><dd>$1,500+</dd></div></dl>
       </div>
       <div class="funnel-step">
         <span class="funnel-num">02</span>
         <div class="funnel-mock"><img src="ads_mockup.png" alt="Facebook and Instagram ad mockups on phones" loading="lazy" decoding="async" /></div>
         <div class="funnel-step-title">Ad</div>
-        <div class="funnel-step-desc">Facebook &amp; Instagram ad finds your ideal customer and brings them to your opt-in</div>
+        <div class="funnel-step-desc">Copy written, graphic designed, targeting set up, and the campaign launched. Runs at a small daily budget (e.g. $5/day) &ndash; you own the account and can pause anytime.</div>
+        <p class="funnel-why">Without traffic, a funnel just sits there. This is what makes it work every day.</p>
         <dl class="funnel-cost"><div><dt>Time to DIY</dt><dd>8&ndash;12 hrs</dd></div><div><dt>Cost to outsource</dt><dd>$1,500+</dd></div></dl>
       </div>
       <div class="funnel-step">
         <span class="funnel-num">03</span>
         <div class="funnel-mock"><img src="opt-in_mockup.png" alt="Opt-in landing page shown on a phone" loading="lazy" decoding="async" /></div>
         <div class="funnel-step-title">Opt-In Page</div>
-        <div class="funnel-step-desc">Visitor claims your free lead magnet and joins your list</div>
+        <div class="funnel-step-desc">A focused landing page with copy written for your audience, connected to your email platform so everything flows automatically.</div>
+        <p class="funnel-why">This is where strangers become leads.</p>
         <dl class="funnel-cost"><div><dt>Time to DIY</dt><dd>6&ndash;10 hrs</dd></div><div><dt>Cost to outsource</dt><dd>$1,100+</dd></div></dl>
       </div>
       <div class="funnel-step">
         <span class="funnel-num">04</span>
         <div class="funnel-mock"><img src="thank-you_mockup.png" alt="Thank you page confirming the guide is on its way" loading="lazy" decoding="async" /></div>
         <div class="funnel-step-title">Thank You Page</div>
-        <div class="funnel-step-desc">Confirms the resource is coming + invites them to book a call</div>
+        <div class="funnel-step-desc">Confirms the resource is on its way and gives the new subscriber a clear next step.</div>
+        <p class="funnel-why">Keeps the momentum going right after someone signs up.</p>
         <dl class="funnel-cost"><div><dt>Time to DIY</dt><dd>2&ndash;3 hrs</dd></div><div><dt>Cost to outsource</dt><dd>$350+</dd></div></dl>
       </div>
       <div class="funnel-step">
         <span class="funnel-num">05</span>
         <div class="funnel-mock"><img src="delivery-sequence_mockup.png" alt="Lead magnet delivery email and the automated sequence behind it" loading="lazy" decoding="async" /></div>
         <div class="funnel-step-title">Delivery Email &amp; Welcome Series</div>
-        <div class="funnel-step-desc">Their lead magnet arrives instantly, then 5 emails over 3 weeks &ndash; your story, your expertise, another invite to connect</div>
+        <div class="funnel-step-desc">A delivery email the moment someone signs up, then a 5-email welcome sequence over three weeks &ndash; introducing you, sharing your perspective, and warming subscribers to what you offer.</div>
+        <p class="funnel-why">Most people aren't ready to book right away. This keeps them engaged until they are.</p>
         <dl class="funnel-cost"><div><dt>Time to DIY</dt><dd>12&ndash;18 hrs</dd></div><div><dt>Cost to outsource</dt><dd>$1,600+</dd></div></dl>
       </div>
       <!-- The outcome rather than a deliverable, so it carries the price
@@ -896,61 +892,11 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 <section id="included">
   <div class="wrap">
     <div class="fi">
-      <h2>Everything your funnel needs. All of it built for you.</h2>
-      <p class="inc-sub">Here's every piece we build and why it matters.</p>
+      <h2>And a few things to keep it running.</h2>
+      <p class="inc-sub">Every build comes with these, at no extra cost.</p>
     </div>
 
-    <div class="deliverables">
-
-      <div class="d-item fi">
-        <div class="d-num">01</div>
-        <div class="d-content">
-          <h3>📄 Lead Magnet</h3>
-          <p>A free, useful resource your ideal client actually wants. We use an existing one, improve it, or create one from scratch based on your expertise.</p>
-          <span class="d-why"><span class="nb">Without something worth signing up for, you can't get leads.</span></span>
-        </div>
-      </div>
-
-      <div class="d-item fi">
-        <div class="d-num">02</div>
-        <div class="d-content">
-          <h3>🖥️ Opt-In Page</h3>
-          <p>A focused landing page with copy written for your audience. Connected to your email platform so everything flows automatically.</p>
-          <span class="d-why"><span class="nb">This is where strangers become leads.</span></span>
-        </div>
-      </div>
-
-      <div class="d-item fi">
-        <div class="d-num">03</div>
-        <div class="d-content">
-          <h3>🙏 Thank You Page</h3>
-          <p>Confirms the resource is on its way and gives the new subscriber a clear next step.</p>
-          <span class="d-why"><span class="nb">Keeps the momentum going right after someone signs up.</span></span>
-        </div>
-      </div>
-
-      <div class="d-item fi">
-        <div class="d-num">04</div>
-        <div class="d-content">
-          <h3>📬 Delivery + Welcome Emails</h3>
-          <p>A delivery email that goes out the moment someone signs up, followed by a 5-email welcome sequence sent over three weeks – introducing you, sharing your perspective, and warming new subscribers to what you offer.</p>
-          <span class="d-why"><span class="nb">Most people aren't ready to book right away. This keeps things engaged until they are.</span></span>
-        </div>
-      </div>
-
-      <div class="d-item fi">
-        <div class="d-num">05</div>
-        <div class="d-content">
-          <h3>📣 Facebook &amp; Instagram Ad Campaign</h3>
-          <p>Campaign copy written, graphic designed, targeting set up, and campaign launched. Running at a small daily budget (e.g. $5/day) – you own the account and can pause anytime.</p>
-          <span class="d-why"><span class="nb">Without traffic, a funnel just sits there. This is what makes it work every day.</span></span>
-        </div>
-      </div>
-
-    </div>
-
-    <div style="margin-top:36px" class="fi d1">
-      <span class="bonuses-label">You get the above plus...</span>
+    <div style="margin-top:30px" class="fi d1">
       <div class="bonuses">
         <div class="bonus-item">
           <span class="bonus-icon">🎬</span>
