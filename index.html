@@ -101,26 +101,27 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 
 /* replay banner */
 [hidden]{display:none!important}
-.replay-banner{background:var(--lime);color:var(--text);padding:44px 0}
-@media(max-width:640px){.replay-banner{padding:32px 0}}
-.replay-cols{display:grid;grid-template-columns:1fr 1.15fr;gap:44px;align-items:center}
-@media(max-width:860px){.replay-cols{grid-template-columns:1fr;gap:26px}}
-.replay-eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);margin-bottom:12px}
-.replay-h{font-size:clamp(1.5rem,3vw,2.1rem);color:var(--navy);margin-bottom:12px;line-height:1.2}
-.replay-sub{font-size:16px;color:var(--text);line-height:1.6;margin:0}
-.replay-frame{position:relative;width:100%;padding-bottom:56.25%;border-radius:var(--r-lg);overflow:hidden;background:var(--navy-dk);box-shadow:0 8px 30px rgba(0,0,0,.28)}
+.replay-banner{background:var(--lime);color:var(--text);padding:28px 0}
+@media(max-width:640px){.replay-banner{padding:22px 0}}
+.replay-cols{display:grid;grid-template-columns:1fr minmax(0,420px);gap:40px;align-items:center}
+.replay-embed{width:100%}
+@media(max-width:860px){.replay-cols{grid-template-columns:1fr;gap:22px}.replay-embed{max-width:520px;margin:0 auto}}
+.replay-eyebrow{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);margin-bottom:9px}
+.replay-h{font-size:clamp(1.3rem,2.3vw,1.7rem);color:var(--navy);margin-bottom:9px;line-height:1.22}
+.replay-sub{font-size:15px;color:var(--text);line-height:1.55;margin:0}
+.replay-frame{position:relative;width:100%;padding-bottom:56.25%;border-radius:var(--r-lg);overflow:hidden;background:var(--navy-dk);box-shadow:0 6px 22px rgba(0,0,0,.24)}
 .replay-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
 .replay-cover{position:absolute;inset:0;width:100%;height:100%;padding:0;border:none;background:none;cursor:pointer;display:block}
 .replay-cover:disabled{cursor:default}
 .replay-cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.replay-play{position:absolute;top:var(--play-y,50%);left:var(--play-x,50%);transform:translate(-50%,-50%);width:76px;height:76px;display:block;transition:transform .22s ease;filter:drop-shadow(0 2px 5px rgba(2,82,93,.3)) drop-shadow(0 10px 26px rgba(2,82,93,.28))}
+.replay-play{position:absolute;top:var(--play-y,50%);left:var(--play-x,50%);transform:translate(-50%,-50%);width:56px;height:56px;display:block;transition:transform .22s ease;filter:drop-shadow(0 2px 5px rgba(2,82,93,.3)) drop-shadow(0 10px 26px rgba(2,82,93,.28))}
 .replay-play svg{width:100%;height:100%;display:block}
 .replay-cover:not(:disabled):hover .replay-play{transform:translate(-50%,-50%) scale(1.12)}
 /* The button sits over the photo panel of the title card so it never covers
    the headline. Re-centre it by setting --play-x/--play-y back to 50%. */
 .replay-cover{--play-x:17.8%;--play-y:50%}
 .replay-cover:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
-@media(max-width:860px){.replay-play{width:62px;height:62px}}
+@media(max-width:860px){.replay-play{width:60px;height:60px}}
 @media(max-width:480px){.replay-play{width:48px;height:48px}}
 @media(prefers-reduced-motion:reduce){.replay-play{transition:none}}
 
@@ -624,7 +625,6 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         </p>
         <div class="hero-ctas fi d3">
           <a class="btn btn-p" href="#pricing">Get started</a>
-          <a class="btn btn-s" href="https://whitneybateson.as.me/dfy-funnel-discovery">Book a call first</a>
         </div>
         <p class="hero-note fi d4">$1,997 one-time. We do the work. You finally get a system bringing in new leads.</p>
       </div>
