@@ -194,7 +194,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .prob-close-inner{max-width:680px;margin:0 auto}
 .prob-close-eyebrow{font-family:var(--head);font-style:italic;font-size:17px;color:var(--muted);margin:0 0 18px;line-height:1.4}
 .prob-close-h{font-family:var(--head);font-size:clamp(1.6rem,3.6vw,2.3rem);font-weight:500;line-height:1.22;color:var(--navy);margin:0 0 22px}
-.prob-close-h .accent-light{color:var(--coral-dk);font-style:italic}
+.prob-close-h .accent-light{color:var(--coral);font-style:italic}
 .prob-close-body{font-size:17px;color:var(--text);line-height:1.65;max-width:720px;margin:0 auto 18px}
 .prob-close-tag{font-family:var(--head);font-style:italic;font-size:20px;color:var(--navy);margin:0;line-height:1.4}
 .prob-close-heart{font-style:normal;margin-left:4px}
@@ -232,8 +232,9 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .cost-calc-caption{text-align:center;font-family:var(--head);font-style:italic;font-size:17px;color:var(--muted);margin:0;line-height:1.5;min-height:1.5em;transition:opacity .2s}
 
 /* how it works */
-#how{background:var(--lime)}
-#how h2{font-size:clamp(1.75rem,4vw,2.6rem);margin-bottom:40px;max-width:560px}
+/* Lightened and graded rather than a flat block of full-strength lime. */
+#how{background:linear-gradient(180deg,var(--lime-lt) 0%,#f7fce4 55%,var(--cream) 100%)}
+#how h2{font-size:clamp(1.75rem,3.6vw,2.45rem);margin-bottom:40px;max-width:820px;text-wrap:balance}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:700px){.steps{grid-template-columns:1fr}}
 .step-card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);padding:28px;box-shadow:0 4px 18px rgba(2,82,93,.10)}
@@ -375,9 +376,13 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .t-lead{font-size:19.5px;line-height:1.5;color:var(--navy);margin:0;font-family:var(--head);font-style:italic}
 .t-lead::before{content:'\201C';color:var(--coral);font-size:2.1rem;line-height:0;vertical-align:-0.4em;margin-right:4px}
 .t-quote{font-size:15.5px;line-height:1.66;color:var(--muted);margin:0}
-.t-attrib{font-size:14px;color:var(--muted);margin:auto 0 0;padding-top:18px;border-top:1px solid var(--border)}
+.t-quote strong{color:var(--navy);font-weight:600}
+.t-attrib{font-size:14px;color:var(--muted);margin:auto 0 0;padding-top:18px;border-top:1px solid var(--border);display:flex;align-items:center;gap:14px}
 .t-name{font-weight:700;color:var(--navy);display:block;margin-bottom:2px}
-.t-rating{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--coral);margin-top:8px}
+/* TO ADD A PHOTO: drop the file in and swap the <span> for
+   <img class="t-avatar" src="their-photo.jpg" alt="" />. Until then the
+   initial stands in, so the row keeps its shape either way. */
+.t-avatar{width:52px;height:52px;border-radius:50%;flex-shrink:0;object-fit:cover;display:flex;align-items:center;justify-content:center;background:var(--hi-md);color:var(--navy);font-family:var(--head);font-size:1.35rem;font-weight:700;border:2px solid var(--white);box-shadow:var(--sh-sm)}
 
 /* faq */
 #faq{background:var(--white)}
@@ -550,7 +555,6 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 .cs-stat-h strong{color:var(--navy);font-weight:700}
 .cs-stat-sub{font-size:14px;color:var(--muted);line-height:1.55;margin:0}
 .cs-stat-sub strong{color:var(--navy);font-weight:700}
-.cs-stat-alt{background:var(--soft);border-left-color:var(--navy)}
 .cs-intro{font-size:16px;color:var(--text);line-height:1.65;margin-bottom:22px}
 .cs-quote{font-family:var(--head);font-size:1.15rem;line-height:1.55;color:var(--text);font-style:italic;margin-bottom:20px;position:relative;padding-left:18px}
 .cs-quote::before{content:'"';position:absolute;left:-2px;top:-18px;font-family:var(--head);font-size:3rem;color:var(--navy);opacity:.18;line-height:1}
@@ -613,9 +617,11 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
   <div class="wrap">
     <div class="replay-cols">
       <div class="replay-copy">
-        <span class="replay-eyebrow">Free replay</span>
-        <h2 class="replay-h">Watch the training before you decide.</h2>
-        <p class="replay-sub">A walkthrough of exactly how the funnel gets built &mdash; and what it looks like once it's running for you.</p>
+        <!-- Copy is a first pass - easy to swap. Deliberately no "limited time"
+             claim: only add one if the replay really does come down. -->
+        <span class="replay-eyebrow">Watch this first</span>
+        <h2 class="replay-h">Where your next client comes from when you're off social media.</h2>
+        <p class="replay-sub">The training behind this offer &mdash; the list-building system that brings in new leads without posting, pitching, or chasing anyone.</p>
       </div>
       <div class="replay-embed">
         <div class="replay-frame">
@@ -649,7 +655,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
           We build your funnel. You get <em>new leads every day</em> without the tech headaches.
         </h1>
         <p class="hero-sub fi d2">
-          Finally, a lead generation system working for you in the background. <strong>Lead magnet, opt-in page, emails, and ads</strong> — all built by our small team in under 3 weeks.
+          Finally, a lead generation system working for you in the background. <strong>Lead magnet, opt-in page, emails, and ads</strong> — all built for you by our small team.
         </p>
         <div class="hero-ctas fi d3">
           <a class="btn btn-p" href="#pricing">Get started</a>
@@ -874,12 +880,11 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       <span class="funnel-num">&rarr;</span>
       <div>
         <div class="funnel-step-title">New Client</div>
-        <div class="funnel-step-desc">They book a call &ndash; or stay on your list and become a client when the time is right</div>
+        <div class="funnel-step-desc">They book a call &ndash; or stay on your list, hear from you again and again, get to know you, and become a client when the time is right</div>
       </div>
       <dl class="funnel-result-price"><div><dt>All six, done for you</dt><dd>$1,997</dd></div></dl>
     </div>
 
-    <p class="fi d2" style="margin-top:36px;font-size:18px;color:var(--muted);font-style:italic;text-align:center;max-width:620px;margin-left:auto;margin-right:auto">By the end of the sequence, someone has either booked a call or heard from you multiple times, gotten to know you, and is a warm member of your audience.</p>
     <p class="fi d2" style="margin-top:18px;font-size:18px;color:var(--muted);text-align:center;max-width:620px;margin-left:auto;margin-right:auto"><span class="nb">Your job:</span> tell us about your practice and your audience.<br/><span class="nb">Our job:</span> everything you see above.</p>
   </div>
 </section>
@@ -953,9 +958,9 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         </div>
         <div class="bonus-item">
           <span class="bonus-icon">💬</span>
-          <h4>7 Days of Slack Support</h4>
+          <h4>7 Days of Ad Support</h4>
           <span class="bonus-value">Value: $197</span>
-          <p>Direct access to our team for a full week after launch – questions, tweaks, troubleshooting.</p>
+          <p>Your ads go live and we stay on them by email for a week – watching delivery, checking the tracking fires, and sorting anything the platform throws at a brand-new campaign.</p>
         </div>
         <div class="bonus-item">
           <span class="bonus-icon">🎓</span>
@@ -992,14 +997,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
           <p class="cs-stat-sub">That's <strong>$0.47 per subscriber</strong>. Roughly <strong>10× better</strong> than the industry average for health &amp; nutrition Meta ads.</p>
         </div>
 
-        <!-- Second result, from the Aug 2026 feedback form. Cited as her data;
-             her full testimonial runs intact in #testimonials. -->
-        <div class="cs-stat cs-stat-alt">
-          <p class="cs-stat-h">A second build, for a nutrition practice: <strong>~30 opt-ins in the first couple of weeks</strong> from the Meta ads.</p>
-          <p class="cs-stat-sub">&ldquo;I now have a professional lead-generation resource and automated nurture sequence working in the background.&rdquo;</p>
-        </div>
-
-        <p class="cs-intro">Heather Smith, RD came to us with a kidney nutrition practice and no real system for reaching new patients. Three weeks later, her funnel was live, and the leads started coming in immediately.</p>
+        <p class="cs-intro">Heather Smith, RD came to us with a kidney nutrition practice and no real system for reaching new patients. Once her funnel was live, the leads started coming in immediately.</p>
 
         <p class="cs-quote">OMG! This is so GOOD!!!! I could never have dreamed the lead magnet would be this amazing. And the emails are right on point.</p>
         <div class="cs-attrib">
@@ -1010,7 +1008,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         </div>
         <div class="cs-meta">
           <div class="cs-meta-item">
-            <strong>Live in under a month</strong>
+            <strong>Built and launched</strong>
             ad, opt-in page, thank you page, lead magnet &amp; welcome emails
           </div>
           <div class="cs-meta-item">
@@ -1077,23 +1075,27 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
       <div class="t-card">
         <p class="t-lead">I&rsquo;ve often joked that what I really need is a &ldquo;unicorn&rdquo; who understands strategy but can also handle the tech and implementation that I don&rsquo;t need to be spending my time on. I feel like the combination of you + Priscilla may be that unicorn!</p>
-        <p class="t-quote">&ldquo;I was impressed by how well they captured my brand and messaging from the beginning &ndash; the landing page and email sequence required surprisingly few edits. They were thoughtful, collaborative, receptive to my feedback, and brought both strategy and technical expertise to the process.&rdquo;</p>
-        <p class="t-quote">&ldquo;When we encountered an unexpected technical issue during launch, Priscilla was incredibly diligent about troubleshooting it. The overall process did take a little longer than the initial three-week timeline, but I always felt supported and knew things were continuing to move forward. In fact, before we even finished this project, I engaged them for another small project.&rdquo;</p>
+        <p class="t-quote">&ldquo;I was impressed by how well they captured my brand and messaging from the beginning &ndash; <strong>the landing page and email sequence required surprisingly few edits.</strong> They were thoughtful, collaborative, receptive to my feedback, and brought both strategy and technical expertise to the process.&rdquo;</p>
+        <p class="t-quote">&ldquo;When we encountered an unexpected technical issue during launch, Priscilla was incredibly diligent about troubleshooting it. I always felt supported and knew things were continuing to move forward. In fact, <strong>before we even finished this project, I engaged them for another small project.</strong>&rdquo;</p>
         <p class="t-attrib">
-          <span class="t-name">Nathalie</span>
-          Registered dietitian, private nutrition practice
-          <span class="t-rating">5/5 onboarding &middot; would recommend</span>
+          <span class="t-avatar" aria-hidden="true">N</span>
+          <span>
+            <span class="t-name">Nathalie</span>
+            Registered dietitian, private nutrition practice
+          </span>
         </p>
       </div>
 
       <div class="t-card">
         <p class="t-lead">I have yet to meet an entrepreneur who doesn&rsquo;t feel swamped with trying to navigate all the things. The service package was so high-end that it felt effortless.</p>
-        <p class="t-quote">&ldquo;I was thrilled for the opportunity to be able to delegate this important part of my business to a team that I trust very much. There are a lot of details and rules to know and understand in order to launch effective ads, and I was not interested in troubleshooting that by myself.&rdquo;</p>
-        <p class="t-quote">&ldquo;The paid ads running in the background will make me visible on a consistent basis for my audience without having to manually post things every single day. It&rsquo;s a unique combination of skills to work with someone who is both a registered dietitian and a marketing expert.&rdquo;</p>
+        <p class="t-quote">&ldquo;I was thrilled for the opportunity to be able to <strong>delegate this important part of my business to a team that I trust very much.</strong> There are a lot of details and rules to know and understand in order to launch effective ads, and I was not interested in troubleshooting that by myself.&rdquo;</p>
+        <p class="t-quote">&ldquo;The paid ads running in the background will make me <strong>visible on a consistent basis for my audience without having to manually post things every single day.</strong> It&rsquo;s a unique combination of skills to work with someone who is both a registered dietitian and a marketing expert.&rdquo;</p>
         <p class="t-attrib">
-          <span class="t-name">Holly</span>
-          Registered dietitian, GLP-1 group program
-          <span class="t-rating">5/5 deliverables &middot; 5/5 onboarding</span>
+          <span class="t-avatar" aria-hidden="true">H</span>
+          <span>
+            <span class="t-name">Holly</span>
+            Registered dietitian, GLP-1 group program
+          </span>
         </p>
       </div>
 
@@ -1255,7 +1257,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
           <span class="c-price">$6,200+</span>
         </div>
         <div class="comparison-ours">
-          <span class="c-label"><span class="nb">What we do.</span> One team, under a month.</span>
+          <span class="c-label"><span class="nb">What we do.</span> One team, start to launch.</span>
           <span class="c-price">$1,997</span>
         </div>
       </div>
@@ -1280,7 +1282,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <li>Delivery email + 5-email welcome sequence, written and set up</li>
         <li>Facebook &amp; Instagram ad campaign – copy, creative, targeting, and launch</li>
         <li>BONUS: Your Funnel Command Center – Notion hub with walkthrough videos and every file we built</li>
-        <li>BONUS: 7 days of Slack support after your funnel launch</li>
+        <li>BONUS: 7 days of email support while your ads go live</li>
         <li>BONUS: Ads Made Simple course – learn how to run, edit, and monitor your own ads</li>
       </ul>
 
@@ -1297,9 +1299,10 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
           <span>What you can expect from us</span>
         </div>
         <ul class="milestone-list">
-          <li><span class="m-when">Within 7 days</span><span class="m-what">we'll have your onboarding done and real work started</span></li>
-          <li><span class="m-when">Within 2 weeks</span><span class="m-what">a complete first draft of your funnel for you to review</span></li>
-          <li><span class="m-when">Within 1 month</span><span class="m-what">your funnel is live and running. No drawn-out timelines.</span></li>
+          <li><span class="m-when">You'll never wonder</span><span class="m-what">where your project stands &ndash; you get a clear next step at every stage</span></li>
+          <li><span class="m-when">You review everything</span><span class="m-what">a complete first draft of the whole funnel, before anything goes live</span></li>
+          <li><span class="m-when">We don't hand off half-built</span><span class="m-what">your funnel goes live connected, tested, and running</span></li>
+          <li><span class="m-when">We keep moving</span><span class="m-what">work starts as soon as onboarding is in, and doesn't stall waiting on us</span></li>
         </ul>
       </div>
 
@@ -1357,7 +1360,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
       <details class="faq-item">
         <summary class="faq-q">Will there be any live calls involved?</summary>
-        <div class="faq-a">We don't anticipate needing to get on any calls. All of the work is done asynchronously – we get started, you check this off your to-do list! Everything is communicated through our project tools and Slack, so there's no scheduling required on your end.</div>
+        <div class="faq-a">We don't anticipate needing to get on any calls. All of the work is done asynchronously – we get started, you check this off your to-do list! Everything is communicated through our project tools and email, so there's no scheduling required on your end.</div>
       </details>
 
       <details class="faq-item">
