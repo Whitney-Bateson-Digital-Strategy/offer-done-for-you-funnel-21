@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Placeholder for a practitioner photo">
-  <rect width="800" height="1000" fill="#efeae3"/>
+  <rect width="800" height="1000" fill="#f2f5f6"/>
   <circle cx="400" cy="392" r="118" fill="#aed3dd"/>
   <path d="M190 772c0-116 94-210 210-210s210 94 210 210v38H190z" fill="#aed3dd"/>
   <text x="400" y="892" text-anchor="middle" font-family="Georgia, serif" font-size="36" fill="#02525d">Practitioner photo</text>
