@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Done-For-You Funnel Build · Whitney Bateson</title>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H7YP1941S5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-H7YP1941S5');
+</script>
+<!-- Hotjar -->
+<script>
+  (function(h,o,t,j,a,r){
+    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+    h._hjSettings={hjid:3572588,hjsv:6};
+    a=o.getElementsByTagName('head')[0];
+    r=o.createElement('script');r.async=1;
+    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    a.appendChild(r);
+  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+:root{
+  --cream:#efeae3;
+  --soft:#faf7f3;
+  --hi:rgba(174,211,221,0.22);
+  --hi-md:rgba(174,211,221,0.48);
+  --navy:#02525d;
+  --navy-dk:#013d46;
+  --coral:#ff7f50;
+  --coral-dk:#e6663b;
+  --pink:#ffcdcd;
+  --lime:#e3f696;
+  --text:#1a1a1a;
+  --muted:#5c5c5c;
+  --white:#ffffff;
+  --border:rgba(26,26,26,0.09);
+  --sh-sm:0 2px 12px rgba(0,0,0,0.055);
+  --sh-md:0 6px 32px rgba(0,0,0,0.08);
+  --head:'Playfair Display',Georgia,serif;
+  --body:'Open Sans',system-ui,sans-serif;
+  --mw:1240px
+}
+
+body{font-family:var(--body);background:var(--cream);color:var(--text);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--head);line-height:1.22;font-weight:500}
+p{margin-bottom:16px}p:last-child{margin-bottom:0}
+a{color:var(--navy)}
+
+.wrap{max-width:var(--mw);margin:0 auto;padding:0 36px}
+@media(max-width:640px){.wrap{padding:0 20px}}
+section{padding:80px 0}
+@media(max-width:640px){section{padding:52px 0}}
+
+/* fade in */
+.fi{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.fi.on{opacity:1;transform:none}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}.d4{transition-delay:.28s}
+
+/* urgency bar */
+.urgency-bar{background:var(--navy-dk);color:var(--white);text-align:center;padding:10px 20px;font-size:14px;font-weight:500;letter-spacing:.01em;position:relative;z-index:101}
+.urgency-bar a{color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:opacity .15s}
+.urgency-bar a:hover{opacity:.85}
+.urgency-bar .ub-dot{width:7px;height:7px;border-radius:50%;background:var(--lime);display:inline-block;animation:pulse 2s infinite;flex-shrink:0}
+.urgency-bar .ub-count{font-weight:700;color:var(--lime)}
+.urgency-bar .ub-arrow{transition:transform .2s;display:inline-block}
+.urgency-bar a:hover .ub-arrow{transform:translateX(3px)}
+@media(max-width:540px){.urgency-bar{font-size:13px;padding:9px 16px}}
+
+/* nav */
+nav{position:sticky;top:0;z-index:100;background:var(--cream);border-bottom:1px solid var(--border);padding:14px 0}
+.nav-row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:var(--head);font-size:17px;color:var(--navy);text-decoration:none;font-weight:500}
+
+/* buttons */
+.btn{display:inline-block;font-family:var(--body);font-weight:600;text-decoration:none;border:none;border-radius:999px;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;white-space:nowrap}
+.btn-sm{background:var(--navy);color:var(--white);font-size:14px;padding:10px 22px}
+.btn-sm:hover{background:var(--navy-dk);transform:translateY(-1px)}
+.btn-p{background:var(--navy);color:var(--white);font-size:17px;padding:16px 38px}
+.btn-p:hover{background:var(--navy-dk);transform:translateY(-1px);box-shadow:0 6px 24px rgba(2,82,93,.22)}
+.btn-s{background:var(--white);color:var(--navy);font-size:17px;padding:16px 38px;border:2px solid var(--navy);box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.btn-s:hover{background:var(--cream);transform:translateY(-1px);box-shadow:0 6px 20px rgba(2,82,93,.15)}
+.btn-block{display:block;width:100%;text-align:center}
+
+/* labels */
+.pill{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--navy);background:var(--hi-md);padding:6px 14px;border-radius:999px;margin-bottom:22px}
+.slabel{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:14px}
+
+/* hero */
+#hero{padding:96px 0 80px;position:relative;overflow:hidden;background:var(--cream)}
+#hero::after{content:'';position:absolute;top:-100px;right:-140px;width:460px;height:460px;border-radius:50%;background:var(--hi);pointer-events:none;z-index:0}
+@media(max-width:768px){#hero{padding:60px 0 52px}#hero::after{display:none}}
+.hero-cols{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;position:relative;z-index:1}
+@media(max-width:860px){.hero-cols{grid-template-columns:1fr;gap:40px}}
+.hero-inner{max-width:100%;position:relative;z-index:1}
+.hero-h1{font-size:clamp(2rem,4vw,2.75rem);margin-bottom:22px;color:var(--text)}
+.hero-h1 em{font-style:italic;color:var(--navy)}
+.hero-sub{font-size:18px;color:var(--muted);margin-bottom:32px;line-height:1.62}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.hero-note{font-size:14px;color:var(--muted);font-style:italic}
+.hero-video-col{position:relative;z-index:1}
+.hero-video-wrap{position:relative;width:100%;padding-bottom:56.25%;border-radius:20px;overflow:hidden;background:var(--navy-dk);box-shadow:var(--sh-md)}
+.hero-video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:20px}
+@media(max-width:860px){.hero-video-col{order:-1}}
+.hero-video-overlay{position:absolute;inset:0;cursor:pointer;border-radius:20px;overflow:hidden}
+.hero-overlay-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.hero-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:none;border:none;padding:0;cursor:pointer;width:72px;height:72px;transition:transform .22s ease;filter:drop-shadow(0 4px 18px rgba(0,0,0,0.35))}
+.hero-video-overlay:hover .hero-play-btn{transform:translate(-50%,-50%) scale(1.13)}
+
+/* who-for marquee strip */
+#strip{background:var(--cream);padding:40px 0 0;border-top:1px solid var(--border)}
+.strip-label{display:flex;align-items:center;justify-content:center;gap:14px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);margin-bottom:20px;padding:0 20px}
+.strip-label::before,.strip-label::after{content:'';flex:0 0 40px;height:1px;background:rgba(2,82,93,0.25)}
+.marquee-bar{background:var(--navy);padding:18px 0;overflow:hidden;position:relative;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.marquee{display:flex;overflow:hidden;mask-image:linear-gradient(to right,transparent 0%,#000 6%,#000 94%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 6%,#000 94%,transparent 100%)}
+.marquee-track{display:flex;gap:0;flex-shrink:0;animation:marqueeScroll 45s linear infinite;will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translateZ(0)}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none;flex-wrap:wrap;justify-content:center;gap:14px 28px;padding:0 20px}}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-item{display:inline-block;font-size:16px;color:var(--white);white-space:nowrap;font-weight:500;line-height:1.5;padding:4px 28px;position:relative}
+.marquee-item::after{content:'✨';position:absolute;right:-8px;top:50%;transform:translateY(-50%);font-size:14px;line-height:1;opacity:.85}
+.marquee-item .accent{color:var(--lime);font-weight:700}
+@keyframes marqueeScroll{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-50%,0,0)}}
+
+/* problem - panel-based architecture */
+#problem{background:var(--soft);padding:80px 0}
+@media(max-width:640px){#problem{padding:56px 0}}
+.prob-wrap{max-width:780px;margin:0 auto}
+.prob-intro{text-align:center;margin-bottom:48px}
+.prob-intro .slabel{display:inline-block;margin-bottom:14px}
+.prob-intro h2{font-size:clamp(1.65rem,3.8vw,2.35rem);line-height:1.18;color:var(--text)}
+.prob-intro h2 .accent{color:var(--navy);font-style:italic}
+
+/* panel 1: the checkmark card */
+.prob-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:40px 44px;box-shadow:var(--sh-md);margin-bottom:64px}
+@media(max-width:640px){.prob-card{padding:28px 24px;margin-bottom:48px}}
+.prob-card-label{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);background:var(--hi-md);padding:8px 16px;border-radius:999px;margin-bottom:24px;width:fit-content}
+.prob-check-list{list-style:none;margin:0;padding:0}
+.prob-check-list li{display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:start;padding:18px 0;font-size:16px;line-height:1.62;color:var(--text)}
+.prob-check-list li:not(:last-child){border-bottom:1px solid var(--border)}
+.prob-check-list .prob-check-icon{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--navy);background:transparent;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;color:var(--navy);font-size:13px;font-weight:700;line-height:1}
+.prob-check-list .hl{background:rgba(174,211,221,0.55);padding:2px 6px;border-radius:3px;margin:0 -2px;font-weight:600;color:var(--text)}
+.prob-check-list em{font-style:italic;color:var(--muted);font-size:16px;display:block;margin-top:6px}
+
+/* panel 2: the truth bomb */
+.prob-truth-panel{text-align:center;padding:24px 0 64px;max-width:680px;margin:0 auto}
+@media(max-width:640px){.prob-truth-panel{padding:8px 0 48px}}
+.prob-truth-intro{font-size:17px;color:var(--muted);font-style:italic;margin-bottom:18px;line-height:1.55}
+.prob-truth-big{font-family:var(--head);font-size:clamp(1.6rem,3.6vw,2.4rem);line-height:1.22;color:var(--text);font-weight:500;margin-bottom:18px}
+.prob-truth-big .hl-yellow{background:linear-gradient(180deg,transparent 55%,rgba(174,211,221,0.65) 55%);padding:0 6px}
+.prob-truth-big .accent{color:var(--navy);font-style:italic}
+.prob-truth-after{font-size:17px;color:var(--text);line-height:1.55;max-width:540px;margin:0 auto}
+.prob-truth-after .nb{color:var(--navy);font-weight:700}
+
+/* expertise — full-bleed navy section closing the problem */
+#expertise{background:var(--navy);color:var(--white);padding:88px 0;text-align:center}
+@media(max-width:640px){#expertise{padding:64px 0}}
+.prob-close-inner{max-width:680px;margin:0 auto}
+.prob-close-eyebrow{font-family:var(--head);font-style:italic;font-size:17px;color:rgba(255,255,255,0.7);margin:0 0 18px;line-height:1.4}
+.prob-close-h{font-family:var(--head);font-size:clamp(1.6rem,3.6vw,2.3rem);font-weight:500;line-height:1.22;color:var(--white);margin:0 0 22px}
+.prob-close-h .accent-light{color:var(--lime);font-style:italic}
+.prob-close-body{font-size:17px;color:rgba(255,255,255,0.88);line-height:1.65;max-width:720px;margin:0 auto 18px}
+.prob-close-tag{font-family:var(--head);font-style:italic;font-size:20px;color:var(--white);margin:0;line-height:1.4}
+.prob-close-heart{font-style:normal;margin-left:4px}
+.expertise-cta{margin-top:40px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.18);max-width:520px;margin-left:auto;margin-right:auto}
+.expertise-cta-line{font-family:var(--head);font-style:italic;font-size:clamp(1.15rem,2.4vw,1.4rem);color:var(--white);margin:0 0 22px;line-height:1.4}
+.btn-light{background:var(--lime);color:var(--navy-dk);font-size:17px;padding:16px 38px}
+.btn-light:hover{background:var(--white);transform:translateY(-1px);box-shadow:0 6px 24px rgba(0,0,0,.22)}
+.expertise-cta-sub{font-size:14px;color:rgba(255,255,255,0.72);font-style:italic;margin:14px 0 0}
+.ul-light{text-decoration:underline;text-decoration-color:var(--lime);text-decoration-thickness:2px;text-underline-offset:4px;color:var(--lime);font-weight:600}
+
+/* cost of inaction calculator */
+.cost-calc{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:40px 44px;box-shadow:var(--sh-md);margin-bottom:32px}
+@media(max-width:640px){.cost-calc{padding:28px 22px}}
+.cost-calc-head{text-align:center;margin-bottom:28px}
+.cost-calc-title{font-family:var(--head);font-size:clamp(1.4rem,3vw,1.9rem);font-weight:500;line-height:1.22;color:var(--text);margin:0}
+.cost-calc-title .accent{color:var(--navy);font-style:italic}
+.cost-calc-sub{font-size:16px;color:var(--muted);line-height:1.6;max-width:520px;margin:14px auto 0}
+.cost-calc-inputs{display:flex;flex-direction:column;gap:22px;margin-bottom:32px}
+.cost-calc-row{display:grid;grid-template-columns:1fr 1fr auto;gap:16px;align-items:center}
+@media(max-width:640px){.cost-calc-row{grid-template-columns:1fr auto;gap:8px 14px}.cost-calc-row label{grid-column:1 / -1}.cost-calc-row input{grid-column:1}.cost-calc-row .cost-calc-out{grid-column:2}}
+.cost-calc-row label{font-size:14px;color:var(--text);font-weight:600}
+.cost-calc-row input[type="range"]{width:100%;height:6px;-webkit-appearance:none;appearance:none;background:var(--hi);border-radius:999px;outline:none;cursor:pointer}
+.cost-calc-row input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;background:var(--navy);border-radius:50%;cursor:pointer;border:3px solid var(--white);box-shadow:0 2px 6px rgba(2,82,93,.25);transition:transform .15s}
+.cost-calc-row input[type="range"]::-webkit-slider-thumb:hover{transform:scale(1.1)}
+.cost-calc-row input[type="range"]::-moz-range-thumb{width:22px;height:22px;background:var(--navy);border-radius:50%;cursor:pointer;border:3px solid var(--white);box-shadow:0 2px 6px rgba(2,82,93,.25)}
+.cost-calc-out{font-family:var(--head);font-size:18px;font-weight:600;color:var(--navy);min-width:72px;text-align:right}
+.cost-calc-results{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
+@media(max-width:540px){.cost-calc-results{grid-template-columns:1fr}}
+.cost-calc-result{background:var(--cream);border-radius:14px;padding:24px;text-align:center}
+.cost-calc-result-accent{background:var(--navy);color:var(--white)}
+.cost-calc-label{display:block;font-size:12px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;margin-bottom:10px;color:var(--muted)}
+.cost-calc-result-accent .cost-calc-label{color:rgba(255,255,255,0.8)}
+.cost-calc-value{display:block;font-family:var(--head);font-size:clamp(2rem,5vw,2.75rem);font-weight:600;line-height:1.05;color:var(--text)}
+.cost-calc-result-accent .cost-calc-value{color:var(--white)}
+.cost-calc-caption{text-align:center;font-family:var(--head);font-style:italic;font-size:17px;color:var(--muted);margin:0;line-height:1.5;min-height:1.5em;transition:opacity .2s}
+
+/* how it works */
+#how{background:var(--cream)}
+#how h2{font-size:clamp(1.5rem,3.5vw,2.15rem);margin-bottom:40px;max-width:560px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:700px){.steps{grid-template-columns:1fr}}
+.step-card{background:var(--white);border-radius:16px;border:1px solid var(--border);padding:28px;box-shadow:var(--sh-sm)}
+.step-num{font-size:13px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--navy);margin-bottom:10px;display:block}
+.step-card h3{font-size:1.1rem;margin-bottom:8px;color:var(--text)}
+.step-card p{font-size:16px;color:var(--muted);line-height:1.62;margin:0}
+
+/* included */
+#included{background:var(--soft)}
+#included h2{font-size:clamp(1.5rem,3.5vw,2.15rem);margin-bottom:10px}
+.inc-sub{font-size:17px;color:var(--muted);max-width:540px;margin-bottom:0}
+.deliverables{display:flex;flex-direction:column;gap:16px;margin-top:48px}
+.d-item{display:grid;grid-template-columns:48px 1fr;gap:0 20px;align-items:start;background:var(--white);border-radius:16px;border:1px solid var(--border);box-shadow:var(--sh-sm);padding:24px 28px;transition:box-shadow .2s,transform .2s}
+.d-item:hover{box-shadow:var(--sh-md);transform:translateY(-2px)}
+@media(max-width:540px){.d-item{grid-template-columns:1fr;gap:10px;padding:22px}}
+.d-num{font-family:var(--head);font-size:2rem;color:var(--hi-md);line-height:1;font-weight:600;padding-top:4px}
+.d-content h3{font-size:1.1rem;color:var(--text);margin-bottom:5px}
+.d-content p{font-size:16px;color:var(--muted);line-height:1.62;margin-bottom:8px}
+.d-why{font-size:14px;color:var(--navy);font-weight:700;display:flex;align-items:flex-start;gap:7px}
+.d-why::before{content:'↳';flex-shrink:0}
+
+/* transform */
+#transform{background:var(--soft);padding:80px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+@media(max-width:640px){#transform{padding:52px 0}}
+#transform h2{font-size:clamp(1.5rem,3.5vw,2.15rem);margin-bottom:14px;max-width:540px}
+#transform .lead{font-size:17px;color:var(--muted);max-width:560px;margin-bottom:44px;line-height:1.65}
+.outcome-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(max-width:640px){.outcome-grid{grid-template-columns:1fr}}
+.outcome-item{background:var(--white);border-radius:14px;border:1px solid var(--border);padding:22px 24px;box-shadow:var(--sh-sm);display:flex;gap:14px;align-items:flex-start}
+.o-emoji{font-size:20px;flex-shrink:0;margin-top:2px;line-height:1}
+.o-text{font-size:16px;color:var(--text);line-height:1.58}
+.o-text strong{font-weight:700;color:var(--navy)}
+
+/* about */
+#about{background:var(--cream)}
+/* about - the experts */
+#about{background:var(--cream);padding-bottom:0}
+#about .about-head{text-align:center;max-width:640px;margin:0 auto 48px}
+#about .about-head h2{font-size:clamp(1.5rem,3.5vw,2.15rem);margin-bottom:14px;line-height:1.25}
+#about .about-head p{font-size:17px;color:var(--muted);line-height:1.6}
+.experts-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;max-width:980px;margin:0 auto}
+@media(max-width:760px){.experts-grid{grid-template-columns:1fr;gap:32px}}
+.expert-card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:36px;box-shadow:var(--sh-sm);display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+@media(max-width:540px){.expert-card{padding:28px 24px;align-items:center;text-align:center}}
+.expert-photo{width:120px;height:120px;border-radius:50%;background:var(--hi-md);overflow:hidden;flex-shrink:0;border:3px solid var(--hi-md)}
+.expert-photo img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.expert-name{font-family:var(--head);font-size:1.35rem;color:var(--text);margin-bottom:2px;line-height:1.2}
+.expert-role{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.10em;color:var(--navy);display:block;margin-bottom:14px}
+.expert-bio{font-size:16px;color:var(--muted);line-height:1.65;margin:0}
+.experts-footer{text-align:center;max-width:580px;margin:36px auto 0;font-size:16px;color:var(--text);line-height:1.6}
+.experts-footer strong{color:var(--navy);font-weight:600}
+
+/* comparison / goldilocks */
+#compare{background:var(--cream);padding:48px 0 88px}
+@media(max-width:640px){#compare{padding:64px 0}}
+.cmp-head{text-align:center;max-width:680px;margin:0 auto 52px}
+.cmp-head h2{font-size:clamp(1.5rem,3.5vw,2.15rem);margin-bottom:14px;line-height:1.25}
+.cmp-head p{font-size:17px;color:var(--muted);line-height:1.6;margin:0}
+.cmp-grid{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:20px;max-width:1140px;margin:0 auto;align-items:start}
+@media(max-width:860px){.cmp-grid{grid-template-columns:1fr;gap:24px;max-width:520px}}
+.cmp-col{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px 28px;box-shadow:var(--sh-sm);position:relative}
+.cmp-col-muted{background:var(--soft);box-shadow:none}
+.cmp-col-best{border:2px solid var(--navy);box-shadow:var(--sh-md);padding-top:42px;background:var(--white)}
+.cmp-x-icon{display:inline-flex;width:28px;height:28px;border-radius:50%;background:var(--border);align-items:center;justify-content:center;font-size:13px;color:var(--muted);font-weight:700;margin-bottom:14px;line-height:1}
+.cmp-pill{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--coral);color:var(--white);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:7px 16px;border-radius:999px;white-space:nowrap;box-shadow:0 4px 12px rgba(255,127,80,0.35)}
+.cmp-label{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.cmp-col-best .cmp-label{color:var(--navy)}
+.cmp-col h3{font-family:var(--head);font-size:1.3rem;font-weight:500;color:var(--text);margin-bottom:20px;line-height:1.25}
+.cmp-col-best h3{color:var(--navy)}
+.cmp-list{list-style:none;margin:0;padding:0}
+.cmp-list li{display:grid;grid-template-columns:20px 1fr;gap:10px;padding:14px 0;font-size:15px;line-height:1.55;color:var(--text);border-bottom:1px solid var(--border)}
+.cmp-list li:last-child{border-bottom:none;padding-bottom:0}
+.cmp-list li:first-child{padding-top:0}
+.cmp-icon{flex-shrink:0;margin-top:3px;font-size:14px;line-height:1;color:var(--muted)}
+.cmp-col-best .cmp-icon{color:var(--navy);font-weight:700;font-size:15px}
+.cmp-tagline{text-align:center;max-width:680px;margin:48px auto 28px;font-family:var(--head);font-style:italic;font-size:clamp(1.1rem,2.2vw,1.35rem);color:var(--text);line-height:1.55}
+.cmp-tagline strong{color:var(--navy);font-style:normal;font-weight:600}
+.cmp-cta-wrap{text-align:center;margin-top:8px}
+
+/* gut check / fit */
+#fit{background:var(--soft);padding:80px 0;border-top:1px solid var(--border)}
+@media(max-width:640px){#fit{padding:56px 0}}
+.fit-head{text-align:center;max-width:640px;margin:0 auto 40px}
+.fit-head h2{font-size:clamp(1.5rem,3.5vw,2.15rem);line-height:1.25;margin:0}
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:980px;margin:0 auto;align-items:start}
+@media(max-width:760px){.fit-grid{grid-template-columns:1fr;gap:18px;max-width:520px}}
+.fit-col{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:32px 30px;box-shadow:var(--sh-sm)}
+.fit-col h3{font-family:var(--head);font-size:1.2rem;font-weight:500;color:var(--text);margin-bottom:18px;line-height:1.3}
+.fit-col-yes h3{color:var(--navy)}
+.fit-list{list-style:none;margin:0;padding:0}
+.fit-list li{display:grid;grid-template-columns:22px 1fr;gap:12px;padding:14px 0;font-size:15px;line-height:1.55;color:var(--text);border-bottom:1px solid var(--border)}
+.fit-list li:last-child{border-bottom:none;padding-bottom:0}
+.fit-list li:first-child{padding-top:0}
+.fit-icon{flex-shrink:0;margin-top:2px;line-height:1;font-weight:700}
+.fit-col-yes .fit-icon{color:var(--navy);font-size:15px}
+.fit-col-no .fit-icon{color:var(--muted);font-weight:500;font-size:14px}
+
+/* pricing */
+#pricing{background:var(--soft);text-align:center}
+#pricing h2{font-size:clamp(1.5rem,3.5vw,2.15rem);margin-bottom:10px;max-width:580px;margin-left:auto;margin-right:auto}
+#pricing .slabel{text-align:center}
+.p-intro{font-size:17px;color:var(--muted);max-width:560px;margin:0 auto 36px}
+.p-box{background:var(--white);border:1px solid var(--border);border-radius:20px;box-shadow:var(--sh-md);padding:44px;max-width:640px;margin:0 auto;text-align:left}
+@media(max-width:640px){.p-box{padding:28px 22px}}
+.beta-badge{display:inline-flex;align-items:center;gap:8px;background:var(--hi-md);color:var(--navy);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:6px 14px;margin-bottom:24px}
+.beta-dot{width:7px;height:7px;border-radius:50%;background:var(--navy);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.82)}}
+.price-big{font-family:var(--head);font-size:3.2rem;font-weight:600;color:var(--navy);line-height:1;display:block;margin-bottom:6px}
+.p-was{display:block;font-size:14px;color:var(--muted);margin-bottom:4px}
+.p-caption{font-size:16px;color:var(--muted);margin-bottom:0}
+.p-divider{border:0;border-top:1px solid var(--border);margin:22px 0}
+.p-eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:14px}
+.p-ad{font-size:14px;color:var(--muted);text-align:center;margin:0;line-height:1.55}
+.p-split{text-align:center;font-size:14px;color:var(--muted);margin:10px 0 0}
+.p-call{text-align:center;margin-top:18px}
+.p-call-q{font-size:14px;color:var(--muted);margin:0 0 6px}
+.p-call-link{display:inline-block;font-size:14px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.p-call-link:hover{color:var(--navy)}
+.price-note{font-size:16px;color:var(--muted);font-style:italic;margin-bottom:26px}
+.inc-list{list-style:none;margin:0}
+.inc-list li{display:flex;align-items:flex-start;gap:13px;margin-bottom:11px;font-size:16px;color:var(--text);line-height:1.5}
+.inc-list li::before{content:'✓';color:var(--navy);font-weight:700;flex-shrink:0;margin-top:2px}
+.beta-terms{background:var(--cream);border-radius:12px;padding:16px 22px;margin-bottom:26px;font-size:16px;color:var(--muted);line-height:1.62}
+.beta-terms strong{color:var(--text);font-weight:600}
+.cta-pair{display:flex;flex-direction:column;gap:10px}
+.cta-or{text-align:center;font-size:14px;color:var(--muted)}
+.cta-sub{text-align:center;font-size:14px;color:var(--muted);margin-top:10px;font-style:italic}
+
+/* testimonials */
+#testimonials{padding:80px 0;text-align:center}
+#testimonials .slabel{margin-bottom:14px}
+#testimonials h2{font-size:clamp(1.5rem,3.5vw,2.15rem);margin-bottom:40px}
+.t-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1040px;margin:0 auto;text-align:left}
+.t-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:var(--sh-sm);display:flex;flex-direction:column;gap:16px}
+.t-quote{font-size:17px;line-height:1.62;color:var(--text);margin:0;font-family:var(--head);font-style:italic}
+.t-quote::before{content:'\201C';color:var(--navy);font-size:2rem;line-height:0;vertical-align:-0.4em;margin-right:4px}
+.t-attrib{font-size:14px;color:var(--muted);margin:0}
+.t-name{font-weight:700;color:var(--navy)}
+
+/* faq */
+#faq{background:var(--cream)}
+#faq h2{font-size:clamp(1.45rem,3vw,1.95rem);margin-bottom:32px;max-width:460px}
+.faq-list{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;max-width:1100px}
+@media(max-width:760px){.faq-list{grid-template-columns:1fr;max-width:700px}}
+.faq-item{border:1px solid var(--border);border-radius:12px;background:var(--white);overflow:hidden;align-self:start}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 26px;cursor:pointer;font-family:var(--head);font-size:1.03rem;font-weight:500;color:var(--text);list-style:none;user-select:none;transition:background .15s}
+.faq-q:hover{background:var(--soft)}
+.faq-q::after{content:'+';font-family:var(--body);font-size:22px;color:var(--navy);flex-shrink:0;transition:transform .25s;line-height:1}
+details[open] .faq-q::after{transform:rotate(45deg)}
+.faq-a{padding:0 26px 22px;padding-top:18px;font-size:16px;color:var(--muted);line-height:1.68;border-top:1px solid var(--border)}
+
+/* close */
+#close{background:var(--soft);border-top:1px solid var(--border);text-align:center;padding:72px 0}
+#close h2{font-size:clamp(1.5rem,3.5vw,2.15rem);max-width:520px;margin:0 auto 14px}
+#close .sub{font-size:17px;color:var(--muted);max-width:480px;margin:0 auto 32px}
+.close-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.close-note{margin-top:18px;font-size:14px;color:var(--muted);font-style:italic}
+
+footer{background:var(--cream);border-top:1px solid var(--border);padding:24px 0;text-align:center;font-size:14px;color:var(--muted)}
+footer a{color:var(--muted)}
+
+/* funnel flow */
+#funnel-flow{background:var(--soft);padding:48px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.funnel-label{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:20px;text-align:center}
+.funnel-steps{display:flex;align-items:flex-start;justify-content:center;gap:0;flex-wrap:wrap}
+.funnel-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 10px;flex:1;min-width:110px;max-width:150px}
+.funnel-icon{font-size:26px;margin-bottom:8px;line-height:1}
+.funnel-step-title{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:4px;line-height:1.3}
+.funnel-step-desc{font-size:12px;color:var(--muted);line-height:1.5}
+.funnel-arrow{font-size:18px;color:var(--navy);opacity:.3;margin-top:20px;flex-shrink:0;align-self:flex-start;padding-top:10px}
+@media(max-width:700px){.funnel-steps{gap:8px}.funnel-arrow{display:none}.funnel-step{min-width:90px;padding:0 6px}}
+
+/* bonuses */
+.bonuses{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+@media(max-width:860px){.bonuses{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.bonuses{grid-template-columns:1fr}}
+.bonus-item{background:var(--hi);border:1px solid var(--hi-md);border-radius:14px;padding:22px 24px;text-align:center}
+.bonus-icon{font-size:24px;margin-bottom:10px;line-height:1;display:block}
+.bonus-item h4{font-family:var(--head);font-size:1rem;font-weight:500;color:var(--navy);margin-bottom:6px}
+.bonus-item p{font-size:14px;color:var(--muted);line-height:1.55;margin:0 0 10px}
+.bonus-value{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--navy);border:1px solid var(--hi-md);background:var(--white);border-radius:4px;padding:2px 8px;margin:6px 0 12px}
+.bonuses-label{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:16px;display:block}
+
+/* price-was */
+.price-was{font-size:14px;color:var(--muted);font-style:italic;margin-bottom:4px}
+.price-was s{text-decoration-color:rgba(92,92,92,.5)}
+
+/* no bold inside any card */
+.step-card strong, .step-card b,
+.d-item strong, .d-item b,
+.d-content h3,
+.step-card h3,
+.ba-block strong, .ba-block b,
+.p-box strong, .p-box b,
+.faq-item strong, .faq-item b {
+  font-weight: 400;
+}
+.d-content h3 { font-weight: 400; }
+.step-card h3 { font-weight: 400; }
+
+/* ── EMPHASIS STYLES ────────────────────────────────────────── */
+/* Underline: warm, hand-drawn feel using navy */
+.ul{
+  text-decoration:underline;
+  text-decoration-color:rgba(2,82,93,0.45);
+  text-decoration-thickness:2px;
+  text-underline-offset:3px;
+}
+/* Bold in navy */
+.nb{
+  font-weight:700;
+  color:var(--navy);
+}
+/* Highlight: light blue wash behind text */
+.hl{
+  background:var(--hi-md);
+  border-radius:3px;
+  padding:1px 5px;
+  margin:0 -2px;
+}
+/* Bold + slightly larger, used for key claims in body copy */
+.key{
+  font-weight:600;
+  color:var(--text);
+}
+
+/* comparison panel - sits above pricing, collapsed by default */
+.comparison{max-width:680px;margin:0 auto 48px;padding:0 8px}
+.comparison-toggle{background:var(--white);border:1.5px dashed rgba(2,82,93,0.4);cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;gap:12px;padding:16px 24px;font-family:var(--body);font-size:15px;font-weight:500;color:var(--navy);letter-spacing:.01em;transition:background .15s,border-color .15s,transform .12s;border-radius:12px}
+.comparison-toggle u{text-decoration:underline;text-decoration-color:rgba(2,82,93,0.5);text-underline-offset:3px}
+.comparison-toggle:hover{background:var(--hi);border-color:var(--navy);transform:translateY(-1px)}
+.comparison-toggle .c-toggle-icon{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--navy);color:var(--white);border:none;font-size:15px;font-weight:600;transition:transform .25s,background .15s;line-height:1;flex-shrink:0}
+details[open] .comparison-toggle{background:var(--hi);border-style:solid;border-color:var(--navy)}
+details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
+.comparison-toggle::-webkit-details-marker{display:none}
+.comparison-toggle{list-style:none}
+.comparison-list{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px 32px;box-shadow:var(--sh-sm);margin-top:14px}
+@media(max-width:640px){.comparison-list{padding:22px 24px}}
+.comparison-intro{font-size:14px;color:var(--muted);font-style:italic;text-align:center;margin-bottom:18px;line-height:1.55}
+.comparison-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px dashed var(--border);font-size:16px}
+.comparison-row:last-of-type{border-bottom:none}
+.comparison-row .c-label{color:var(--text);flex:1}
+.comparison-row .c-price{color:var(--muted);font-weight:500;white-space:nowrap;font-family:var(--head);font-size:17px}
+.comparison-total{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0 6px;margin-top:6px;border-top:1px solid var(--border);font-size:16px}
+.comparison-total .c-label{color:var(--text);font-style:italic}
+.comparison-total .c-price{color:var(--text);font-family:var(--head);font-size:1.25rem;font-weight:500;white-space:nowrap}
+.comparison-ours{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 18px;margin-top:14px;background:var(--hi);border-radius:10px;border-left:3px solid var(--navy);font-size:16px}
+.comparison-ours .c-label{color:var(--text);font-weight:600}
+.comparison-ours .c-label .nb{color:var(--navy)}
+.comparison-ours .c-price{color:var(--navy);font-family:var(--head);font-size:1.4rem;font-weight:700;white-space:nowrap}
+
+/* milestone guarantee - inside pricing card */
+.milestone{background:var(--cream);border-radius:12px;padding:20px 24px;margin:0 0 6px}
+.milestone-head{display:flex;align-items:center;gap:10px;font-family:var(--head);font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:12px;line-height:1.3}
+.milestone-head-icon{font-size:18px;flex-shrink:0;line-height:1}
+.milestone-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.milestone-list li{font-size:14.5px;color:var(--text);line-height:1.5;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline}
+.milestone-list li .m-when{font-weight:700;color:var(--navy);font-family:var(--head);font-size:14px;white-space:nowrap;letter-spacing:.02em}
+.milestone-list li .m-what{color:var(--muted)}
+
+/* case study section */
+#case-study{background:var(--cream);padding:80px 0}
+@media(max-width:640px){#case-study{padding:52px 0}}
+.cs-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center;max-width:1140px;margin:0 auto}
+@media(max-width:900px){.cs-grid{grid-template-columns:1fr;gap:36px}}
+.cs-image{position:relative}
+.cs-image img{width:100%;height:auto;display:block;border-radius:16px}
+.cs-content .slabel{margin-bottom:16px}
+.cs-content h2{font-size:clamp(1.4rem,2.8vw,1.85rem);margin-bottom:20px;line-height:1.25}
+.cs-stat{background:var(--hi-md);border-left:3px solid var(--navy);border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:22px}
+.cs-stat-h{font-size:16px;color:var(--text);line-height:1.55;margin:0 0 8px}
+.cs-stat-h strong{color:var(--navy);font-weight:700}
+.cs-stat-sub{font-size:14px;color:var(--muted);line-height:1.55;margin:0}
+.cs-stat-sub strong{color:var(--navy);font-weight:700}
+.cs-intro{font-size:16px;color:var(--text);line-height:1.65;margin-bottom:22px}
+.cs-quote{font-family:var(--head);font-size:1.15rem;line-height:1.55;color:var(--text);font-style:italic;margin-bottom:20px;position:relative;padding-left:18px}
+.cs-quote::before{content:'"';position:absolute;left:-2px;top:-18px;font-family:var(--head);font-size:3rem;color:var(--navy);opacity:.18;line-height:1}
+.cs-attrib{display:flex;align-items:center;gap:12px;margin-top:18px}
+.cs-attrib-name{font-weight:700;color:var(--navy);font-size:16px}
+.cs-attrib-role{font-size:14px;color:var(--muted)}
+.cs-meta{display:flex;gap:32px;margin-top:24px;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap}
+.cs-meta-item{font-size:13px;color:var(--muted);line-height:1.5;flex:1;min-width:140px}
+.cs-meta-item strong{display:block;font-family:var(--head);font-size:1.25rem;color:var(--navy);font-weight:600;margin-bottom:4px}
+
+/* floating deliverable pills on case study image */
+.cs-pills{position:absolute;inset:0;pointer-events:none;z-index:2}
+.cs-fp{position:absolute;display:inline-flex;align-items:center;gap:6px;background:var(--white);color:var(--navy);font-size:12px;font-weight:700;letter-spacing:.06em;padding:7px 14px;border-radius:999px;box-shadow:0 4px 18px rgba(0,0,0,0.14);white-space:nowrap;animation:fpFloat 4s ease-in-out infinite}
+.cs-fp .fp-check{width:18px;height:18px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--white);font-size:10px;line-height:1}
+.cs-fp:nth-child(1){top:8%;left:-6%;animation-delay:0s}
+.cs-fp:nth-child(2){top:26%;right:-8%;animation-delay:.6s}
+.cs-fp:nth-child(3){top:50%;left:-10%;animation-delay:1.2s}
+.cs-fp:nth-child(4){top:72%;right:-6%;animation-delay:1.8s}
+.cs-fp:nth-child(5){bottom:8%;left:4%;animation-delay:2.4s}
+@keyframes fpFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@media(max-width:900px){.cs-fp:nth-child(1){top:4%;left:4%}.cs-fp:nth-child(2){top:4%;right:4%;left:auto}.cs-fp:nth-child(3){top:auto;bottom:36%;left:4%}.cs-fp:nth-child(4){top:auto;bottom:18%;right:4%;left:auto}.cs-fp:nth-child(5){bottom:4%;left:4%}}
+</style>
+</head>
+<body>
+
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+  <a href="#pricing">
+    <span class="ub-dot"></span>
+    <span>Done-for-you funnel build · <span class="ub-count">$1,997</span></span>
+    <span class="ub-arrow">→</span>
+  </a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap">
+    <div class="nav-row">
+      <a class="logo" href="#"><img src="Script-Navy.png" alt="Whitney Bateson" style="height:36px;width:auto;display:block;" /></a>
+      <a class="btn btn-sm" href="#pricing">Claim your spot</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-cols">
+      <div class="hero-inner">
+        <div class="pill fi">New Service for Health &amp; Nutrition Practitioners</div>
+        <h1 class="hero-h1 fi d1">
+          We build your funnel. You get <em>new leads every day</em> without the tech headaches.
+        </h1>
+        <p class="hero-sub fi d2">
+          Finally, a lead generation system working for you in the background. <strong>Lead magnet, opt-in page, emails, and ads</strong> — all built by our small team in under 3 weeks.
+        </p>
+        <div class="hero-ctas fi d3">
+          <a class="btn btn-p" href="#pricing">Get started · $1,997</a>
+          <a class="btn btn-s" href="https://whitneybateson.as.me/dfy-funnel-discovery">Book a call first</a>
+        </div>
+        <p class="hero-note fi d4">$1,997 one-time. We do the work. You finally get a system bringing in new leads.</p>
+      </div>
+      <div class="hero-video-col fi d2">
+        <div class="hero-video-wrap">
+          <iframe id="hero-iframe" src="" title="Watch a quick overview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <div class="hero-video-overlay" id="hero-overlay" onclick="playHeroVideo()">
+            <img src="video-overlay.png" alt="" class="hero-overlay-img">
+            <button class="hero-play-btn" aria-label="Play video" tabindex="-1">
+              <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="36" cy="36" r="36" fill="white" fill-opacity="0.92"/>
+                <polygon points="29,22 29,50 52,36" fill="#0A1628"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- STRIP -->
+<!-- WHO FOR — label + scrolling marquee -->
+<div id="strip">
+  <div class="strip-label">This is for you if you...</div>
+  <div class="marquee-bar">
+    <div class="marquee" aria-label="Who this offer is for">
+      <div class="marquee-track">
+        <span class="marquee-item">You want a <span class="accent">system</span> but don't have the <span class="accent">time to build it</span></span>
+        <span class="marquee-item">You're <span class="accent">done waiting</span> for Instagram to bring you clients</span>
+        <span class="marquee-item">You want leads who <span class="accent">already trust you</span> before the call</span>
+        <!-- duplicated set for seamless loop -->
+        <span class="marquee-item">You want a <span class="accent">system</span> but don't have the <span class="accent">time to build it</span></span>
+        <span class="marquee-item" aria-hidden="true">You're <span class="accent">done waiting</span> for Instagram to bring you clients</span>
+        <span class="marquee-item" aria-hidden="true">You want leads who <span class="accent">already trust you</span> before the call</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="wrap">
+
+    <!-- Contained content: 780px max-width -->
+    <div class="prob-wrap">
+
+      <!-- Intro -->
+      <div class="prob-intro fi">
+        <span class="slabel">Sound familiar?</span>
+        <h2>You know you need a funnel. <span class="accent">You've just never actually finished one.</span></h2>
+      </div>
+
+      <!-- Panel 1: Checkmark card -->
+      <div class="prob-card fi d1">
+        <ul class="prob-check-list">
+          <li>
+            <span class="prob-check-icon">✓</span>
+            <span>You <span class="hl">started building a funnel once</span>. Something broke, you got stuck, and the draft has been sitting untouched ever since.
+              <em>You keep meaning to come back to it.</em>
+            </span>
+          </li>
+          <li>
+            <span class="prob-check-icon">✓</span>
+            <span>You've been <span class="hl">posting on Instagram for a year+</span> and clients still aren't coming in consistently. The algorithm changes weekly. The same 5 people see your posts. You're tired.</span>
+          </li>
+          <li>
+            <span class="prob-check-icon">✓</span>
+            <span>You're already wearing <span class="hl">every hat in your practice</span>. Clinician, scheduler, biller, salesperson. Adding "build and maintain a marketing system" on top of that is laughable.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Panel 2: Truth bomb (attention vs. trust) -->
+      <div class="prob-truth-panel fi d1">
+        <p class="prob-truth-intro">Here's what nobody says out loud:</p>
+        <h3 class="prob-truth-big">
+          <span class="hl-yellow">Social media is built for attention.</span> <span class="accent">Not trust.</span>
+        </h3>
+        <p class="prob-truth-after">
+          But nutrition and health services are <span class="nb">high-trust purchases</span>. Nobody hires a dietitian, therapist, or functional practitioner from a single Reel.
+        </p>
+        <p class="prob-truth-after" style="margin-top:16px">
+          They commit after spending time in your world: reading your emails, learning from your content, and <span class="ul">deciding they trust you</span>.
+        </p>
+        <p class="prob-truth-after" style="margin-top:20px">
+          That's exactly what a <span class="nb">lead generation funnel</span> does. And it <span class="ul">consistently outperforms</span> relying on social media alone for practices like yours.
+        </p>
+      </div>
+
+      <!-- Panel 3: Calculator -->
+      <div class="cost-calc fi d2">
+        <div class="cost-calc-head">
+          <h3 class="cost-calc-title">So what's an unfinished funnel <span class="accent">actually costing you?</span></h3>
+          <p class="cost-calc-sub">You don't need to go viral. You just need a system that consistently turns interested people into booked clients.</p>
+        </div>
+
+        <div class="cost-calc-inputs">
+          <div class="cost-calc-row">
+            <label for="calc-subs">New subscribers per month</label>
+            <input type="range" id="calc-subs" min="25" max="500" value="100" step="25" />
+            <span class="cost-calc-out" id="calc-subs-out">100</span>
+          </div>
+
+          <div class="cost-calc-row">
+            <label for="calc-conv">Conversion rate to client</label>
+            <input type="range" id="calc-conv" min="1" max="10" value="2" step="0.5" />
+            <span class="cost-calc-out" id="calc-conv-out">2%</span>
+          </div>
+
+          <div class="cost-calc-row">
+            <label for="calc-value">Average client value</label>
+            <input type="range" id="calc-value" min="200" max="5000" value="1200" step="100" />
+            <span class="cost-calc-out" id="calc-value-out">$1,200</span>
+          </div>
+        </div>
+
+        <div class="cost-calc-results">
+          <div class="cost-calc-result">
+            <span class="cost-calc-label">Potential Revenue each month</span>
+            <span class="cost-calc-value" id="calc-monthly">$2,400</span>
+          </div>
+          <div class="cost-calc-result cost-calc-result-accent">
+            <span class="cost-calc-label">Potential Revenue each year</span>
+            <span class="cost-calc-value" id="calc-annual">$28,800</span>
+          </div>
+        </div>
+
+        <p class="cost-calc-caption" id="calc-caption">That's the cost of a draft folder.</p>
+      </div>
+
+    </div><!-- /.prob-wrap -->
+
+  </div>
+</section>
+
+
+<!-- EXPERTISE — full-bleed navy close to the problem section -->
+<section id="expertise">
+  <div class="wrap">
+    <div class="prob-close-inner fi">
+      <p class="prob-close-eyebrow">So why don't you have one yet?</p>
+      <h3 class="prob-close-h">
+        Because this isn't a willpower problem.<br/>
+        <span class="accent-light">It's an expertise problem.</span>
+      </h3>
+      <p class="prob-close-body">
+        A funnel that converts needs the <span class="ul-light">right</span> lead magnet, copy that sounds like you, tech that doesn't break, and a sequence that doesn't fizzle. That's not your zone of genius.
+      </p>
+      <p class="prob-close-body" style="margin-top:14px">
+        That's exactly what we build for health and nutrition practitioners: done-for-you funnels that sound like you, work reliably, and consistently bring in qualified leads.
+      </p>
+      <p class="prob-close-body" style="margin-top:14px; font-weight:600">
+        You get to work in <em>your</em> zone of genius, and <em>hand this off to <u>us</u></em>.
+      </p>
+
+      <div class="expertise-cta fi d1">
+        <p class="expertise-cta-line">Ready to see what we'd build for you?</p>
+        <a class="btn btn-light" href="#pricing">Get started · $1,997</a>
+        <p class="expertise-cta-sub">Or keep reading. We'll walk you through exactly what's included.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- HOW IT WORKS / FUNNEL FLOW -->
+<section id="how">
+  <div class="wrap">
+    <div class="fi">
+      <h2>Here's the funnel we'll <span class="ul">build for you</span>.</h2>
+      <p style="color:var(--muted);font-size:17px;max-width:580px;margin-bottom:36px;line-height:1.65">This is what's running for you 24/7 once we hand it off. Every piece below – the ad, the pages, the emails – gets built, written, and connected by our team. You don't touch a thing.</p>
+    </div>
+
+    <div class="funnel-steps fi d1">
+      <div class="funnel-step">
+        <div class="funnel-icon">📣</div>
+        <div class="funnel-step-title">Ad</div>
+        <div class="funnel-step-desc">Facebook &amp; Instagram ad finds your ideal customer and brings them to your opt-in</div>
+      </div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step">
+        <div class="funnel-icon">🖥️</div>
+        <div class="funnel-step-title">Opt-In Page</div>
+        <div class="funnel-step-desc">Visitor claims your free lead magnet and joins your list</div>
+      </div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step">
+        <div class="funnel-icon">🙏</div>
+        <div class="funnel-step-title">Thank You Page</div>
+        <div class="funnel-step-desc">Confirms the resource is coming + invites them to book a call</div>
+      </div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step">
+        <div class="funnel-icon">📬</div>
+        <div class="funnel-step-title">Delivery Email</div>
+        <div class="funnel-step-desc">Sends their lead magnet instantly and makes a warm first impression</div>
+      </div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step">
+        <div class="funnel-icon">💌</div>
+        <div class="funnel-step-title">Welcome Series</div>
+        <div class="funnel-step-desc">5 emails over 3 weeks - your story, your expertise, another invite to connect</div>
+      </div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step">
+        <div class="funnel-icon">📅</div>
+        <div class="funnel-step-title">New Client</div>
+        <div class="funnel-step-desc">They book a call - or stay on your list and become a client when the time is right</div>
+      </div>
+    </div>
+
+    <p class="fi d2" style="margin-top:28px;font-size:16px;color:var(--muted);font-style:italic;text-align:center;max-width:560px;margin-left:auto;margin-right:auto">By the end of the sequence, someone has either booked a call or heard from you multiple times, gotten to know you, and is a warm member of your audience.</p>
+    <p class="fi d2" style="margin-top:16px;font-size:16px;color:var(--muted);text-align:center;max-width:560px;margin-left:auto;margin-right:auto"><span class="nb">Your job:</span> tell us about your practice and your audience.<br/><span class="nb">Our job:</span> everything you see above.</p>
+  </div>
+</section>
+
+
+<!-- INCLUDED -->
+<section id="included">
+  <div class="wrap">
+    <div class="fi">
+      <h2>Everything your funnel needs. All of it built for you.</h2>
+      <p class="inc-sub">Here's every piece we build and why it matters.</p>
+    </div>
+
+    <div class="deliverables">
+
+      <div class="d-item fi">
+        <div class="d-num">01</div>
+        <div class="d-content">
+          <h3>📄 Lead Magnet</h3>
+          <p>A free, useful resource your ideal client actually wants. We use an existing one, improve it, or create one from scratch based on your expertise.</p>
+          <span class="d-why"><span class="nb">Without something worth signing up for, you can't get leads.</span></span>
+        </div>
+      </div>
+
+      <div class="d-item fi">
+        <div class="d-num">02</div>
+        <div class="d-content">
+          <h3>🖥️ Opt-In Page</h3>
+          <p>A focused landing page with copy written for your audience. Connected to your email platform so everything flows automatically.</p>
+          <span class="d-why"><span class="nb">This is where strangers become leads.</span></span>
+        </div>
+      </div>
+
+      <div class="d-item fi">
+        <div class="d-num">03</div>
+        <div class="d-content">
+          <h3>🙏 Thank You Page</h3>
+          <p>Confirms the resource is on its way and gives the new subscriber a clear next step.</p>
+          <span class="d-why"><span class="nb">Keeps the momentum going right after someone signs up.</span></span>
+        </div>
+      </div>
+
+      <div class="d-item fi">
+        <div class="d-num">04</div>
+        <div class="d-content">
+          <h3>📬 Delivery + Welcome Emails</h3>
+          <p>A delivery email that goes out the moment someone signs up, followed by a 5-email welcome sequence sent over three weeks – introducing you, sharing your perspective, and warming new subscribers to what you offer.</p>
+          <span class="d-why"><span class="nb">Most people aren't ready to book right away. This keeps things engaged until they are.</span></span>
+        </div>
+      </div>
+
+      <div class="d-item fi">
+        <div class="d-num">05</div>
+        <div class="d-content">
+          <h3>📣 Facebook &amp; Instagram Ad Campaign</h3>
+          <p>Campaign copy written, graphic designed, targeting set up, and campaign launched. Running at a small daily budget (e.g. $5/day) – you own the account and can pause anytime.</p>
+          <span class="d-why"><span class="nb">Without traffic, a funnel just sits there. This is what makes it work every day.</span></span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:36px" class="fi d1">
+      <span class="bonuses-label">You get the above plus...</span>
+      <div class="bonuses">
+        <div class="bonus-item">
+          <span class="bonus-icon">🎬</span>
+          <h4>Your Funnel Command Center</h4>
+          <span class="bonus-value">Value: $397</span>
+          <p>Your personal Notion hub with video walkthroughs of your funnel, ad campaign, and email automations, plus every file we built.</p>
+        </div>
+        <div class="bonus-item">
+          <span class="bonus-icon">💬</span>
+          <h4>7 Days of Slack Support</h4>
+          <span class="bonus-value">Value: $197</span>
+          <p>Direct access to our team for a full week after launch – questions, tweaks, troubleshooting.</p>
+        </div>
+        <div class="bonus-item">
+          <span class="bonus-icon">🎓</span>
+          <h4>Ads Made Simple Course</h4>
+          <span class="bonus-value">Value: $497</span>
+          <p>Our full self-paced course on running your own ads. Learn how to make edits, read results, and tweak your campaign long after we hand it off.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CASE STUDY -->
+<section id="case-study">
+  <div class="wrap">
+    <div class="cs-grid fi">
+      <div class="cs-image">
+        <img src="mockup.png" alt="Heather's done-for-you funnel: lead magnet, opt-in page, and welcome emails" />
+        <div class="cs-pills">
+          <span class="cs-fp"><span class="fp-check">✓</span>Lead Magnet</span>
+          <span class="cs-fp"><span class="fp-check">✓</span>Opt-In Page</span>
+          <span class="cs-fp"><span class="fp-check">✓</span>Thank You Page</span>
+          <span class="cs-fp"><span class="fp-check">✓</span>Welcome Emails</span>
+          <span class="cs-fp"><span class="fp-check">✓</span>FB &amp; IG Ad</span>
+        </div>
+      </div>
+      <div class="cs-content">
+        <span class="slabel">A recent build</span>
+        <h2>What we built for Heather, a kidney health practitioner.</h2>
+
+        <div class="cs-stat">
+          <p class="cs-stat-h">In her first weeks, Heather's funnel added <strong>~50 new email subscribers a week</strong>, for under $25 in ad spend.</p>
+          <p class="cs-stat-sub">That's <strong>$0.47 per subscriber</strong>. Roughly <strong>10× better</strong> than the industry average for health &amp; nutrition Meta ads.</p>
+        </div>
+
+        <p class="cs-intro">Heather Smith, RD came to us with a kidney nutrition practice and no real system for reaching new patients. Three weeks later, her funnel was live, and the leads started coming in immediately.</p>
+
+        <p class="cs-quote">OMG! This is so GOOD!!!! I could never have dreamed the lead magnet would be this amazing. And the emails are right on point.</p>
+        <div class="cs-attrib">
+          <div>
+            <div class="cs-attrib-name">Heather Smith, RD</div>
+            <div class="cs-attrib-role">Kidney Health Clarity</div>
+          </div>
+        </div>
+        <div class="cs-meta">
+          <div class="cs-meta-item">
+            <strong>Live in under a month</strong>
+            ad, opt-in page, thank you page, lead magnet &amp; welcome emails
+          </div>
+          <div class="cs-meta-item">
+            <strong>Still running today</strong>
+            bringing in new subscribers daily
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TRANSFORM -->
+<section id="transform">
+  <div class="wrap">
+    <div class="fi">
+      <h2>Your business grows whether you're working or not. ✨</h2>
+      <p class="lead">Take the afternoon off. Go to your kid's recital. Spend a week off the grid. Your funnel keeps doing its job in the background – bringing in the right people, warming them up, and handing you a list of leads who already feel like they know you.</p>
+    </div>
+    <div class="outcome-grid fi d1">
+      <div class="outcome-item">
+        <span class="o-emoji">📬</span>
+        <span class="o-text"><strong>Wake up to new subscribers every morning</strong> – before you've even had coffee</span>
+      </div>
+      <div class="outcome-item">
+        <span class="o-emoji">🤝</span>
+        <span class="o-text"><strong>Get on calls with people who already trust you</strong> – they get it, and are basically ready to say yes</span>
+      </div>
+      <div class="outcome-item">
+        <span class="o-emoji">🗓️</span>
+        <span class="o-text"><strong>Fill your practice without adding to your to-do list</strong> – leads come in even on your fully-booked days</span>
+      </div>
+      <div class="outcome-item">
+        <span class="o-emoji">📍</span>
+        <span class="o-text"><strong>Reach the right people far beyond your local network</strong> – including ones who'd never have found you otherwise</span>
+      </div>
+      <div class="outcome-item">
+        <span class="o-emoji">📈</span>
+        <span class="o-text"><strong>Build an email list that becomes one of your most valuable assets</strong> – working quietly in the background</span>
+      </div>
+      <div class="outcome-item">
+        <span class="o-emoji">😮‍💨</span>
+        <span class="o-text"><strong>Stop performing on social</strong> – your funnel does the work whether you post or not</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIALS - hidden until testimonials are added
+<section id="testimonials">
+  <div class="wrap">
+    <div class="fi">
+      <h2>Real reactions from the people we've built for.</h2>
+    </div>
+    <div class="t-grid fi d1">
+
+      <div class="t-card">
+        <p class="t-quote">Quote goes here.</p>
+        <p class="t-attrib"><span class="t-name">First Last</span>, Title</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+-->
+
+
+<!-- GUT CHECK / FIT -->
+<section id="fit">
+  <div class="wrap">
+    <div class="fit-head fi">
+      <h2>A quick gut check before you claim a spot.</h2>
+    </div>
+    <div class="fit-grid">
+      <div class="fit-col fit-col-yes fi d1">
+        <h3>This is perfect for you if...</h3>
+        <ul class="fit-list">
+          <li><span class="fit-icon">✓</span><span>You run a nutrition or health practice with a service, program, or offer you want more people joining.</span></li>
+          <li><span class="fit-icon">✓</span><span>You're ready to stop relying on social media or referrals as your only lead source.</span></li>
+          <li><span class="fit-icon">✓</span><span>You have a paid email platform (or you're open to setting one up).</span></li>
+          <li><span class="fit-icon">✓</span><span>You want a system that runs without you having to manage it.</span></li>
+        </ul>
+      </div>
+      <div class="fit-col fit-col-no fi d2">
+        <h3>It's probably not the right fit if...</h3>
+        <ul class="fit-list">
+          <li><span class="fit-icon">→</span><span>You don't have a clear offer yet, or you're still figuring out who you serve.</span></li>
+          <li><span class="fit-icon">→</span><span>You're looking for general marketing help, not specifically a lead generation funnel.</span></li>
+          <li><span class="fit-icon">→</span><span>You'd rather build it yourself and just need guidance (the Ads Made Simple course is a better fit).</span></li>
+          <li><span class="fit-icon">→</span><span>You're not in a position to invest in a small daily ad budget right now.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ABOUT / THE EXPERTS -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-head fi">
+      <h2>A small team built for exactly this kind of work.</h2>
+      <p>Strategy, brand voice, ads, and execution. All in one place. You don't need to hire a copywriter, an ads person, and a tech VA. You just need us.</p>
+    </div>
+    <div class="experts-grid fi d1">
+      <div class="expert-card">
+        <div class="expert-photo"><img src="dfy funnel bio.jpeg" alt="Whitney Bateson" /></div>
+        <div>
+          <h3 class="expert-name">Whitney Bateson</h3>
+          <span class="expert-role">MPH, RD · Strategy &amp; Brand Voice</span>
+          <p class="expert-bio">A former dietitian turned marketing strategist for health practitioners. Whitney leads the strategy behind every funnel we build. She shapes the offer positioning, the copy direction, and makes sure everything sounds like <em>you</em>, not a generic template.</p>
+        </div>
+      </div>
+      <div class="expert-card">
+        <div class="expert-photo"><img src="priscilla.png" alt="Priscilla Zaehringer" /></div>
+        <div>
+          <h3 class="expert-name">Priscilla Zaehringer</h3>
+          <span class="expert-role">OBM &amp; Meta Ads Specialist · Build &amp; Launch</span>
+          <p class="expert-bio">Priscilla runs the build side. She handles the pages, the ad campaigns, the email automations, and the technical setup that makes everything actually work. She's been managing ads and building systems for entrepreneurs for over 6 years.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- COMPARISON / GOLDILOCKS -->
+<section id="compare">
+  <div class="wrap">
+    <div class="cmp-grid">
+      <!-- DIY -->
+      <div class="cmp-col cmp-col-muted fi d1">
+        <span class="cmp-x-icon">✕</span>
+        <h3>Do it yourself</h3>
+        <ul class="cmp-list">
+          <li><span class="cmp-icon">•</span><span>Second-guessing every decision. Right lead magnet? Right emails? Is this even going to work?</span></li>
+          <li><span class="cmp-icon">•</span><span>Easy to miss a step that quietly costs you clients down the line.</span></li>
+          <li><span class="cmp-icon">•</span><span>Hours in Canva and prompting Claude until you're blue in the face, and you're still not a designer or copywriter.</span></li>
+          <li><span class="cmp-icon">•</span><span>If it doesn't convert, you have no idea why or what to fix.</span></li>
+        </ul>
+      </div>
+
+      <!-- Working with us (middle, highlighted) -->
+      <div class="cmp-col cmp-col-best fi d2">
+        <span class="cmp-pill">Just right</span>
+        <h3>Working with us</h3>
+        <ul class="cmp-list">
+          <li><span class="cmp-icon">✓</span><span>10+ years in health and nutrition. We've worked with hundreds of practice owners and health pros.</span></li>
+          <li><span class="cmp-icon">✓</span><span>Small team. We personally check every step and answer your questions directly.</span></li>
+          <li><span class="cmp-icon">✓</span><span>Not cookie-cutter. Every funnel is built for your business, your offer, your voice.</span></li>
+          <li><span class="cmp-icon">✓</span><span>We build it, then show you how it works, so you can replicate this for future funnels yourself.</span></li>
+        </ul>
+      </div>
+
+      <!-- Big marketing agency -->
+      <div class="cmp-col cmp-col-muted fi d3">
+        <span class="cmp-x-icon">✕</span>
+        <h3>Big marketing agency</h3>
+        <ul class="cmp-list">
+          <li><span class="cmp-icon">•</span><span>They don't know what "improving your labs" means or why it matters to your clients.</span></li>
+          <li><span class="cmp-icon">•</span><span>Too busy with other accounts to give you real personal support.</span></li>
+          <li><span class="cmp-icon">•</span><span>Often a one-size-fits-all template with your logo dropped on top.</span></li>
+          <li><span class="cmp-icon">•</span><span>High price tag. Junior team members doing the work, volume over quality control.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="cmp-tagline fi d2">The expertise of industry specialists. The personal attention of a small team. <strong>Without the agency price tag.</strong></p>
+
+    <div class="cmp-cta-wrap fi d3">
+      <a href="#pricing" class="btn btn-p">Yes, this is what I need →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="fi">
+      <h2>One team. <span class="hl">One month.</span> Your funnel done for you.</h2>
+    </div>
+
+    <!-- Comparison panel — collapsed by default -->
+    <details class="comparison fi d1">
+      <summary class="comparison-toggle">
+        <span><u>Click here</u> to see what this would normally cost</span>
+        <span class="c-toggle-icon">+</span>
+      </summary>
+      <div class="comparison-list">
+        <p class="comparison-intro">For context, here's roughly what you'd pay to hire each piece separately.</p>
+        <div class="comparison-row">
+          <span class="c-label">Marketing strategist to map your funnel &amp; lead magnet</span>
+          <span class="c-price">$800+</span>
+        </div>
+        <div class="comparison-row">
+          <span class="c-label">Lead magnet (copy + design)</span>
+          <span class="c-price">$650+</span>
+        </div>
+        <div class="comparison-row">
+          <span class="c-label">Copywriter for opt-in page + email sequence</span>
+          <span class="c-price">$1,200+</span>
+        </div>
+        <div class="comparison-row">
+          <span class="c-label">Ads specialist (copy, creative, targeting &amp; launch)</span>
+          <span class="c-price">$1,500+</span>
+        </div>
+        <div class="comparison-row">
+          <span class="c-label">Tech VA or OBM for funnel build &amp; integrations</span>
+          <span class="c-price">$1,000+</span>
+        </div>
+        <div class="comparison-row">
+          <span class="c-label">Personalized Funnel Overview, 1 Week of Support, Ads Course</span>
+          <span class="c-price">$1,090+</span>
+        </div>
+        <div class="comparison-total">
+          <span class="c-label">Hiring it all out, separately</span>
+          <span class="c-price">$6,200+</span>
+        </div>
+        <div class="comparison-ours">
+          <span class="c-label"><span class="nb">What we do.</span> One team, under a month.</span>
+          <span class="c-price">$1,997</span>
+        </div>
+      </div>
+    </details>
+
+    <div class="p-box fi d1">
+      <div class="beta-badge">
+        <span class="beta-dot"></span>
+        Done-For-You Funnel
+      </div>
+
+      <span class="price-big">$1,997</span>
+      <p class="p-caption">One-time payment. No ongoing fees from us.</p>
+
+      <hr class="p-divider"/>
+
+      <span class="p-eyebrow">What you get</span>
+      <ul class="inc-list">
+        <li>Lead magnet, created to attract right-fit leads to your offers</li>
+        <li>Opt-in page with copy, design, and email platform connection</li>
+        <li>Thank you page</li>
+        <li>Delivery email + 5-email welcome sequence, written and set up</li>
+        <li>Facebook &amp; Instagram ad campaign – copy, creative, targeting, and launch</li>
+        <li>BONUS: Your Funnel Command Center – Notion hub with walkthrough videos and every file we built</li>
+        <li>BONUS: 7 days of Slack support after your funnel launch</li>
+        <li>BONUS: Ads Made Simple course – learn how to run, edit, and monitor your own ads</li>
+      </ul>
+
+      <hr class="p-divider"/>
+
+      <p class="p-ad">+ ad spend (~$150/mo at $5/day) goes directly to Meta. You control the budget and can pause your ads at anytime. The funnel still works to bring in leads every day.</p>
+
+      <hr class="p-divider"/>
+
+      <!-- Milestone commitment -->
+      <div class="milestone">
+        <div class="milestone-head">
+          <span class="milestone-head-icon">💛</span>
+          <span>What you can expect from us</span>
+        </div>
+        <ul class="milestone-list">
+          <li><span class="m-when">Within 7 days</span><span class="m-what">we'll have your onboarding done and real work started</span></li>
+          <li><span class="m-when">Within 2 weeks</span><span class="m-what">a complete first draft of your funnel for you to review</span></li>
+          <li><span class="m-when">Within 1 month</span><span class="m-what">your funnel is live and running. No drawn-out timelines.</span></li>
+        </ul>
+      </div>
+
+      <hr class="p-divider"/>
+
+      <a class="btn btn-p btn-block" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/">Get started · $1,997</a>
+      <p class="p-split">Payment plan also available</p>
+
+      <div class="p-call">
+        <p class="p-call-q">Want to chat first?</p>
+        <a class="p-call-link" href="https://whitneybateson.as.me/dfy-funnel-discovery">Book a 20-min call with Whitney →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="fi">
+      <h2>A few questions you might have. 🙋</h2>
+    </div>
+    <div class="faq-list fi d1">
+
+      <details class="faq-item">
+        <summary class="faq-q">What if I don't have a lead magnet yet?</summary>
+        <div class="faq-a">No problem, creating one is part of the service we're offering here. We'll learn about your services and audience, then work with you to build something that makes sense for your practice. If you already have one, we use it or can clean it up.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">What email platform do I need?</summary>
+        <div class="faq-a">You'll need a paid email platform that supports tagging, automations, and opt-in forms, like ConvertKit (Kit), Mailchimp, ActiveCampaign, Mailerlite, or Flodesk. Not sure if yours qualifies? Just ask before purchasing. If you don't have one yet, we can help you set it up.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Do I need a website?</summary>
+        <div class="faq-a">A website is helpful for hosting your thank you page, and it's also where your emails will send people to learn more about your services – so it's definitely an important part of the funnel. If you don't have one however, reach out before purchasing and we'll figure out the best path. It's not always a dealbreaker.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">How much will the ads cost me?</summary>
+        <div class="faq-a">About $150/month at $5/day, paid directly to Meta. That's separate from the $1,997 you pay us. You own the ad account, control the budget, and can pause anytime.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">What happens after 7 days of support?</summary>
+        <div class="faq-a">The funnel keeps running without us. Most practitioners leave it running in the background with minimal maintenance. If you want continued support after that, we can talk options, but it's not required.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Will this work for my specific practice?</summary>
+        <div class="faq-a">If you have a clear service you're offering and are ready to start growing your list and bringing in more leads, this will work for you. The funnel we build is designed to be simple, effective, and tailored to your specific audience and niche, not a generic template. If you're not sure, the 20-minute call is the perfect place to talk it through before committing.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Will there be any live calls involved?</summary>
+        <div class="faq-a">We don't anticipate needing to get on any calls. All of the work is done asynchronously – we get started, you check this off your to-do list! Everything is communicated through our project tools and Slack, so there's no scheduling required on your end.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">How much work will I need to do?</summary>
+        <div class="faq-a">Not much. You can expect to spend about 30 minutes filling out our onboarding questionnaire up front, then roughly 30–60 minutes total over the course of the project to review what we've built, share feedback, and make any minor tweaks. If you don't have a lead magnet yet, expect to spend another 30-60 minutes reviewing the draft we create for you. Otherwise, we handle everything else!</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">How will you make sure everything sounds like me and matches my brand?</summary>
+        <div class="faq-a">We collect the key details from you upfront using our intake tools – your voice, your values, your audience, and your style. Everything we create is built from that foundation. We base all copy, design, and messaging on your brand, not a generic template. You'll also have a chance to review and give feedback before anything goes live.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Do you use AI in your process?</summary>
+        <div class="faq-a">Yes, here’s why and how we do it: AI helps us move faster on drafts, copy variations, and research – the same way any good professional uses the best tools available. But the quality of AI output depends entirely on who's guiding it. We've spent 10+ years combined working exclusively with health and nutrition practitioners, so we know what a good lead magnet looks like for this audience, what tone actually converts, and what needs fixing when the output misses the mark. That expertise is what makes the tool work.
+<br>You're also closely involved throughout. You review your lead magnet and email sequence before we build anything else, to make sure everything sounds like you and says what you actually want to say to your potential clients. Everything we build after that follows your lead.</br></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- CLOSE -->
+<section id="close">
+  <div class="wrap">
+    <div class="fi">
+      <h2>If you've been meaning to build this for a while, <span class="ul">this is the shortcut</span>.</h2>
+      <p class="sub"><span class="nb">$1,997 one-time.</span> <span class="nb">We do the work. You finally get a system bringing in new leads while you focus on your practice.</span></p>
+      <div class="close-ctas">
+        <a class="btn btn-p" href="#pricing">Get started · $1,997</a>
+        <a class="btn btn-s" href="https://whitneybateson.as.me/dfy-funnel-discovery">Book a call first</a>
+      </div>
+      <p class="close-note">Questions? Email me at <a href="mailto:info@whitneybateson.com">info@whitneybateson.com</a></p>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Whitney Bateson &nbsp;·&nbsp; <a href="https://whitneybateson.com/privacy">Privacy Policy</a></p>
+  </div>
+</footer>
+
+<script>
+history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+const els = document.querySelectorAll('.fi');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -28px 0px' });
+els.forEach(el => io.observe(el));
+function playHeroVideo(){
+  document.getElementById('hero-overlay').style.display='none';
+  document.getElementById('hero-iframe').src='https://www.youtube.com/embed/p16fu7r4zuc?autoplay=1&rel=0';
+}
+</script>
+
+<script>
+(function(){
+  const subs   = document.getElementById('calc-subs');
+  const conv   = document.getElementById('calc-conv');
+  const value  = document.getElementById('calc-value');
+  if (!subs) return;
+  const subsOut  = document.getElementById('calc-subs-out');
+  const convOut  = document.getElementById('calc-conv-out');
+  const valueOut = document.getElementById('calc-value-out');
+  const monthly  = document.getElementById('calc-monthly');
+  const annual   = document.getElementById('calc-annual');
+  const caption  = document.getElementById('calc-caption');
+
+  const fmt = (n) => '$' + Math.round(n).toLocaleString('en-US');
+
+  function update(){
+    const s = parseInt(subs.value, 10);
+    const c = parseFloat(conv.value);
+    const v = parseInt(value.value, 10);
+    const m = s * (c / 100) * v;
+    const y = m * 12;
+
+    subsOut.textContent  = s.toLocaleString('en-US');
+    convOut.textContent  = c + '%';
+    valueOut.textContent = fmt(v);
+    monthly.textContent  = fmt(m);
+    annual.textContent   = fmt(y);
+
+    let line;
+    if (y < 10000)      line = "That's the cost of a draft folder.";
+    else if (y < 30000) line = "That's a vacation. Or a car payment for years.";
+    else if (y < 75000) line = "That's a full-time salary sitting in a draft folder.";
+    else                line = "That's a six-figure business hiding in an unfinished funnel.";
+    caption.textContent = line;
+  }
+
+  subs.addEventListener('input', update);
+  conv.addEventListener('input', update);
+  value.addEventListener('input', update);
+})();
+</script>
+
+<!-- Charla Chat Widget -->
+<script>
+  window.addEventListener('load', function() {
+    var widgetElement = document.createElement('charla-widget');
+    widgetElement.setAttribute("p", "d2cc65b6-3d1c-4ba2-8408-6fa0f507d646");
+    document.body.appendChild(widgetElement);
+    var widgetCode = document.createElement('script');
+    widgetCode.src = 'https://app.charla.com/widget/widget.js';
+    document.body.appendChild(widgetCode);
+  });
+</script>
+</body>
+</html>
