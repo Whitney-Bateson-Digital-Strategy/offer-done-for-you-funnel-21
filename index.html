@@ -77,6 +77,7 @@ section{padding:80px 0}
 .urgency-bar a:hover{opacity:.85}
 .urgency-bar .ub-dot{width:7px;height:7px;border-radius:50%;background:var(--lime);display:inline-block;animation:pulse 2s infinite;flex-shrink:0}
 .urgency-bar .ub-count{font-weight:700;color:var(--lime)}
+.urgency-bar .ub-was{color:rgba(255,255,255,.55);text-decoration:line-through;margin-right:2px}
 .urgency-bar .ub-arrow{transition:transform .2s;display:inline-block}
 .urgency-bar a:hover .ub-arrow{transform:translateX(3px)}
 @media(max-width:540px){.urgency-bar{font-size:13px;padding:9px 16px}}
@@ -333,7 +334,11 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .beta-badge{display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:var(--navy);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:3px;padding:6px 14px;margin-bottom:24px}
 .beta-dot{width:7px;height:7px;border-radius:50%;background:var(--navy);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.82)}}
-.price-big{font-family:var(--head);font-size:3.2rem;font-weight:600;color:var(--navy);line-height:1;display:block;margin-bottom:6px}
+/* The struck full price sits above, quiet, so the live one still reads first. */
+.price-was{display:block;font-family:var(--head);font-size:1.5rem;font-weight:600;color:var(--muted);line-height:1;margin-bottom:4px;text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(255,127,80,.6)}
+.price-big{font-family:var(--head);font-size:3.2rem;font-weight:600;color:var(--navy);line-height:1;display:block;margin-bottom:8px}
+.price-note{font-size:14.5px;color:var(--coral-dk);margin-bottom:6px;line-height:1.5}
+.price-note strong{color:var(--coral-dk);font-weight:700}
 .p-was{display:block;font-size:14px;color:var(--muted);margin-bottom:4px}
 .p-caption{font-size:16px;color:var(--muted);margin-bottom:0}
 .p-divider{border:0;border-top:1px solid var(--border);margin:22px 0}
@@ -625,7 +630,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 <div class="urgency-bar">
   <a href="#pricing">
     <span class="ub-dot"></span>
-    <span>Done-for-you funnel build · <span class="ub-count">$1,997</span></span>
+    <span>Done-for-you funnel build · <span class="ub-was">$1,997</span> <span class="ub-count">$1,597</span> until [DATE]</span>
     <span class="ub-arrow">→</span>
   </a>
 </div>
@@ -855,7 +860,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
       <div class="expertise-cta fi d1">
         <p class="expertise-cta-line">Ready to see what we'd build for you?</p>
-        <a class="btn btn-light" href="#pricing">Get started · $1,997</a>
+        <a class="btn btn-light" href="#pricing">Get started · $1,597</a>
         <p class="expertise-cta-sub">Or keep reading. We'll walk you through exactly what's included.</p>
       </div>
     </div>
@@ -921,7 +926,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <div class="funnel-step-desc">They book a call &ndash; or stay on your list, hear from you again and again, get to know you, and become a client when the time is right</div>
         <dl class="funnel-cost funnel-cost-result">
           <div><dt>Outsourced piece by piece</dt><dd class="fc-was">$6,050+</dd></div>
-          <div><dt>The whole funnel, done for you</dt><dd class="fc-now">$1,997</dd></div>
+          <div><dt>The whole funnel, done for you</dt><dd class="fc-now">$1,597</dd></div>
         </dl>
       </div>
     </div>
@@ -1316,7 +1321,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         </div>
         <div class="comparison-ours">
           <span class="c-label"><span class="nb">What we do.</span> One team, start to launch.</span>
-          <span class="c-price">$1,997</span>
+          <span class="c-price">$1,597</span>
         </div>
       </div>
     </details>
@@ -1327,7 +1332,12 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         Done-For-You Funnel
       </div>
 
-      <span class="price-big">$1,997</span>
+      <!-- LIMITED-TIME PRICE. To go back to full price: delete .price-was and
+           .price-note, and set .price-big to $1,997. The date also appears on
+           the fast-action bonus above. -->
+      <span class="price-was">$1,997</span>
+      <span class="price-big">$1,597</span>
+      <p class="price-note"><strong>Save $400.</strong> Special pricing ends [DATE].</p>
       <p class="p-caption">One-time payment. No ongoing fees from us.</p>
 
       <hr class="p-divider"/>
@@ -1340,7 +1350,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <li>Delivery email + 5-email welcome sequence, written and set up</li>
         <li>Facebook &amp; Instagram ad campaign – copy, creative, targeting, and launch</li>
         <li>BONUS: Your Funnel Command Center – Notion hub with walkthrough videos and every file we built</li>
-        <li>BONUS: 7 days of email support while your ads go live <span class="li-fast">&mdash; a second week if you buy before [DATE]</span></li>
+        <li><span>BONUS: 7 days of email support while your ads go live <span class="li-fast">&mdash; a second week if you buy before [DATE]</span></span></li>
         <li>BONUS: Ads Made Simple course – learn how to run, edit, and monitor your own ads</li>
       </ul>
 
@@ -1366,7 +1376,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
       <hr class="p-divider"/>
 
-      <a class="btn btn-p btn-block" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/">Get started · $1,997</a>
+      <a class="btn btn-p btn-block" href="https://whitneybateson.thrivecart.com/done-for-you-funnel/">Get started · $1,597</a>
       <p class="p-split">Payment plan also available</p>
 
       <div class="p-call">
@@ -1403,7 +1413,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
       <details class="faq-item">
         <summary class="faq-q">How much will the ads cost me?</summary>
-        <div class="faq-a">About $150/month at $5/day, paid directly to Meta. That's separate from the $1,997 you pay us. You own the ad account, control the budget, and can pause anytime.</div>
+        <div class="faq-a">About $150/month at $5/day, paid directly to Meta. That's separate from the $1,597 you pay us. You own the ad account, control the budget, and can pause anytime.</div>
       </details>
 
       <details class="faq-item">
@@ -1456,9 +1466,9 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
   <div class="wrap">
     <div class="fi">
       <h2>If you've been meaning to build this for a while, <span class="ul">this is the shortcut</span>.</h2>
-      <p class="sub"><span class="nb">$1,997 one-time.</span> <span class="nb">We do the work. You finally get a system bringing in new leads while you focus on your practice.</span></p>
+      <p class="sub"><span class="nb">$1,597 one-time, until [DATE].</span> <span class="nb">We do the work. You finally get a system bringing in new leads while you focus on your practice.</span></p>
       <div class="close-ctas">
-        <a class="btn btn-p" href="#pricing">Get started · $1,997</a>
+        <a class="btn btn-p" href="#pricing">Get started · $1,597</a>
         <a class="btn btn-s" href="https://whitneybateson.as.me/dfy-funnel-discovery">Book a call first</a>
       </div>
       <p class="close-note">Questions? Email me at <a href="mailto:info@whitneybateson.com">info@whitneybateson.com</a></p>
