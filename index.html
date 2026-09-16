@@ -366,12 +366,18 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 #testimonials{padding:80px 0;text-align:center}
 #testimonials .slabel{margin-bottom:14px}
 #testimonials h2{font-size:clamp(1.75rem,4vw,2.6rem);margin-bottom:40px}
-.t-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1040px;margin:0 auto;text-align:left}
-.t-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:28px;box-shadow:var(--sh-sm);display:flex;flex-direction:column;gap:16px}
-.t-quote{font-size:17px;line-height:1.62;color:var(--text);margin:0;font-family:var(--head);font-style:italic}
-.t-quote::before{content:'\201C';color:var(--navy);font-size:2rem;line-height:0;vertical-align:-0.4em;margin-right:4px}
-.t-attrib{font-size:14px;color:var(--muted);margin:0}
-.t-name{font-weight:700;color:var(--navy)}
+.t-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:1040px;margin:0 auto;text-align:left}
+@media(max-width:860px){.t-grid{grid-template-columns:1fr;max-width:620px}}
+.t-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:32px 34px;box-shadow:var(--sh-sm);display:flex;flex-direction:column;gap:14px}
+@media(max-width:620px){.t-card{padding:26px 24px}}
+/* The opening line carries the card; the rest is the detail that makes it
+   believable, so it is set smaller rather than cut. */
+.t-lead{font-size:19.5px;line-height:1.5;color:var(--navy);margin:0;font-family:var(--head);font-style:italic}
+.t-lead::before{content:'\201C';color:var(--coral);font-size:2.1rem;line-height:0;vertical-align:-0.4em;margin-right:4px}
+.t-quote{font-size:15.5px;line-height:1.66;color:var(--muted);margin:0}
+.t-attrib{font-size:14px;color:var(--muted);margin:auto 0 0;padding-top:18px;border-top:1px solid var(--border)}
+.t-name{font-weight:700;color:var(--navy);display:block;margin-bottom:2px}
+.t-rating{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--coral);margin-top:8px}
 
 /* faq */
 #faq{background:var(--white)}
@@ -544,6 +550,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 .cs-stat-h strong{color:var(--navy);font-weight:700}
 .cs-stat-sub{font-size:14px;color:var(--muted);line-height:1.55;margin:0}
 .cs-stat-sub strong{color:var(--navy);font-weight:700}
+.cs-stat-alt{background:var(--soft);border-left-color:var(--navy)}
 .cs-intro{font-size:16px;color:var(--text);line-height:1.65;margin-bottom:22px}
 .cs-quote{font-family:var(--head);font-size:1.15rem;line-height:1.55;color:var(--text);font-style:italic;margin-bottom:20px;position:relative;padding-left:18px}
 .cs-quote::before{content:'"';position:absolute;left:-2px;top:-18px;font-family:var(--head);font-size:3rem;color:var(--navy);opacity:.18;line-height:1}
@@ -985,6 +992,13 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
           <p class="cs-stat-sub">That's <strong>$0.47 per subscriber</strong>. Roughly <strong>10× better</strong> than the industry average for health &amp; nutrition Meta ads.</p>
         </div>
 
+        <!-- Second result, from the Aug 2026 feedback form. Cited as her data;
+             her full testimonial runs intact in #testimonials. -->
+        <div class="cs-stat cs-stat-alt">
+          <p class="cs-stat-h">A second build, for a nutrition practice: <strong>~30 opt-ins in the first couple of weeks</strong> from the Meta ads.</p>
+          <p class="cs-stat-sub">&ldquo;I now have a professional lead-generation resource and automated nurture sequence working in the background.&rdquo;</p>
+        </div>
+
         <p class="cs-intro">Heather Smith, RD came to us with a kidney nutrition practice and no real system for reaching new patients. Three weeks later, her funnel was live, and the leads started coming in immediately.</p>
 
         <p class="cs-quote">OMG! This is so GOOD!!!! I could never have dreamed the lead magnet would be this amazing. And the emails are right on point.</p>
@@ -1047,23 +1061,45 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 </section>
 
 
-<!-- TESTIMONIALS - hidden until testimonials are added
+<!-- TESTIMONIALS
+     Both quotes are verbatim from the client feedback forms, lightly trimmed
+     for length only - no wording changed. Both forms were submitted with
+     "Respondent: Anonymous", so they are attributed by descriptor rather than
+     by name. SWAP IN REAL NAMES once each client has confirmed in writing that
+     they are happy to be named publicly. -->
 <section id="testimonials">
   <div class="wrap">
     <div class="fi">
+      <span class="slabel">In their words</span>
       <h2>Real reactions from the people we've built for.</h2>
     </div>
     <div class="t-grid fi d1">
 
       <div class="t-card">
-        <p class="t-quote">Quote goes here.</p>
-        <p class="t-attrib"><span class="t-name">First Last</span>, Title</p>
+        <p class="t-lead">I&rsquo;ve often joked that what I really need is a &ldquo;unicorn&rdquo; who understands strategy but can also handle the tech and implementation that I don&rsquo;t need to be spending my time on. I feel like the combination of you + Priscilla may be that unicorn!</p>
+        <p class="t-quote">&ldquo;I was impressed by how well they captured my brand and messaging from the beginning &ndash; the landing page and email sequence required surprisingly few edits. They were thoughtful, collaborative, receptive to my feedback, and brought both strategy and technical expertise to the process.&rdquo;</p>
+        <p class="t-quote">&ldquo;When we encountered an unexpected technical issue during launch, Priscilla was incredibly diligent about troubleshooting it. The overall process did take a little longer than the initial three-week timeline, but I always felt supported and knew things were continuing to move forward. In fact, before we even finished this project, I engaged them for another small project.&rdquo;</p>
+        <p class="t-attrib">
+          <span class="t-name">Nathalie</span>
+          Registered dietitian, private nutrition practice
+          <span class="t-rating">5/5 onboarding &middot; would recommend</span>
+        </p>
+      </div>
+
+      <div class="t-card">
+        <p class="t-lead">I have yet to meet an entrepreneur who doesn&rsquo;t feel swamped with trying to navigate all the things. The service package was so high-end that it felt effortless.</p>
+        <p class="t-quote">&ldquo;I was thrilled for the opportunity to be able to delegate this important part of my business to a team that I trust very much. There are a lot of details and rules to know and understand in order to launch effective ads, and I was not interested in troubleshooting that by myself.&rdquo;</p>
+        <p class="t-quote">&ldquo;The paid ads running in the background will make me visible on a consistent basis for my audience without having to manually post things every single day. It&rsquo;s a unique combination of skills to work with someone who is both a registered dietitian and a marketing expert.&rdquo;</p>
+        <p class="t-attrib">
+          <span class="t-name">Holly</span>
+          Registered dietitian, GLP-1 group program
+          <span class="t-rating">5/5 deliverables &middot; 5/5 onboarding</span>
+        </p>
       </div>
 
     </div>
   </div>
 </section>
--->
 
 
 <!-- GUT CHECK / FIT -->
