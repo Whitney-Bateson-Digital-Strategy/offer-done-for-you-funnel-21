@@ -206,6 +206,8 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .btn-light{background:var(--coral);color:var(--white);padding:13px 25px}
 .btn-light:hover{background:var(--coral-dk);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,127,80,.32)}
 .section-cta-sub{font-size:14px;color:var(--muted);font-style:italic;margin:14px 0 0}
+/* Left-aligned variant, for sections whose content runs to the left edge. */
+.section-cta-left{text-align:left;margin-left:0;margin-right:0;max-width:620px}
 .ul-light{text-decoration:underline;text-decoration-color:var(--coral);text-decoration-thickness:2px;text-underline-offset:4px;color:var(--coral-dk);font-weight:600}
 
 /* cost of inaction calculator */
@@ -1062,7 +1064,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       </div>
     </div>
 
-    <div class="section-cta fi d2">
+    <div class="section-cta section-cta-left fi d2">
       <p class="section-cta-line">Want this running in the background of your practice?</p>
       <a class="btn btn-p" href="#pricing">Get started &middot; $1,597</a>
       <p class="section-cta-sub">Special pricing ends [DATE].</p>
