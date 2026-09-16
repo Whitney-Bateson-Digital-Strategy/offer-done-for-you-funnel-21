@@ -400,23 +400,28 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 #testimonials{padding:80px 0;text-align:center}
 #testimonials .slabel{margin-bottom:14px}
 #testimonials h2{font-size:clamp(1.75rem,4vw,2.6rem);margin-bottom:40px}
-.t-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:1040px;margin:0 auto;text-align:left}
-@media(max-width:860px){.t-grid{grid-template-columns:1fr;max-width:620px}}
-.t-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:32px 34px;box-shadow:var(--sh-sm);display:flex;flex-direction:column;gap:14px}
-@media(max-width:620px){.t-card{padding:26px 24px}}
-/* The opening line carries the card; the rest is the detail that makes it
-   believable, so it is set smaller rather than cut. */
-.t-lead{font-size:19.5px;line-height:1.5;color:var(--navy);margin:0;font-family:var(--head);font-style:italic}
+.t-grid{display:grid;grid-template-columns:1fr;gap:26px;max-width:920px;margin:0 auto;text-align:left}
+/* Stacked and wide, so each testimonial gets a full line rather than a
+   narrow column: person on the left, their words on the right. */
+.t-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:34px 38px;box-shadow:var(--sh-sm);display:grid;grid-template-columns:140px 1fr;gap:34px;align-items:start}
+@media(max-width:760px){.t-card{grid-template-columns:1fr;gap:22px;padding:28px 26px}}
+.t-person{display:flex;flex-direction:column}
+@media(max-width:760px){.t-person{flex-direction:row;align-items:center;gap:16px}.t-meta{flex:1}}
+/* Square rather than round, and large enough to read as a portrait. Each
+   photo is scaled with its own origin because the two sitters are framed
+   differently - a shared value cropped one of them at the forehead. */
+.t-avatar{width:140px;height:140px;border-radius:var(--r);flex-shrink:0;overflow:hidden;display:block;background:var(--hi-md);margin-bottom:14px;border:1px solid var(--border)}
+@media(max-width:760px){.t-avatar{width:76px;height:76px;margin-bottom:0}}
+.t-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.t-avatar-nathalie img{transform:scale(1.5);transform-origin:46% 14%}
+.t-avatar-holly img{transform:scale(1.7);transform-origin:50% 22%}
+.t-name{font-weight:700;color:var(--navy);display:block;font-size:16px;margin-bottom:3px}
+.t-role{font-size:13.5px;color:var(--muted);line-height:1.5;display:block}
+.t-body{display:flex;flex-direction:column;gap:14px}
+.t-lead{font-size:20px;line-height:1.5;color:var(--navy);margin:0;font-family:var(--head);font-style:italic}
 .t-lead::before{content:'\201C';color:var(--coral);font-size:2.1rem;line-height:0;vertical-align:-0.4em;margin-right:4px}
 .t-quote{font-size:15.5px;line-height:1.66;color:var(--muted);margin:0}
 .t-quote strong{color:var(--navy);font-weight:600}
-.t-attrib{font-size:14px;color:var(--muted);margin:auto 0 0;padding-top:18px;border-top:1px solid var(--border);display:flex;align-items:center;gap:14px}
-.t-name{font-weight:700;color:var(--navy);display:block;margin-bottom:2px}
-/* The source photos are three-quarter shots, so the face is small in a
-   square. Scale up inside the circle with the origin near head height so it
-   reads as a portrait rather than a full figure. */
-.t-avatar{width:64px;height:64px;border-radius:50%;flex-shrink:0;overflow:hidden;display:block;background:var(--hi-md);border:2px solid var(--white);box-shadow:var(--sh-sm)}
-.t-avatar img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.7);transform-origin:50% 22%}
 
 /* faq */
 #faq{background:var(--white)}
@@ -1073,29 +1078,27 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
     <div class="t-grid fi d1">
 
       <div class="t-card">
+      <div class="t-person">
+        <span class="t-avatar t-avatar-nathalie"><img src="nathalie_s.jpg" alt="" width="400" height="400" loading="lazy" decoding="async" /></span>
+        <span class="t-meta"><span class="t-name">Nathalie</span><span class="t-role">Registered dietitian, private nutrition practice</span></span>
+      </div>
+      <div class="t-body">
         <p class="t-lead">I&rsquo;ve often joked that what I really need is a &ldquo;unicorn&rdquo; who understands strategy but can also handle the tech and implementation that I don&rsquo;t need to be spending my time on. I feel like the combination of you + Priscilla may be that unicorn!</p>
         <p class="t-quote">&ldquo;I was impressed by how well they captured my brand and messaging from the beginning &ndash; <strong>the landing page and email sequence required surprisingly few edits.</strong> They were thoughtful, collaborative, receptive to my feedback, and brought both strategy and technical expertise to the process.&rdquo;</p>
         <p class="t-quote">&ldquo;When we encountered an unexpected technical issue during launch, Priscilla was incredibly diligent about troubleshooting it. I always felt supported and knew things were continuing to move forward. In fact, <strong>before we even finished this project, I engaged them for another small project.</strong>&rdquo;</p>
-        <p class="t-attrib">
-          <span class="t-avatar"><img src="nathalie_s.jpg" alt="" width="400" height="400" loading="lazy" decoding="async" /></span>
-          <span>
-            <span class="t-name">Nathalie</span>
-            Registered dietitian, private nutrition practice
-          </span>
-        </p>
+      </div>
       </div>
 
       <div class="t-card">
+      <div class="t-person">
+        <span class="t-avatar t-avatar-holly"><img src="holly_larson.jpg" alt="" width="400" height="400" loading="lazy" decoding="async" /></span>
+        <span class="t-meta"><span class="t-name">Holly</span><span class="t-role">Registered dietitian, GLP-1 group program</span></span>
+      </div>
+      <div class="t-body">
         <p class="t-lead">I have yet to meet an entrepreneur who doesn&rsquo;t feel swamped with trying to navigate all the things. The service package was so high-end that it felt effortless.</p>
         <p class="t-quote">&ldquo;I was thrilled for the opportunity to be able to <strong>delegate this important part of my business to a team that I trust very much.</strong> There are a lot of details and rules to know and understand in order to launch effective ads, and I was not interested in troubleshooting that by myself.&rdquo;</p>
         <p class="t-quote">&ldquo;The paid ads running in the background will make me <strong>visible on a consistent basis for my audience without having to manually post things every single day.</strong> It&rsquo;s a unique combination of skills to work with someone who is both a registered dietitian and a marketing expert.&rdquo;</p>
-        <p class="t-attrib">
-          <span class="t-avatar"><img src="holly_larson.jpg" alt="" width="400" height="400" loading="lazy" decoding="async" /></span>
-          <span>
-            <span class="t-name">Holly</span>
-            Registered dietitian, GLP-1 group program
-          </span>
-        </p>
+      </div>
       </div>
 
     </div>
