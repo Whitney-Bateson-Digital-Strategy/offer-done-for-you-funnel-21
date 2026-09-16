@@ -87,12 +87,12 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .logo{font-family:var(--head);font-size:17px;color:var(--navy);text-decoration:none;font-weight:500}
 
 /* buttons */
-.btn{display:inline-block;font-family:var(--body);font-weight:700;font-size:13px;letter-spacing:.09em;text-transform:uppercase;text-decoration:none;border:none;border-radius:4px;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s,border-color .2s;white-space:nowrap}
-.btn-sm{background:var(--coral);color:var(--white);font-size:12px;padding:11px 20px}
+.btn{display:inline-block;font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.085em;text-transform:uppercase;text-decoration:none;border:none;border-radius:4px;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s,border-color .2s;white-space:nowrap}
+.btn-sm{background:var(--coral);color:var(--white);font-size:11px;padding:9px 17px}
 .btn-sm:hover{background:var(--coral-dk);transform:translateY(-1px)}
-.btn-p{background:var(--coral);color:var(--white);padding:16px 30px}
+.btn-p{background:var(--coral);color:var(--white);padding:13px 25px}
 .btn-p:hover{background:var(--coral-dk);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,127,80,.32)}
-.btn-s{background:var(--white);color:var(--navy);padding:15px 29px;border:1px solid rgba(2,82,93,.3)}
+.btn-s{background:var(--white);color:var(--navy);padding:12px 24px;border:1px solid rgba(2,82,93,.3)}
 .btn-s:hover{background:var(--soft);border-color:var(--navy);transform:translateY(-1px)}
 .btn-block{display:block;width:100%;text-align:center}
 
@@ -200,7 +200,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .prob-close-heart{font-style:normal;margin-left:4px}
 .expertise-cta{margin-top:40px;padding-top:40px;border-top:1px solid var(--border);max-width:520px;margin-left:auto;margin-right:auto}
 .expertise-cta-line{font-family:var(--head);font-style:italic;font-size:clamp(1.15rem,2.4vw,1.4rem);color:var(--navy);margin:0 0 22px;line-height:1.4}
-.btn-light{background:var(--coral);color:var(--white);padding:16px 30px}
+.btn-light{background:var(--coral);color:var(--white);padding:13px 25px}
 .btn-light:hover{background:var(--coral-dk);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,127,80,.32)}
 .expertise-cta-sub{font-size:14px;color:var(--muted);font-style:italic;margin:14px 0 0}
 .ul-light{text-decoration:underline;text-decoration-color:var(--coral);text-decoration-thickness:2px;text-underline-offset:4px;color:var(--coral-dk);font-weight:600}
@@ -407,10 +407,11 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .t-quote strong{color:var(--navy);font-weight:600}
 .t-attrib{font-size:14px;color:var(--muted);margin:auto 0 0;padding-top:18px;border-top:1px solid var(--border);display:flex;align-items:center;gap:14px}
 .t-name{font-weight:700;color:var(--navy);display:block;margin-bottom:2px}
-/* TO ADD A PHOTO: drop the file in and swap the <span> for
-   <img class="t-avatar" src="their-photo.jpg" alt="" />. Until then the
-   initial stands in, so the row keeps its shape either way. */
-.t-avatar{width:52px;height:52px;border-radius:50%;flex-shrink:0;object-fit:cover;display:flex;align-items:center;justify-content:center;background:var(--hi-md);color:var(--navy);font-family:var(--head);font-size:1.35rem;font-weight:700;border:2px solid var(--white);box-shadow:var(--sh-sm)}
+/* The source photos are three-quarter shots, so the face is small in a
+   square. Scale up inside the circle with the origin near head height so it
+   reads as a portrait rather than a full figure. */
+.t-avatar{width:64px;height:64px;border-radius:50%;flex-shrink:0;overflow:hidden;display:block;background:var(--hi-md);border:2px solid var(--white);box-shadow:var(--sh-sm)}
+.t-avatar img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.7);transform-origin:50% 22%}
 
 /* faq */
 #faq{background:var(--white)}
@@ -1071,7 +1072,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <p class="t-quote">&ldquo;I was impressed by how well they captured my brand and messaging from the beginning &ndash; <strong>the landing page and email sequence required surprisingly few edits.</strong> They were thoughtful, collaborative, receptive to my feedback, and brought both strategy and technical expertise to the process.&rdquo;</p>
         <p class="t-quote">&ldquo;When we encountered an unexpected technical issue during launch, Priscilla was incredibly diligent about troubleshooting it. I always felt supported and knew things were continuing to move forward. In fact, <strong>before we even finished this project, I engaged them for another small project.</strong>&rdquo;</p>
         <p class="t-attrib">
-          <span class="t-avatar" aria-hidden="true">N</span>
+          <span class="t-avatar"><img src="nathalie_s.jpg" alt="" width="400" height="400" loading="lazy" decoding="async" /></span>
           <span>
             <span class="t-name">Nathalie</span>
             Registered dietitian, private nutrition practice
@@ -1084,7 +1085,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <p class="t-quote">&ldquo;I was thrilled for the opportunity to be able to <strong>delegate this important part of my business to a team that I trust very much.</strong> There are a lot of details and rules to know and understand in order to launch effective ads, and I was not interested in troubleshooting that by myself.&rdquo;</p>
         <p class="t-quote">&ldquo;The paid ads running in the background will make me <strong>visible on a consistent basis for my audience without having to manually post things every single day.</strong> It&rsquo;s a unique combination of skills to work with someone who is both a registered dietitian and a marketing expert.&rdquo;</p>
         <p class="t-attrib">
-          <span class="t-avatar" aria-hidden="true">H</span>
+          <span class="t-avatar"><img src="holly_larson.jpg" alt="" width="400" height="400" loading="lazy" decoding="async" /></span>
           <span>
             <span class="t-name">Holly</span>
             Registered dietitian, GLP-1 group program
