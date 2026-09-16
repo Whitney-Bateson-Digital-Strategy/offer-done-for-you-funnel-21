@@ -199,11 +199,13 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .prob-close-body{font-size:17px;color:var(--text);line-height:1.65;max-width:720px;margin:0 auto 18px}
 .prob-close-tag{font-family:var(--head);font-style:italic;font-size:20px;color:var(--navy);margin:0;line-height:1.4}
 .prob-close-heart{font-style:normal;margin-left:4px}
-.expertise-cta{margin-top:40px;padding-top:40px;border-top:1px solid var(--border);max-width:520px;margin-left:auto;margin-right:auto}
-.expertise-cta-line{font-family:var(--head);font-style:italic;font-size:clamp(1.15rem,2.4vw,1.4rem);color:var(--navy);margin:0 0 22px;line-height:1.4}
+/* Shared end-of-section CTA block. Centres itself rather than relying on the
+   section around it, since not every host section is centred. */
+.section-cta{text-align:center;margin-top:40px;padding-top:40px;border-top:1px solid var(--border);max-width:520px;margin-left:auto;margin-right:auto}
+.section-cta-line{font-family:var(--head);font-style:italic;font-size:clamp(1.15rem,2.4vw,1.4rem);color:var(--navy);margin:0 0 22px;line-height:1.4}
 .btn-light{background:var(--coral);color:var(--white);padding:13px 25px}
 .btn-light:hover{background:var(--coral-dk);transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,127,80,.32)}
-.expertise-cta-sub{font-size:14px;color:var(--muted);font-style:italic;margin:14px 0 0}
+.section-cta-sub{font-size:14px;color:var(--muted);font-style:italic;margin:14px 0 0}
 .ul-light{text-decoration:underline;text-decoration-color:var(--coral);text-decoration-thickness:2px;text-underline-offset:4px;color:var(--coral-dk);font-weight:600}
 
 /* cost of inaction calculator */
@@ -863,10 +865,10 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         You get to work in <em>your</em> zone of genius, and <em>hand this off to <u>us</u></em>.
       </p>
 
-      <div class="expertise-cta fi d1">
-        <p class="expertise-cta-line">Ready to see what we'd build for you?</p>
+      <div class="section-cta fi d1">
+        <p class="section-cta-line">Ready to see what we'd build for you?</p>
         <a class="btn btn-light" href="#pricing">Get started · $1,597</a>
-        <p class="expertise-cta-sub">Or keep reading. We'll walk you through exactly what's included.</p>
+        <p class="section-cta-sub">Or keep reading. We'll walk you through exactly what's included.</p>
       </div>
     </div>
   </div>
@@ -1058,6 +1060,12 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <span class="o-emoji">😮‍💨</span>
         <span class="o-text"><strong>Stop performing on social</strong> – your funnel does the work whether you post or not</span>
       </div>
+    </div>
+
+    <div class="section-cta fi d2">
+      <p class="section-cta-line">Want this running in the background of your practice?</p>
+      <a class="btn btn-p" href="#pricing">Get started &middot; $1,597</a>
+      <p class="section-cta-sub">Special pricing ends [DATE].</p>
     </div>
   </div>
 </section>
