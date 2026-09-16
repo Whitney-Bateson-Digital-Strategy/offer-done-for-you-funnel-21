@@ -354,6 +354,25 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .cta-or{text-align:center;font-size:14px;color:var(--muted)}
 .cta-sub{text-align:center;font-size:14px;color:var(--muted);margin-top:10px;font-style:italic}
 
+/* after you buy - the client's side of the process */
+#onboard{background:var(--white);padding:84px 0}
+@media(max-width:640px){#onboard{padding:60px 0}}
+#onboard .wrap{text-align:center}
+#onboard h2{font-size:clamp(1.75rem,4vw,2.6rem);margin-bottom:10px}
+.ob-sub{font-size:17.5px;color:var(--muted);max-width:620px;margin:0 auto 12px;line-height:1.6}
+.ob-time{display:inline-block;background:var(--hi-md);color:var(--navy);font-size:14px;font-weight:700;border-radius:999px;padding:8px 20px;margin-bottom:44px}
+.ob-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:left;position:relative}
+@media(max-width:940px){.ob-steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.ob-steps{grid-template-columns:1fr}}
+.ob-step{background:var(--cream);border:1px solid var(--border);border-radius:var(--r);padding:26px 24px;display:flex;flex-direction:column}
+.ob-step-n{font-family:var(--head);font-size:1.9rem;font-weight:700;color:var(--coral);line-height:1;margin-bottom:12px}
+.ob-step h3{font-size:1.15rem;color:var(--navy);margin-bottom:8px;line-height:1.25}
+.ob-step p{font-size:15px;color:var(--muted);line-height:1.62;margin:0}
+.ob-you{margin-top:auto;padding-top:16px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--coral)}
+.ob-you-none{color:var(--muted)}
+.ob-foot{margin-top:34px;font-size:16.5px;color:var(--muted);line-height:1.65;max-width:640px;margin-left:auto;margin-right:auto}
+.ob-foot strong{color:var(--navy);font-weight:700}
+
 /* testimonials */
 #testimonials{padding:80px 0;text-align:center}
 #testimonials .slabel{margin-bottom:14px}
@@ -450,6 +469,11 @@ footer a:hover{color:var(--white)}
 .funnel-cost-result .fc-now{font-size:1.75rem;color:var(--coral-dk)}
 
 /* bonuses */
+/* Fast-action add-on, sits inside the ad-support bonus card. */
+.bonus-fast{margin-top:14px;padding-top:14px;border-top:1px dashed rgba(2,82,93,.22);font-size:13.5px;line-height:1.6;text-align:left}
+.bonus-fast-tag{display:inline-block;background:var(--coral);color:var(--white);font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;border-radius:3px;padding:3px 8px;margin-right:7px;vertical-align:1px}
+.bonus-fast strong{color:var(--navy);font-weight:700}
+.li-fast{color:var(--coral-dk);font-weight:600}
 .bonuses{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
 @media(max-width:860px){.bonuses{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.bonuses{grid-template-columns:1fr}}
@@ -909,6 +933,9 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
           <h4>7 Days of Ad Support</h4>
           <span class="bonus-value">Value: $197</span>
           <p>Your ads go live and we stay on them by email for a week – watching delivery, checking the tracking fires, and sorting anything the platform throws at a brand-new campaign.</p>
+          <!-- FAST-ACTION BONUS: set the real date below. It appears twice -
+               here and in the pricing list. Delete this <p> to drop the offer. -->
+          <p class="bonus-fast"><span class="bonus-fast-tag">Fast action</span> Buy before <strong>[DATE]</strong> and we stay on your ads for a <strong>second week</strong>.</p>
         </div>
         <div class="bonus-item">
           <span class="bonus-icon">🎓</span>
@@ -1161,6 +1188,51 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 </section>
 
 
+
+<!-- AFTER YOU BUY
+     Every figure here comes from the FAQ answers further down (onboarding
+     questionnaire ~30 min, reviews 30-60 min, async/no calls, review before
+     anything else is built). Keep the two in step if either changes. -->
+<section id="onboard">
+  <div class="wrap">
+    <div class="fi">
+      <span class="slabel">After you buy</span>
+      <h2>Here's what it looks like on your end.</h2>
+      <p class="ob-sub">You're not project-managing this. You answer questions once, review the pieces that matter, and we handle the rest.</p>
+      <p class="ob-time">About 30 minutes up front, then an hour or so of reviews &mdash; no calls to schedule</p>
+    </div>
+
+    <div class="ob-steps fi d1">
+      <div class="ob-step">
+        <span class="ob-step-n">01</span>
+        <h3>You fill in the questionnaire</h3>
+        <p>Your voice, your values, your audience, your style &ndash; the details everything else gets built from. About 30 minutes, whenever it suits you.</p>
+        <span class="ob-you">~30 minutes of your time</span>
+      </div>
+      <div class="ob-step">
+        <span class="ob-step-n">02</span>
+        <h3>We build the foundation</h3>
+        <p>Your lead magnet and email sequence come first, written from what you told us. Everything else gets built on top of them.</p>
+        <span class="ob-you ob-you-none">Nothing needed from you</span>
+      </div>
+      <div class="ob-step">
+        <span class="ob-step-n">03</span>
+        <h3>You review before we go further</h3>
+        <p>You see the lead magnet and emails before anything else is built, so the voice is right from the start. Tell us what to change.</p>
+        <span class="ob-you">~30&ndash;60 minutes of your time</span>
+      </div>
+      <div class="ob-step">
+        <span class="ob-step-n">04</span>
+        <h3>We launch and watch the ads</h3>
+        <p>Pages built, emails connected, campaign live. We stay on the ads by email for the first week, and your Funnel Command Center shows you how it all works.</p>
+        <span class="ob-you ob-you-none">Nothing needed from you</span>
+      </div>
+    </div>
+
+    <p class="ob-foot fi d2">No calls to schedule and no meetings to sit through &ndash; <strong>all of it runs asynchronously</strong>, through our project tools and email, around your client hours.</p>
+  </div>
+</section>
+
 <!-- PRICING -->
 <section id="pricing">
   <div class="wrap">
@@ -1237,7 +1309,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <li>Delivery email + 5-email welcome sequence, written and set up</li>
         <li>Facebook &amp; Instagram ad campaign – copy, creative, targeting, and launch</li>
         <li>BONUS: Your Funnel Command Center – Notion hub with walkthrough videos and every file we built</li>
-        <li>BONUS: 7 days of email support while your ads go live</li>
+        <li>BONUS: 7 days of email support while your ads go live <span class="li-fast">&mdash; a second week if you buy before [DATE]</span></li>
         <li>BONUS: Ads Made Simple course – learn how to run, edit, and monitor your own ads</li>
       </ul>
 
