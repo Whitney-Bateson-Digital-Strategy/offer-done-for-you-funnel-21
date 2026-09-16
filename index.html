@@ -386,7 +386,15 @@ details[open] .faq-q::after{transform:rotate(45deg)}
 .faq-a{padding:0 26px 22px;padding-top:18px;font-size:16px;color:var(--muted);line-height:1.68;border-top:1px solid var(--border)}
 
 /* close */
-#close{background:var(--navy);text-align:center;padding:88px 0}
+#close{background:var(--navy);text-align:center;padding:88px 0;position:relative;overflow:hidden}
+#close .wrap{position:relative;z-index:2}
+/* Background video. Hidden until it can actually play, so a missing or
+   undecodable file just leaves the flat navy section that was here before.
+   Scrim keeps the white copy legible over whatever the footage is doing. */
+.close-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0;transition:opacity .9s ease;pointer-events:none}
+.close-video.ready{opacity:1}
+.close-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(1,61,70,.80),rgba(2,82,93,.78))}
+@media(prefers-reduced-motion:reduce){.close-video{transition:none}}
 #close h2{font-size:clamp(1.75rem,4vw,2.6rem);max-width:560px;margin:0 auto 14px;color:var(--white)}
 #close .sub{font-size:17px;color:rgba(255,255,255,.85);max-width:480px;margin:0 auto 32px}
 .close-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
@@ -1317,6 +1325,15 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
 <!-- CLOSE -->
 <section id="close">
+  <!-- BACKGROUND VIDEO
+       Swap office.mp4 for any browser-playable H.264 .mp4 (or add a <source>
+       for .webm). It is loaded only when the section nears the viewport, and
+       only on larger screens without a reduced-motion or data-saver
+       preference - everyone else keeps the flat navy band.
+       Delete this <video> and the .close-scrim div to go back to plain navy. -->
+  <video class="close-video" data-src="office.mp4" muted loop playsinline
+         preload="none" aria-hidden="true" tabindex="-1"></video>
+  <div class="close-scrim" aria-hidden="true"></div>
   <div class="wrap">
     <div class="fi">
       <h2>If you've been meaning to build this for a while, <span class="ul">this is the shortcut</span>.</h2>
@@ -1408,6 +1425,41 @@ els.forEach(el => io.observe(el));
     frame.hidden = false;
     cover.remove();
   });
+})();
+</script>
+
+<script>
+/* Closing section background video. Deliberately conservative: nothing is
+   downloaded until the section is close to view, and never on small screens,
+   reduced-motion, or data-saver. Any failure leaves the flat navy band. */
+(function(){
+  var v = document.querySelector('.close-video');
+  var sec = document.getElementById('close');
+  if(!v || !sec || !v.dataset.src) return;
+
+  var mq = function(q){ return window.matchMedia && window.matchMedia(q).matches; };
+  var conn = navigator.connection || {};
+  if (mq('(prefers-reduced-motion: reduce)') || mq('(max-width: 860px)') || conn.saveData) {
+    v.remove();
+    return;
+  }
+
+  function start(){
+    v.addEventListener('canplay', function(){ v.classList.add('ready'); }, { once:true });
+    v.addEventListener('error', function(){ v.remove(); }, { once:true });
+    v.preload = 'auto';
+    v.src = v.dataset.src;
+    var played = v.play();
+    if (played && played.catch) played.catch(function(){ v.remove(); });
+  }
+
+  if (!('IntersectionObserver' in window)) { start(); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { io.disconnect(); start(); }
+    });
+  }, { rootMargin: '400px' });
+  io.observe(sec);
 })();
 </script>
 
