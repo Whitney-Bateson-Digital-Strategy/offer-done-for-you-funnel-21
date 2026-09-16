@@ -110,6 +110,9 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .replay-sub{font-size:16px;color:rgba(255,255,255,.82);line-height:1.6;margin:0}
 .replay-frame{position:relative;width:100%;padding-bottom:56.25%;border-radius:var(--r-lg);overflow:hidden;background:var(--navy-dk);box-shadow:0 8px 30px rgba(0,0,0,.28)}
 .replay-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.replay-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:rgba(227,246,150,.75)}
+.replay-placeholder svg{width:58px;height:58px;display:block}
+.replay-placeholder span{font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
 
 /* hero */
 #hero{padding:96px 0 80px;position:relative;overflow:hidden;background:var(--white)}
@@ -559,19 +562,19 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
 
 <!-- ══ REPLAY BANNER ═══════════════════════════════════════════════════
-     Currently HIDDEN. Three one-line changes control it:
+     VISIBLE, with a placeholder standing in for the replay player.
 
-     1. TO SHOW IT ........ delete the word `hidden` on the <section> below.
-     2. TO ADD THE REPLAY . put the embed URL in the iframe's src=""
-                            (e.g. https://www.youtube.com/embed/VIDEO_ID?rel=0).
-     3. TO USE THE OLD OVERVIEW VIDEO INSTEAD, that URL was:
-                            https://www.youtube.com/embed/p16fu7r4zuc?rel=0
+     WHEN THE REPLAY EXISTS: delete the .replay-placeholder div below and
+     uncomment the <iframe> under it, putting the URL in its src
+     (e.g. https://www.youtube.com/embed/VIDEO_ID?rel=0).
 
-     Leave it hidden until the src is filled in - an empty player on a live
-     sales page is worse than no banner. Headline/subhead below are
-     placeholder copy; swap for the real wording.
+     The old hero overview video, if you want it here in the meantime:
+     https://www.youtube.com/embed/p16fu7r4zuc?rel=0
+
+     TO HIDE THE WHOLE BANNER: add `hidden` to the <section> tag below.
+     Headline and subhead are placeholder copy - swap for real wording.
 ════════════════════════════════════════════════════════════════════ -->
-<section class="replay-banner" id="replay" hidden>
+<section class="replay-banner" id="replay">
   <div class="wrap">
     <div class="replay-cols">
       <div class="replay-copy">
@@ -581,7 +584,14 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       </div>
       <div class="replay-embed">
         <div class="replay-frame">
-          <iframe src="" title="Replay" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <div class="replay-placeholder">
+            <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+              <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="7 6"/>
+              <polygon points="26,20 26,44 46,32" fill="currentColor"/>
+            </svg>
+            <span>Replay embed goes here</span>
+          </div>
+          <!-- <iframe src="" title="Replay" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
         </div>
       </div>
     </div>
