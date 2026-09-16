@@ -368,9 +368,15 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .ob-step-n{font-family:var(--head);font-size:1.9rem;font-weight:700;color:var(--coral);line-height:1;margin-bottom:12px}
 .ob-step h3{font-size:1.15rem;color:var(--navy);margin-bottom:8px;line-height:1.25}
 .ob-step p{font-size:15px;color:var(--muted);line-height:1.62;margin:0}
+/* Proof for step 01, kept out of the card so the four stay even. */
+.ob-quote{margin:34px auto 0;max-width:620px;text-align:center}
+.ob-quote p{font-family:var(--head);font-style:italic;font-size:1.3rem;line-height:1.45;color:var(--navy);margin:0}
+.ob-quote p::before{content:'\201C'}
+.ob-quote p::after{content:'\201D'}
+.ob-quote cite{display:block;margin-top:10px;font-style:normal;font-size:13.5px;color:var(--muted)}
 .ob-you{margin-top:auto;padding-top:16px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--coral)}
 .ob-you-none{color:var(--muted)}
-.ob-foot{margin-top:34px;font-size:16.5px;color:var(--muted);line-height:1.65;max-width:640px;margin-left:auto;margin-right:auto}
+.ob-foot{margin-top:26px;font-size:16.5px;color:var(--muted);line-height:1.65;max-width:640px;margin-left:auto;margin-right:auto}
 .ob-foot strong{color:var(--navy);font-weight:700}
 
 /* testimonials */
@@ -1205,8 +1211,8 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
     <div class="ob-steps fi d1">
       <div class="ob-step">
         <span class="ob-step-n">01</span>
-        <h3>You fill in the questionnaire</h3>
-        <p>Your voice, your values, your audience, your style &ndash; the details everything else gets built from. About 30 minutes, whenever it suits you.</p>
+        <h3>You have a conversation</h3>
+        <p>Not a form. You chat with our onboarding assistant, and it asks follow-ups based on what you actually say &ndash; drawing out your voice, your values, your audience, your style. About 30 minutes, whenever it suits you.</p>
         <span class="ob-you">~30 minutes of your time</span>
       </div>
       <div class="ob-step">
@@ -1228,6 +1234,11 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <span class="ob-you ob-you-none">Nothing needed from you</span>
       </div>
     </div>
+
+    <blockquote class="ob-quote fi d2">
+      <p>Answering questions via the chatbot felt way more fun than filling out a form.</p>
+      <cite>Holly, registered dietitian</cite>
+    </blockquote>
 
     <p class="ob-foot fi d2">No calls to schedule and no meetings to sit through &ndash; <strong>all of it runs asynchronously</strong>, through our project tools and email, around your client hours.</p>
   </div>
