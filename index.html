@@ -447,11 +447,18 @@ footer a:hover{color:var(--white)}
 .funnel-result .funnel-num{margin-bottom:0}
 .funnel-result .funnel-step-title{margin-bottom:6px}
 .funnel-result .funnel-step-desc{margin-bottom:0;max-width:62ch}
-.funnel-result-price{text-align:right;padding-left:28px;border-left:1px solid rgba(255,127,80,.35)}
-.funnel-result-price dt{font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--coral);margin-bottom:5px}
-.funnel-result-price dd{margin:0;font-family:var(--head);font-size:1.9rem;font-weight:700;color:var(--coral-dk);line-height:1.1;white-space:nowrap}
+.funnel-result-price{text-align:right;padding-left:28px;border-left:1px solid rgba(255,127,80,.35);display:flex;align-items:baseline;gap:26px}
+.funnel-result-price dt{font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;margin-bottom:5px}
+.funnel-result-price dd{margin:0;font-family:var(--head);font-weight:700;line-height:1.1;white-space:nowrap}
+/* The struck total is the comparison, so it stays quiet - the real price
+   is the one that should read first. */
+.frp-was dt{color:var(--muted)}
+.frp-was dd{font-size:1.35rem;color:var(--muted);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(255,127,80,.65)}
+.frp-now dt{color:var(--coral)}
+.frp-now dd{font-size:1.9rem;color:var(--coral-dk)}
+@media(max-width:1040px){.funnel-result-price{gap:18px}.frp-was dd{font-size:1.2rem}}
 @media(max-width:860px){.funnel-result{grid-template-columns:auto 1fr;gap:18px 20px;padding:24px 22px}
-  .funnel-result-price{grid-column:1/-1;text-align:left;padding-left:0;padding-top:16px;border-left:none;border-top:1px solid rgba(255,127,80,.35)}}
+  .funnel-result-price{grid-column:1/-1;text-align:left;padding-left:0;padding-top:16px;border-left:none;border-top:1px solid rgba(255,127,80,.35);gap:24px;flex-wrap:wrap}}
 
 /* bonuses */
 .bonuses{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
@@ -660,7 +667,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <div class="hero-ctas fi d3">
           <a class="btn btn-p" href="#pricing">Get started</a>
         </div>
-        <p class="hero-note fi d4">$1,997 one-time. We do the work. You finally get a system bringing in new leads.</p>
+        <p class="hero-note fi d4">We do the work. You finally get a system bringing in new leads.</p>
       </div>
       <div class="hero-photo-col fi d2">
         <!-- TO SWAP THE PHOTO: drop the new file in and update the src + alt below.
@@ -882,7 +889,10 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <div class="funnel-step-title">New Client</div>
         <div class="funnel-step-desc">They book a call &ndash; or stay on your list, hear from you again and again, get to know you, and become a client when the time is right</div>
       </div>
-      <dl class="funnel-result-price"><div><dt>All six, done for you</dt><dd>$1,997</dd></div></dl>
+      <dl class="funnel-result-price">
+        <div class="frp-was"><dt>Outsourced piece by piece</dt><dd>$6,050+</dd></div>
+        <div class="frp-now"><dt>All six, done for you</dt><dd>$1,997</dd></div>
+      </dl>
     </div>
 
     <p class="fi d2" style="margin-top:18px;font-size:18px;color:var(--muted);text-align:center;max-width:620px;margin-left:auto;margin-right:auto"><span class="nb">Your job:</span> tell us about your practice and your audience.<br/><span class="nb">Our job:</span> everything you see above.</p>
