@@ -41,6 +41,7 @@ html{scroll-behavior:smooth}
   --coral-dk:#e6663b;
   --pink:#ffcdcd;
   --lime:#e3f696;
+  --lime-lt:#f0fac5;   /* ~55% lime over white - softer band for the replay banner */
   --text:#1a1a1a;
   --muted:#5c5c5c;
   --white:#ffffff;
@@ -101,7 +102,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 
 /* replay banner */
 [hidden]{display:none!important}
-.replay-banner{background:var(--lime);color:var(--text);padding:28px 0}
+.replay-banner{background:var(--lime-lt);color:var(--text);padding:28px 0}
 @media(max-width:640px){.replay-banner{padding:22px 0}}
 .replay-cols{display:grid;grid-template-columns:1fr minmax(0,420px);gap:40px;align-items:center}
 .replay-embed{width:100%}
