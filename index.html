@@ -430,7 +430,7 @@ footer a:hover{color:var(--white)}
 @media(max-width:620px){.funnel-step{padding:24px 22px 20px}}
 .funnel-num{display:block;font-family:var(--head);font-size:2rem;font-weight:700;color:var(--coral);line-height:1;margin-bottom:16px}
 .funnel-mock{margin-bottom:20px;height:215px;display:flex;align-items:center;justify-content:center;background:var(--cream);border-radius:var(--r);overflow:hidden;padding:10px}
-.funnel-mock svg{display:block;width:100%;height:auto}
+.funnel-mock svg{display:block;width:100%;height:auto;max-height:100%}
 /* Mockups ship at aspect ratios from 0.56 to 1.17, so contain them in a
    fixed-height frame - otherwise the card grid goes ragged. */
 .funnel-mock img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
@@ -441,24 +441,18 @@ footer a:hover{color:var(--white)}
 .funnel-cost-full{grid-template-columns:1fr}
 .funnel-cost dt{font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--coral);margin-bottom:5px}
 .funnel-cost dd{margin:0;font-family:var(--head);font-size:1.15rem;font-weight:600;color:var(--navy);line-height:1.25}
-/* The outcome is not a deliverable, so it sits below the grid as its own
-   full-width band rather than as a seventh peer card. */
-.funnel-result{margin-top:20px;background:var(--white);border:2px solid var(--coral);border-radius:var(--r);box-shadow:0 6px 24px rgba(255,127,80,.18);padding:28px 32px;display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;text-align:left}
-.funnel-result .funnel-num{margin-bottom:0}
-.funnel-result .funnel-step-title{margin-bottom:6px}
-.funnel-result .funnel-step-desc{margin-bottom:0;max-width:62ch}
-.funnel-result-price{text-align:right;padding-left:28px;border-left:1px solid rgba(255,127,80,.35);display:flex;align-items:baseline;gap:26px}
-.funnel-result-price dt{font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;margin-bottom:5px}
-.funnel-result-price dd{margin:0;font-family:var(--head);font-weight:700;line-height:1.1;white-space:nowrap}
-/* The struck total is the comparison, so it stays quiet - the real price
-   is the one that should read first. */
-.frp-was dt{color:var(--muted)}
-.frp-was dd{font-size:1.35rem;color:var(--muted);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(255,127,80,.65)}
-.frp-now dt{color:var(--coral)}
-.frp-now dd{font-size:1.9rem;color:var(--coral-dk)}
-@media(max-width:1040px){.funnel-result-price{gap:18px}.frp-was dd{font-size:1.2rem}}
-@media(max-width:860px){.funnel-result{grid-template-columns:auto 1fr;gap:18px 20px;padding:24px 22px}
-  .funnel-result-price{grid-column:1/-1;text-align:left;padding-left:0;padding-top:16px;border-left:none;border-top:1px solid rgba(255,127,80,.35);gap:24px;flex-wrap:wrap}}
+/* The result card is the payoff, so it keeps the coral outline that marks
+   it out from the five deliverables. */
+.funnel-step-result{border:2px solid var(--coral);box-shadow:0 6px 24px rgba(255,127,80,.18)}
+.funnel-step-result .funnel-mock{background:var(--hi)}
+.funnel-step-result .funnel-cost{border-top-color:rgba(255,127,80,.35)}
+/* It carries a price comparison instead of the DIY/outsource pair the
+   deliverable cards use, so it stacks rather than sitting in two columns. */
+.funnel-cost-result{grid-template-columns:1fr;gap:12px}
+.funnel-cost-result dt{color:var(--muted)}
+.funnel-cost-result .fc-was{font-size:1.15rem;color:var(--muted);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(255,127,80,.65)}
+.funnel-cost-result div:last-child dt{color:var(--coral)}
+.funnel-cost-result .fc-now{font-size:1.75rem;color:var(--coral-dk)}
 
 /* bonuses */
 .bonuses{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
@@ -874,31 +868,23 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       </div>
       <div class="funnel-step">
         <span class="funnel-num">05</span>
-        <div class="funnel-mock"><img src="delivery-email_mockup.png" alt="Lead magnet delivery email shown on a tablet" loading="lazy" decoding="async" /></div>
-        <div class="funnel-step-title">Delivery Email</div>
-        <div class="funnel-step-desc">Sends their lead magnet instantly and makes a warm first impression</div>
-        <dl class="funnel-cost"><div><dt>Time to DIY</dt><dd>2&ndash;3 hrs</dd></div><div><dt>Cost to outsource</dt><dd>$400+</dd></div></dl>
+        <div class="funnel-mock"><img src="delivery-sequence_mockup.png" alt="Lead magnet delivery email and the automated sequence behind it" loading="lazy" decoding="async" /></div>
+        <div class="funnel-step-title">Delivery Email &amp; Welcome Series</div>
+        <div class="funnel-step-desc">Their lead magnet arrives instantly, then 5 emails over 3 weeks &ndash; your story, your expertise, another invite to connect</div>
+        <dl class="funnel-cost"><div><dt>Time to DIY</dt><dd>12&ndash;18 hrs</dd></div><div><dt>Cost to outsource</dt><dd>$1,600+</dd></div></dl>
       </div>
-      <div class="funnel-step">
+      <!-- The outcome rather than a deliverable, so it carries the price
+           comparison instead of a DIY/outsource pair. -->
+      <div class="funnel-step funnel-step-result">
         <span class="funnel-num">06</span>
-        <div class="funnel-mock"><img src="email-sequence_mockup.png" alt="Five-email welcome sequence in an email platform" loading="lazy" decoding="async" /></div>
-        <div class="funnel-step-title">Welcome Series</div>
-        <div class="funnel-step-desc">5 emails over 3 weeks - your story, your expertise, another invite to connect</div>
-        <dl class="funnel-cost"><div><dt>Time to DIY</dt><dd>10&ndash;15 hrs</dd></div><div><dt>Cost to outsource</dt><dd>$1,200+</dd></div></dl>
-      </div>
-    </div>
-
-    <!-- The outcome, not a deliverable - full-width band under the six cards. -->
-    <div class="funnel-result fi d2">
-      <span class="funnel-num">&rarr;</span>
-      <div>
+        <div class="funnel-mock"><svg viewBox="0 0 200 126" role="img" aria-label="Mockup of a booked discovery call in a calendar" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="126" rx="5" fill="#fff" stroke="#e2e7e9"/><path d="M0 5a5 5 0 0 1 5-5h190a5 5 0 0 1 5 5v17H0z" fill="#02525d"/><rect x="14" y="9" width="44" height="5" rx="2.5" fill="#fff" opacity=".85"/><rect x="13" y="32" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="49" y="32" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="85" y="32" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="121" y="32" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="157" y="32" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="13" y="60" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="49" y="60" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="121" y="60" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="157" y="60" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="13" y="88" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="49" y="88" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="85" y="88" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="121" y="88" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="157" y="88" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="85" y="60" width="30" height="22" rx="3" fill="#ff7f50"/><path d="M93 71l4 4 8-9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="funnel-step-title">New Client</div>
         <div class="funnel-step-desc">They book a call &ndash; or stay on your list, hear from you again and again, get to know you, and become a client when the time is right</div>
+        <dl class="funnel-cost funnel-cost-result">
+          <div><dt>Outsourced piece by piece</dt><dd class="fc-was">$6,050+</dd></div>
+          <div><dt>The whole funnel, done for you</dt><dd class="fc-now">$1,997</dd></div>
+        </dl>
       </div>
-      <dl class="funnel-result-price">
-        <div class="frp-was"><dt>Outsourced piece by piece</dt><dd>$6,050+</dd></div>
-        <div class="frp-now"><dt>All six, done for you</dt><dd>$1,997</dd></div>
-      </dl>
     </div>
 
     <p class="fi d2" style="margin-top:18px;font-size:18px;color:var(--muted);text-align:center;max-width:620px;margin-left:auto;margin-right:auto"><span class="nb">Your job:</span> tell us about your practice and your audience.<br/><span class="nb">Our job:</span> everything you see above.</p>
@@ -1264,12 +1250,8 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
           <span class="c-price">$350+</span>
         </div>
         <div class="comparison-row">
-          <span class="c-label">Delivery email</span>
-          <span class="c-price">$400+</span>
-        </div>
-        <div class="comparison-row">
-          <span class="c-label">5-email welcome sequence</span>
-          <span class="c-price">$1,200+</span>
+          <span class="c-label">Delivery email + 5-email welcome sequence</span>
+          <span class="c-price">$1,600+</span>
         </div>
         <div class="comparison-sub">
           <span class="c-label">The funnel, hired out piece by piece</span>
