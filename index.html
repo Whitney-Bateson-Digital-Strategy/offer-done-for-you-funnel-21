@@ -354,33 +354,36 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .cta-or{text-align:center;font-size:14px;color:var(--muted)}
 .cta-sub{text-align:center;font-size:14px;color:var(--muted);margin-top:10px;font-style:italic}
 
-/* after you buy - the client's side of the process.
-   Deliberately not another numbered card grid: the page already uses that
-   pattern for the funnel. Two columns instead, because the imbalance between
-   them (two things vs everything else) is the argument. */
+/* after you buy - a linear flow rather than cards or columns. Dots sit on a
+   rule that runs between the first and last marker, so the four steps read
+   as one pipeline. Turns vertical, with the rule on the left, on narrow
+   screens. */
 #onboard{background:var(--white);padding:84px 0}
 @media(max-width:640px){#onboard{padding:60px 0}}
 #onboard .wrap{text-align:center}
 #onboard h2{font-size:clamp(1.75rem,4vw,2.6rem);margin-bottom:10px}
-.ob-sub{font-size:17.5px;color:var(--muted);max-width:620px;margin:0 auto 52px;line-height:1.6}
-.ob-split{display:grid;grid-template-columns:1fr 1fr;gap:0;text-align:left;max-width:940px;margin:0 auto;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;background:var(--white);box-shadow:var(--sh-sm)}
-@media(max-width:760px){.ob-split{grid-template-columns:1fr}}
-.ob-col{padding:32px 34px}
-@media(max-width:620px){.ob-col{padding:26px 24px}}
-.ob-col-you{background:var(--hi)}
-.ob-col-us{border-left:1px solid var(--border)}
-@media(max-width:760px){.ob-col-us{border-left:none;border-top:1px solid var(--border)}}
-.ob-col-h{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:4px;display:block}
-.ob-col-t{font-family:var(--head);font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:22px;line-height:1.25}
-.ob-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px}
-.ob-list-tight{gap:13px}
-.ob-list li{position:relative;padding-left:26px;font-size:15.5px;line-height:1.55;color:var(--muted)}
-.ob-list li strong{display:block;color:var(--navy);font-weight:700;font-size:16px;margin-bottom:3px}
-.ob-list li::before{position:absolute;left:0;top:0;font-weight:700}
-.ob-col-you .ob-list li::before{content:'\2192';color:var(--coral)}
-.ob-col-us .ob-list li::before{content:'\2713';color:var(--navy)}
-.ob-when{display:block;margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--coral)}
-.ob-quote{margin:40px auto 0;max-width:620px;text-align:center}
+.ob-sub{font-size:17.5px;color:var(--muted);max-width:640px;margin:0 auto 60px;line-height:1.6}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;position:relative;max-width:1060px;margin:0 auto;text-align:center}
+.flow::before{content:'';position:absolute;top:11px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--coral),var(--navy));opacity:.3}
+.flow-step{position:relative;display:flex;flex-direction:column;align-items:center}
+.flow-body{display:flex;flex-direction:column;flex:1;height:100%}
+.flow-dot{width:24px;height:24px;border-radius:50%;background:var(--white);border:3px solid var(--coral);position:relative;z-index:1;margin-bottom:20px;display:flex;align-items:center;justify-content:center}
+.flow-dot::after{content:'';width:9px;height:9px;border-radius:50%;background:var(--coral)}
+.flow-step-us .flow-dot{border-color:var(--navy)}
+.flow-step-us .flow-dot::after{background:var(--navy)}
+.flow-step h3{font-size:1.1rem;color:var(--navy);margin-bottom:8px;line-height:1.3}
+.flow-step p{font-size:15px;color:var(--muted);line-height:1.6;margin:0 0 12px}
+.flow-when{margin-top:auto;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--coral)}
+.flow-step-us .flow-when{color:var(--muted)}
+@media(max-width:820px){
+  .flow{grid-template-columns:1fr;gap:30px;text-align:left;max-width:520px}
+  .flow::before{top:12px;bottom:12px;left:11px;right:auto;width:2px;height:auto;background:linear-gradient(180deg,var(--coral),var(--navy))}
+  .flow-step{flex-direction:row;align-items:flex-start;gap:18px}
+  .flow-dot{margin-bottom:0;flex-shrink:0}
+  .flow-body{padding-top:1px}
+  .flow-when{margin-top:0;align-self:flex-start}
+}
+.ob-quote{margin:52px auto 0;max-width:620px;text-align:center}
 .ob-quote p{font-family:var(--head);font-style:italic;font-size:1.3rem;line-height:1.45;color:var(--navy);margin:0}
 .ob-quote p::before{content:'\201C'}
 .ob-quote p::after{content:'\201D'}
@@ -1213,38 +1216,41 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
     <div class="fi">
       <span class="slabel">After you buy</span>
       <h2>Here's what it looks like on your end.</h2>
-      <p class="ob-sub">You're not project-managing this. You answer questions once, review the pieces that matter, and we handle the rest.</p>
+      <p class="ob-sub">You're not project-managing this. Two moments need you &ndash; about 60&ndash;90 minutes in total, whenever it suits you. We handle everything between them.</p>
     </div>
 
-    <div class="ob-split fi d1">
-      <div class="ob-col ob-col-you">
-        <span class="ob-col-h">Your side</span>
-        <span class="ob-col-t">Two things, about 60&ndash;90 minutes total</span>
-        <ul class="ob-list">
-          <li>
-            <strong>Have the conversation</strong>
-            Not a form &ndash; you chat with our onboarding assistant, and it asks follow-ups based on what you actually say, drawing out your voice, your values, your audience.
-            <span class="ob-when">~30 minutes</span>
-          </li>
-          <li>
-            <strong>Review the lead magnet and emails</strong>
-            You see these before anything else gets built, so the voice is right from the start. Tell us what to change.
-            <span class="ob-when">~30&ndash;60 minutes</span>
-          </li>
-        </ul>
+    <div class="flow fi d1">
+      <div class="flow-step">
+        <span class="flow-dot"></span>
+        <div class="flow-body">
+<h3>You have a conversation</h3>
+        <p>Not a form. Our onboarding assistant asks follow-ups based on what you actually say, drawing out your voice and your audience.</p>
+        <span class="flow-when">~30 min of your time</span>
+        </div>
       </div>
-      <div class="ob-col ob-col-us">
-        <span class="ob-col-h">Our side</span>
-        <span class="ob-col-t">Everything else</span>
-        <ul class="ob-list ob-list-tight">
-          <li>Research, write and design your lead magnet</li>
-          <li>Write the delivery email and the 5-email welcome sequence</li>
-          <li>Build the opt-in page and thank you page</li>
-          <li>Connect it all to your email platform and test it</li>
-          <li>Write, design, target and launch the ad campaign</li>
-          <li>Stay on the ads by email for the first week</li>
-          <li>Hand over your Funnel Command Center, with walkthroughs of everything</li>
-        </ul>
+      <div class="flow-step flow-step-us">
+        <span class="flow-dot"></span>
+        <div class="flow-body">
+<h3>We build the foundation</h3>
+        <p>Your lead magnet and welcome emails get written first, from what you told us. Everything else is built on top of them.</p>
+        <span class="flow-when">Nothing needed from you</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-dot"></span>
+        <div class="flow-body">
+<h3>You review it</h3>
+        <p>You see the lead magnet and emails before anything else is built, so the voice is right from the start. Tell us what to change.</p>
+        <span class="flow-when">~30&ndash;60 min of your time</span>
+        </div>
+      </div>
+      <div class="flow-step flow-step-us">
+        <span class="flow-dot"></span>
+        <div class="flow-body">
+<h3>We build and launch</h3>
+        <p>Pages built, email platform connected and tested, ad campaign live &ndash; then we stay on the ads by email for the first week.</p>
+        <span class="flow-when">Nothing needed from you</span>
+        </div>
       </div>
     </div>
 
