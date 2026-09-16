@@ -110,9 +110,15 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .replay-sub{font-size:16px;color:var(--text);line-height:1.6;margin:0}
 .replay-frame{position:relative;width:100%;padding-bottom:56.25%;border-radius:var(--r-lg);overflow:hidden;background:var(--navy-dk);box-shadow:0 8px 30px rgba(0,0,0,.28)}
 .replay-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
-.replay-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:rgba(227,246,150,.75)}
-.replay-placeholder svg{width:58px;height:58px;display:block}
-.replay-placeholder span{font-size:13px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.replay-cover{position:absolute;inset:0;width:100%;height:100%;padding:0;border:none;background:none;cursor:pointer;display:block}
+.replay-cover:disabled{cursor:default}
+.replay-cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.replay-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:76px;height:76px;display:block;transition:transform .22s ease;filter:drop-shadow(0 4px 18px rgba(0,0,0,.35))}
+.replay-play svg{width:100%;height:100%;display:block}
+.replay-cover:not(:disabled):hover .replay-play{transform:translate(-50%,-50%) scale(1.12)}
+.replay-cover:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+@media(max-width:640px){.replay-play{width:60px;height:60px}}
+@media(prefers-reduced-motion:reduce){.replay-play{transition:none}}
 
 /* hero */
 #hero{padding:96px 0 80px;position:relative;overflow:hidden;background:var(--white)}
@@ -580,14 +586,19 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       </div>
       <div class="replay-embed">
         <div class="replay-frame">
-          <div class="replay-placeholder">
-            <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-              <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="7 6"/>
-              <polygon points="26,20 26,44 46,32" fill="currentColor"/>
-            </svg>
-            <span>Replay embed goes here</span>
-          </div>
-          <!-- <iframe src="" title="Replay" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+          <!-- WHEN THE REPLAY EXISTS: put the embed URL in data-video-src below
+               (e.g. https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0).
+               Until then the button is inert and the still just sits there. -->
+          <button class="replay-cover" id="replay-cover" type="button" data-video-src="" aria-label="Play the training replay">
+            <img class="replay-cover-img" src="funnel-webinar-v1.png" alt="" onerror="this.style.display='none'" />
+            <span class="replay-play">
+              <svg viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <circle cx="38" cy="38" r="38" fill="#ffffff" fill-opacity="0.92"/>
+                <polygon points="31,23 31,53 55,38" fill="#02525d"/>
+              </svg>
+            </span>
+          </button>
+          <iframe id="replay-iframe" src="" title="Replay" hidden loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -613,10 +624,12 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <p class="hero-note fi d4">$1,997 one-time. We do the work. You finally get a system bringing in new leads.</p>
       </div>
       <div class="hero-photo-col fi d2">
-        <!-- TO SWAP THE PHOTO: replace hero-practitioner.svg with the real image
-             (any 4:5 portrait crop works) and update the src + alt below. -->
+        <!-- TO SWAP THE PHOTO: drop the new file in and update the src + alt below.
+             Any 4:5 portrait crop works; it is cover-cropped to fill the frame.
+             If new-hero.png is missing, the old illustration shows instead. -->
         <div class="hero-photo-wrap">
-          <img class="hero-photo" src="hero-practitioner.svg" alt="A health practitioner working with a client" />
+          <img class="hero-photo" src="new-hero.png" alt="A health practitioner working with a client"
+               onerror="this.onerror=null;this.src='hero-practitioner.svg'" />
         </div>
       </div>
     </div>
@@ -1373,6 +1386,23 @@ els.forEach(el => io.observe(el));
   subs.addEventListener('input', update);
   conv.addEventListener('input', update);
   value.addEventListener('input', update);
+})();
+</script>
+
+<script>
+/* Replay banner: swap the still for the embed on click.
+   Inert until data-video-src on #replay-cover has a URL. */
+(function(){
+  var cover = document.getElementById('replay-cover');
+  var frame = document.getElementById('replay-iframe');
+  if(!cover || !frame) return;
+  var src = (cover.getAttribute('data-video-src') || '').trim();
+  if(!src){ cover.disabled = true; return; }
+  cover.addEventListener('click', function(){
+    frame.src = src;
+    frame.hidden = false;
+    cover.remove();
+  });
 })();
 </script>
 
