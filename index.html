@@ -543,10 +543,13 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 .milestone{background:var(--cream);border:1px solid var(--border);border-radius:var(--r);padding:20px 24px;margin:0 0 6px}
 .milestone-head{display:flex;align-items:center;gap:10px;font-family:var(--head);font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:12px;line-height:1.3}
 .milestone-head-icon{font-size:18px;flex-shrink:0;line-height:1}
-.milestone-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
-.milestone-list li{font-size:14.5px;color:var(--text);line-height:1.5;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline}
-.milestone-list li .m-when{font-weight:700;color:var(--navy);font-family:var(--head);font-size:14px;white-space:nowrap;letter-spacing:.02em}
-.milestone-list li .m-what{color:var(--muted)}
+/* One flowing sentence per item. The old two-column layout was built for
+   short date labels; with real sentences every row wrapped to a different
+   indent. */
+.milestone-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.milestone-list li{font-size:14.5px;color:var(--muted);line-height:1.55;padding-left:20px;position:relative}
+.milestone-list li::before{content:'';position:absolute;left:0;top:.52em;width:7px;height:7px;border-radius:50%;background:var(--coral)}
+.milestone-list li strong{color:var(--navy);font-weight:700}
 
 /* case study section */
 #case-study{background:var(--white);padding:80px 0}
@@ -1309,10 +1312,10 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
           <span>What you can expect from us</span>
         </div>
         <ul class="milestone-list">
-          <li><span class="m-when">You'll never wonder</span><span class="m-what">where your project stands &ndash; you get a clear next step at every stage</span></li>
-          <li><span class="m-when">You review everything</span><span class="m-what">a complete first draft of the whole funnel, before anything goes live</span></li>
-          <li><span class="m-when">We don't hand off half-built</span><span class="m-what">your funnel goes live connected, tested, and running</span></li>
-          <li><span class="m-when">We keep moving</span><span class="m-what">work starts as soon as onboarding is in, and doesn't stall waiting on us</span></li>
+          <li><strong>You'll always know where your project stands.</strong> A clear next step at every stage, so nothing goes quiet on you.</li>
+          <li><strong>You review the whole funnel first.</strong> A complete first draft comes to you before anything goes live.</li>
+          <li><strong>We don't hand off half-built.</strong> Your funnel goes live connected, tested, and running.</li>
+          <li><strong>We keep moving.</strong> Work starts as soon as your onboarding is in, and never stalls waiting on us.</li>
         </ul>
       </div>
 
