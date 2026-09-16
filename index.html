@@ -531,6 +531,9 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 .comparison-row:last-of-type{border-bottom:none}
 .comparison-row .c-label{color:var(--text);flex:1}
 .comparison-row .c-price{color:var(--muted);font-weight:500;white-space:nowrap;font-family:var(--head);font-size:17px}
+.comparison-sub{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0 12px;margin-top:4px;border-top:1px solid var(--border);border-bottom:1px dashed var(--border);font-size:16px}
+.comparison-sub .c-label{color:var(--navy);font-weight:600}
+.comparison-sub .c-price{color:var(--navy);font-family:var(--head);font-size:1.15rem;font-weight:700;white-space:nowrap}
 .comparison-total{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0 6px;margin-top:6px;border-top:1px solid var(--border);font-size:16px}
 .comparison-total .c-label{color:var(--text);font-style:italic}
 .comparison-total .c-price{color:var(--text);font-family:var(--head);font-size:1.25rem;font-weight:500;white-space:nowrap}
@@ -1230,7 +1233,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 <section id="pricing">
   <div class="wrap">
     <div class="fi">
-      <h2>One team. <span class="hl">One month.</span> Your funnel done for you.</h2>
+      <h2>One team. <span class="hl">One price.</span> Your funnel done for you.</h2>
     </div>
 
     <!-- Comparison panel — collapsed by default -->
@@ -1241,33 +1244,44 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       </summary>
       <div class="comparison-list">
         <p class="comparison-intro">For context, here's roughly what you'd pay to hire each piece separately.</p>
+        <!-- These six lines are the same figures as the funnel cards, in the
+             same order, so the subtotal matches the one in that section. If a
+             card's "cost to outsource" changes, change it here too. -->
         <div class="comparison-row">
-          <span class="c-label">Marketing strategist to map your funnel &amp; lead magnet</span>
-          <span class="c-price">$800+</span>
-        </div>
-        <div class="comparison-row">
-          <span class="c-label">Lead magnet (copy + design)</span>
-          <span class="c-price">$650+</span>
-        </div>
-        <div class="comparison-row">
-          <span class="c-label">Copywriter for opt-in page + email sequence</span>
-          <span class="c-price">$1,200+</span>
-        </div>
-        <div class="comparison-row">
-          <span class="c-label">Ads specialist (copy, creative, targeting &amp; launch)</span>
+          <span class="c-label">Lead magnet &ndash; research, copy, and design</span>
           <span class="c-price">$1,500+</span>
         </div>
         <div class="comparison-row">
-          <span class="c-label">Tech VA or OBM for funnel build &amp; integrations</span>
-          <span class="c-price">$1,000+</span>
+          <span class="c-label">Facebook &amp; Instagram ad campaign</span>
+          <span class="c-price">$1,500+</span>
         </div>
         <div class="comparison-row">
-          <span class="c-label">Personalized Funnel Overview, 1 Week of Support, Ads Course</span>
-          <span class="c-price">$1,090+</span>
+          <span class="c-label">Opt-in page &ndash; copy, design, and integration</span>
+          <span class="c-price">$1,100+</span>
+        </div>
+        <div class="comparison-row">
+          <span class="c-label">Thank you page</span>
+          <span class="c-price">$350+</span>
+        </div>
+        <div class="comparison-row">
+          <span class="c-label">Delivery email</span>
+          <span class="c-price">$400+</span>
+        </div>
+        <div class="comparison-row">
+          <span class="c-label">5-email welcome sequence</span>
+          <span class="c-price">$1,200+</span>
+        </div>
+        <div class="comparison-sub">
+          <span class="c-label">The funnel, hired out piece by piece</span>
+          <span class="c-price">$6,050+</span>
+        </div>
+        <div class="comparison-row">
+          <span class="c-label">Plus your bonuses &ndash; Funnel Command Center, ad support, Ads Made Simple</span>
+          <span class="c-price">$1,091+</span>
         </div>
         <div class="comparison-total">
           <span class="c-label">Hiring it all out, separately</span>
-          <span class="c-price">$6,200+</span>
+          <span class="c-price">$7,141+</span>
         </div>
         <div class="comparison-ours">
           <span class="c-label"><span class="nb">What we do.</span> One team, start to launch.</span>
