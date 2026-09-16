@@ -354,29 +354,38 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 .cta-or{text-align:center;font-size:14px;color:var(--muted)}
 .cta-sub{text-align:center;font-size:14px;color:var(--muted);margin-top:10px;font-style:italic}
 
-/* after you buy - the client's side of the process */
+/* after you buy - the client's side of the process.
+   Deliberately not another numbered card grid: the page already uses that
+   pattern for the funnel. Two columns instead, because the imbalance between
+   them (two things vs everything else) is the argument. */
 #onboard{background:var(--white);padding:84px 0}
 @media(max-width:640px){#onboard{padding:60px 0}}
 #onboard .wrap{text-align:center}
 #onboard h2{font-size:clamp(1.75rem,4vw,2.6rem);margin-bottom:10px}
-.ob-sub{font-size:17.5px;color:var(--muted);max-width:620px;margin:0 auto 12px;line-height:1.6}
-.ob-time{display:inline-block;background:var(--hi-md);color:var(--navy);font-size:14px;font-weight:700;border-radius:999px;padding:8px 20px;margin-bottom:44px}
-.ob-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:left;position:relative}
-@media(max-width:940px){.ob-steps{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.ob-steps{grid-template-columns:1fr}}
-.ob-step{background:var(--cream);border:1px solid var(--border);border-radius:var(--r);padding:26px 24px;display:flex;flex-direction:column}
-.ob-step-n{font-family:var(--head);font-size:1.9rem;font-weight:700;color:var(--coral);line-height:1;margin-bottom:12px}
-.ob-step h3{font-size:1.15rem;color:var(--navy);margin-bottom:8px;line-height:1.25}
-.ob-step p{font-size:15px;color:var(--muted);line-height:1.62;margin:0}
-/* Proof for step 01, kept out of the card so the four stay even. */
-.ob-quote{margin:34px auto 0;max-width:620px;text-align:center}
+.ob-sub{font-size:17.5px;color:var(--muted);max-width:620px;margin:0 auto 52px;line-height:1.6}
+.ob-split{display:grid;grid-template-columns:1fr 1fr;gap:0;text-align:left;max-width:940px;margin:0 auto;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;background:var(--white);box-shadow:var(--sh-sm)}
+@media(max-width:760px){.ob-split{grid-template-columns:1fr}}
+.ob-col{padding:32px 34px}
+@media(max-width:620px){.ob-col{padding:26px 24px}}
+.ob-col-you{background:var(--hi)}
+.ob-col-us{border-left:1px solid var(--border)}
+@media(max-width:760px){.ob-col-us{border-left:none;border-top:1px solid var(--border)}}
+.ob-col-h{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:4px;display:block}
+.ob-col-t{font-family:var(--head);font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:22px;line-height:1.25}
+.ob-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px}
+.ob-list-tight{gap:13px}
+.ob-list li{position:relative;padding-left:26px;font-size:15.5px;line-height:1.55;color:var(--muted)}
+.ob-list li strong{display:block;color:var(--navy);font-weight:700;font-size:16px;margin-bottom:3px}
+.ob-list li::before{position:absolute;left:0;top:0;font-weight:700}
+.ob-col-you .ob-list li::before{content:'\2192';color:var(--coral)}
+.ob-col-us .ob-list li::before{content:'\2713';color:var(--navy)}
+.ob-when{display:block;margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--coral)}
+.ob-quote{margin:40px auto 0;max-width:620px;text-align:center}
 .ob-quote p{font-family:var(--head);font-style:italic;font-size:1.3rem;line-height:1.45;color:var(--navy);margin:0}
 .ob-quote p::before{content:'\201C'}
 .ob-quote p::after{content:'\201D'}
 .ob-quote cite{display:block;margin-top:10px;font-style:normal;font-size:13.5px;color:var(--muted)}
-.ob-you{margin-top:auto;padding-top:16px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--coral)}
-.ob-you-none{color:var(--muted)}
-.ob-foot{margin-top:26px;font-size:16.5px;color:var(--muted);line-height:1.65;max-width:640px;margin-left:auto;margin-right:auto}
+.ob-foot{margin-top:28px;font-size:16.5px;color:var(--muted);line-height:1.65;max-width:640px;margin-left:auto;margin-right:auto}
 .ob-foot strong{color:var(--navy);font-weight:700}
 
 /* testimonials */
@@ -1205,39 +1214,43 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       <span class="slabel">After you buy</span>
       <h2>Here's what it looks like on your end.</h2>
       <p class="ob-sub">You're not project-managing this. You answer questions once, review the pieces that matter, and we handle the rest.</p>
-      <p class="ob-time">About 30 minutes up front, then an hour or so of reviews &mdash; no calls to schedule</p>
     </div>
 
-    <div class="ob-steps fi d1">
-      <div class="ob-step">
-        <span class="ob-step-n">01</span>
-        <h3>You have a conversation</h3>
-        <p>Not a form. You chat with our onboarding assistant, and it asks follow-ups based on what you actually say &ndash; drawing out your voice, your values, your audience, your style. About 30 minutes, whenever it suits you.</p>
-        <span class="ob-you">~30 minutes of your time</span>
+    <div class="ob-split fi d1">
+      <div class="ob-col ob-col-you">
+        <span class="ob-col-h">Your side</span>
+        <span class="ob-col-t">Two things, about 60&ndash;90 minutes total</span>
+        <ul class="ob-list">
+          <li>
+            <strong>Have the conversation</strong>
+            Not a form &ndash; you chat with our onboarding assistant, and it asks follow-ups based on what you actually say, drawing out your voice, your values, your audience.
+            <span class="ob-when">~30 minutes</span>
+          </li>
+          <li>
+            <strong>Review the lead magnet and emails</strong>
+            You see these before anything else gets built, so the voice is right from the start. Tell us what to change.
+            <span class="ob-when">~30&ndash;60 minutes</span>
+          </li>
+        </ul>
       </div>
-      <div class="ob-step">
-        <span class="ob-step-n">02</span>
-        <h3>We build the foundation</h3>
-        <p>Your lead magnet and email sequence come first, written from what you told us. Everything else gets built on top of them.</p>
-        <span class="ob-you ob-you-none">Nothing needed from you</span>
-      </div>
-      <div class="ob-step">
-        <span class="ob-step-n">03</span>
-        <h3>You review before we go further</h3>
-        <p>You see the lead magnet and emails before anything else is built, so the voice is right from the start. Tell us what to change.</p>
-        <span class="ob-you">~30&ndash;60 minutes of your time</span>
-      </div>
-      <div class="ob-step">
-        <span class="ob-step-n">04</span>
-        <h3>We launch and watch the ads</h3>
-        <p>Pages built, emails connected, campaign live. We stay on the ads by email for the first week, and your Funnel Command Center shows you how it all works.</p>
-        <span class="ob-you ob-you-none">Nothing needed from you</span>
+      <div class="ob-col ob-col-us">
+        <span class="ob-col-h">Our side</span>
+        <span class="ob-col-t">Everything else</span>
+        <ul class="ob-list ob-list-tight">
+          <li>Research, write and design your lead magnet</li>
+          <li>Write the delivery email and the 5-email welcome sequence</li>
+          <li>Build the opt-in page and thank you page</li>
+          <li>Connect it all to your email platform and test it</li>
+          <li>Write, design, target and launch the ad campaign</li>
+          <li>Stay on the ads by email for the first week</li>
+          <li>Hand over your Funnel Command Center, with walkthroughs of everything</li>
+        </ul>
       </div>
     </div>
 
     <blockquote class="ob-quote fi d2">
       <p>Answering questions via the chatbot felt way more fun than filling out a form.</p>
-      <cite>Holly, registered dietitian</cite>
+      <cite>&mdash; Holly, registered dietitian</cite>
     </blockquote>
 
     <p class="ob-foot fi d2">No calls to schedule and no meetings to sit through &ndash; <strong>all of it runs asynchronously</strong>, through our project tools and email, around your client hours.</p>
