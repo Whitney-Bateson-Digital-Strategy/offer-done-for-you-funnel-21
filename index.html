@@ -706,7 +706,13 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 .cs-image{position:relative}
 .cs-image img{width:100%;height:auto;display:block;border-radius:var(--r)}
 .cs-content .slabel{margin-bottom:16px}
+
 .cs-content h2{font-size:clamp(1.4rem,2.8vw,1.85rem);margin-bottom:20px;line-height:1.25}
+.cs-stat{background:var(--hi-md);border-left:3px solid var(--coral);border-radius:0 var(--r) var(--r) 0;padding:18px 22px;margin-bottom:22px}
+.cs-stat-h{font-size:16px;color:var(--text);line-height:1.55;margin:0 0 8px}
+.cs-stat-h strong{color:var(--navy);font-weight:700}
+.cs-stat-sub{font-size:14px;color:var(--muted);line-height:1.55;margin:0}
+.cs-stat-sub strong{color:var(--navy);font-weight:700}
 .cs-intro{font-size:16px;color:var(--text);line-height:1.65;margin-bottom:22px}
 .cs-quote{font-family:var(--head);font-size:1.15rem;font-weight:600;line-height:1.55;color:var(--text);font-style:italic;margin-bottom:20px;position:relative;padding-left:18px}
 .cs-quote::before{content:'"';position:absolute;left:-2px;top:-18px;font-family:var(--head);font-size:3rem;color:var(--navy);opacity:.18;line-height:1}
@@ -730,30 +736,10 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 @media(max-width:900px){.cs-fp:nth-child(1){top:4%;left:4%}.cs-fp:nth-child(2){top:4%;right:4%;left:auto}.cs-fp:nth-child(3){top:auto;bottom:36%;left:4%}.cs-fp:nth-child(4){top:auto;bottom:18%;right:4%;left:auto}.cs-fp:nth-child(5){bottom:4%;left:4%}}
 
 /* ── RESULTS ───────────────────────────────────────────────────────
-   Nathalie's numbers, framed forward: the headline promises, the stats
-   evidence it, the closing line hands it back to the reader. Mirrors the
-   Heather case study's proportions but leads on the figures. */
-#results{background:var(--soft);padding:84px 0;border-top:1px solid var(--border)}
+   Nathalie's build. Uses the .cs-* case-study component above wholesale, so
+   there is one case-study layout on the page and only the copy differs. */
+#results{background:var(--soft);padding:80px 0;border-top:1px solid var(--border)}
 @media(max-width:640px){#results{padding:60px 0}}
-/* Heather runs image-left; this one runs image-right, so scrolling past both
-   does not read as the same block twice. Stacks image-first when narrow. */
-.res-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:center;max-width:1140px;margin:0 auto}
-.res-grid .res-image{order:2}
-.res-grid .res-content{order:1}
-@media(max-width:960px){.res-grid{grid-template-columns:1fr;gap:40px;max-width:640px}.res-grid .res-image{order:1}.res-grid .res-content{order:2}}
-.res-image img{width:100%;height:auto;display:block;border-radius:var(--r)}
-.res-content .slabel{margin-bottom:16px}
-.res-content h2{font-size:clamp(1.6rem,3.2vw,2.2rem);margin-bottom:18px;line-height:1.22}
-.res-intro{font-size:16.5px;color:var(--text);line-height:1.68;margin-bottom:28px}
-/* Shared by BOTH case studies - one stat treatment on the page, so the two
-   builds read as the same kind of evidence. */
-.stat-cards{display:grid;gap:12px;margin-bottom:26px}
-.stat-card{display:flex;align-items:baseline;gap:16px;background:var(--white);border:1px solid var(--border);border-left:3px solid var(--coral);border-radius:var(--r);padding:16px 20px;box-shadow:var(--sh-sm)}
-.stat-num{font-family:var(--head);font-size:2.3rem;font-weight:700;color:var(--navy);line-height:1;flex-shrink:0;min-width:104px;font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1}
-.stat-lbl{font-size:15px;color:var(--text);line-height:1.5;font-weight:600}
-@media(max-width:480px){.stat-card{gap:12px;padding:14px 16px}.stat-num{font-size:1.9rem;min-width:86px}.stat-lbl{font-size:14px}}
-.res-foot{font-size:16.5px;color:var(--text);line-height:1.68;margin:0;padding-top:22px;border-top:1px solid var(--border)}
-.res-foot strong{color:var(--navy);font-weight:700}
 
 /* ── LINING FIGURES ────────────────────────────────────────────────
    Cormorant Garamond defaults to OLD-STYLE figures: the 1 looks like a
@@ -1200,19 +1186,9 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <span class="slabel">A recent build</span>
         <h2>What we built for Heather, a kidney health practitioner.</h2>
 
-        <div class="stat-cards">
-          <div class="stat-card">
-            <span class="stat-num">~50</span>
-            <span class="stat-lbl">new subscribers a week, in her first weeks live</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">$0.47</span>
-            <span class="stat-lbl">per subscriber, on under $25 a week of ad spend</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">10×</span>
-            <span class="stat-lbl">better than the health &amp; nutrition average on Meta</span>
-          </div>
+        <div class="cs-stat">
+          <p class="cs-stat-h">In her first weeks, Heather's funnel added <strong>~50 new email subscribers a week</strong>, for under $25 in ad spend.</p>
+          <p class="cs-stat-sub">That's <strong>$0.47 per subscriber</strong>. Roughly <strong>10× better</strong> than the industry average for health &amp; nutrition Meta ads.</p>
         </div>
 
         <p class="cs-intro">Heather Smith, RD came to us with a kidney nutrition practice and no real system for reaching new patients. Once her funnel was live, the leads started coming in immediately.</p>
@@ -1391,39 +1367,53 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
      Every figure here comes from the FAQ answers further down (onboarding
      questionnaire ~30 min, reviews 30-60 min, async/no calls, review before
      anything else is built). Keep the two in step if either changes. -->
-<!-- RESULTS - Nathalie's numbers, paired with her testimonial below so the
-     build, the result, and her words read as one unit.
-     FIGURES: 66 subscribers, $1.55/lead, ~$102 spend, 64% below comparable
-     ad sets. The 64% is Meta's own comparison, which is why it is attributed
-     to Meta rather than stated flat. Update all four together. -->
+<!-- RESULTS - Nathalie. Same layout as Heather's case study above, using the
+     same .cs-* component, only the copy is pitched forward rather than as a
+     report.
+     FIGURES: 66 subscribers, $1.55/lead, ~$102 spend, 64% below comparable ad
+     sets. The 64% is Meta's own comparison, hence attributed to Meta. -->
 <section id="results">
   <div class="wrap">
-    <div class="res-grid fi">
-      <div class="res-image">
+    <div class="cs-grid fi">
+      <div class="cs-image">
         <img src="nathalie-funnel_mockup.webp" width="1585" height="878" loading="lazy" decoding="async"
-             alt="Nathalie's finished funnel: Facebook and Instagram ads, the Women's Wellness Rhythm Audit lead magnet, opt-in and thank you pages, and the automated welcome email sequence" />
+             alt="Nathalie's done-for-you funnel: Facebook and Instagram ads, the Women's Wellness Rhythm Audit lead magnet, opt-in and thank you pages, and the automated welcome sequence" />
+        <div class="cs-pills">
+          <span class="cs-fp"><span class="fp-check">&#10003;</span>Lead Magnet</span>
+          <span class="cs-fp"><span class="fp-check">&#10003;</span>Opt-In Page</span>
+          <span class="cs-fp"><span class="fp-check">&#10003;</span>Thank You Page</span>
+          <span class="cs-fp"><span class="fp-check">&#10003;</span>Welcome Emails</span>
+          <span class="cs-fp"><span class="fp-check">&#10003;</span>FB &amp; IG Ad</span>
+        </div>
       </div>
-      <div class="res-content">
+      <div class="cs-content">
         <span class="slabel">Another recent build</span>
         <h2>In a few weeks, this could be yours.</h2>
-        <p class="res-intro">This is Nathalie's funnel, built exactly the way yours would be &mdash; lead magnet, ads, pages, and a welcome sequence, all running on their own. Here is what her first cold-traffic campaign did.</p>
 
-        <div class="stat-cards">
-          <div class="stat-card">
-            <span class="stat-num">66</span>
-            <span class="stat-lbl">new subscribers from cold traffic</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">$1.55</span>
-            <span class="stat-lbl">per lead, on about $102 of ad spend</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">64%</span>
-            <span class="stat-lbl">below comparable ad sets, per Meta</span>
-          </div>
+        <div class="cs-stat">
+          <p class="cs-stat-h">Nathalie's first cold-traffic campaign brought in <strong>66 new subscribers</strong>, for about $102 in ad spend.</p>
+          <p class="cs-stat-sub">That's <strong>$1.55 per lead</strong> &ndash; <strong>64% below</strong> comparable ad sets, per Meta.</p>
         </div>
 
-        <p class="res-foot">Sixty-six people who had never heard of her now hear from her every week, for about a hundred dollars. <strong>That is the system we would build for you.</strong></p>
+        <p class="cs-intro">Nathalie Sessions, RD runs a private nutrition practice for women in midlife. We built the Women's Wellness Rhythm Audit, the ads that bring people to it, the pages, and the welcome sequence behind it &mdash; all of it in her voice, built the same way yours would be.</p>
+
+        <p class="cs-quote">I was impressed by how well they captured my brand and messaging from the beginning. The landing page and email sequence required surprisingly few edits.</p>
+        <div class="cs-attrib">
+          <div>
+            <div class="cs-attrib-name">Nathalie Sessions, RD</div>
+            <div class="cs-attrib-role">Nutrition Sessions</div>
+          </div>
+        </div>
+        <div class="cs-meta">
+          <div class="cs-meta-item">
+            <strong>Built and launched</strong>
+            ad, opt-in page, thank you page, lead magnet &amp; welcome emails
+          </div>
+          <div class="cs-meta-item">
+            <strong>This could be yours</strong>
+            the same build, in a few weeks
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1441,7 +1431,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         </div>
         <div class="t-body">
           <p class="t-lead">I&rsquo;ve often joked that what I really need is a &ldquo;unicorn&rdquo; who understands strategy but can also handle the tech and implementation that I don&rsquo;t need to be spending my time on. I feel like the combination of you + Priscilla may be that unicorn!</p>
-          <p class="t-quote">I was impressed by how well they captured my brand and messaging from the beginning &ndash; <strong>the landing page and email sequence required surprisingly few edits.</strong> They were thoughtful, collaborative, receptive to my feedback, and brought both strategy and technical expertise to the process.</p>
+          <p class="t-quote">They were thoughtful, collaborative, receptive to my feedback, and brought <strong>both strategy and technical expertise</strong> to the process.</p>
           <p class="t-quote">When we encountered an unexpected technical issue during launch, Priscilla was incredibly diligent about troubleshooting it. I always felt supported and knew things were continuing to move forward. In fact, <strong>before we even finished this project, I engaged them for another small project.</strong></p>
         </div>
     </div>
