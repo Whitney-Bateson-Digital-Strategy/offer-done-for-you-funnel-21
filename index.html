@@ -28,7 +28,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+/* scroll-padding keeps #anchor jumps clear of the sticky offer bar */
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+@media(max-width:1040px){html{scroll-padding-top:142px}}
+@media(max-width:560px){html{scroll-padding-top:152px}}
 
 :root{
   --cream:#faf8f4;
@@ -71,21 +74,42 @@ section{padding:80px 0}
 .fi.on{opacity:1;transform:none}
 .d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}.d4{transition-delay:.28s}
 
-/* urgency bar */
-.urgency-bar{background:var(--navy-dk);color:var(--white);text-align:center;padding:10px 20px;font-size:14px;font-weight:500;letter-spacing:.01em;position:relative;z-index:101}
-.urgency-bar a{color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:opacity .15s}
-.urgency-bar a:hover{opacity:.85}
-.urgency-bar .ub-dot{width:7px;height:7px;border-radius:50%;background:var(--lime);display:inline-block;animation:pulse 2s infinite;flex-shrink:0}
-.urgency-bar .ub-count{font-weight:700;color:var(--lime)}
-.urgency-bar .ub-was{color:rgba(255,255,255,.55);text-decoration:line-through;margin-right:2px}
-.urgency-bar .ub-arrow{transition:transform .2s;display:inline-block}
-.urgency-bar a:hover .ub-arrow{transform:translateX(3px)}
-@media(max-width:540px){.urgency-bar{font-size:13px;padding:9px 16px}}
+/* ── STICKY OFFER BAR ────────────────────────────────────────────────
+   Replaces the old thin urgency strip AND the white nav: one sticky band
+   carrying the offer, the countdown, and the button.
 
-/* nav */
-nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--border);padding:14px 0}
-.nav-row{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.logo{font-family:var(--head);font-size:17px;color:var(--navy);text-decoration:none;font-weight:500}
+   TO CHANGE THE DEADLINE: edit data-deadline on .sb-count in the markup
+   (ISO 8601 with offset) and the date in the .sb-copy line beside it.
+   TO SWITCH TO THE WHITE VERSION: add class="offer-bar offer-bar-light"
+   on the <div class="offer-bar"> in the markup.
+─────────────────────────────────────────────────────────────────── */
+.offer-bar{position:sticky;top:0;z-index:101;background:var(--navy-dk);color:var(--white);padding:15px 0;box-shadow:0 2px 14px rgba(1,61,70,.18)}
+.offer-row{display:flex;align-items:center;justify-content:center;gap:14px 28px;flex-wrap:wrap}
+.sb-copy{display:flex;align-items:center;gap:11px;max-width:660px;font-size:16.5px;font-weight:600;line-height:1.35;letter-spacing:.004em;margin:0;text-align:left}
+.sb-dot{width:8px;height:8px;border-radius:50%;background:var(--lime);flex-shrink:0;animation:pulse 2s infinite}
+.sb-hl{color:var(--lime);font-weight:700}
+.sb-actions{display:flex;align-items:center;gap:20px;flex-shrink:0}
+.sb-count{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.sb-unit{display:flex;flex-direction:column;align-items:center;min-width:48px;padding:5px 7px 6px;border-radius:5px;background:rgba(255,255,255,.11);line-height:1}
+.sb-num{font-family:var(--head);font-size:21px;font-weight:600;color:var(--lime);font-variant-numeric:tabular-nums}
+.sb-lbl{margin-top:4px;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+.sb-cta{flex-shrink:0;font-size:12px;padding:13px 24px}
+/* Light variant, if the navy reads too heavy at this size. */
+.offer-bar-light{background:var(--white);color:var(--text);border-bottom:1px solid var(--border);box-shadow:0 2px 12px rgba(2,82,93,.07)}
+.offer-bar-light .sb-copy{color:var(--navy)}
+.offer-bar-light .sb-dot{background:var(--coral)}
+.offer-bar-light .sb-hl{color:var(--navy);background:var(--hi-md);padding:1px 6px;border-radius:3px}
+.offer-bar-light .sb-unit{background:var(--hi-md)}
+.offer-bar-light .sb-num{color:var(--navy)}
+.offer-bar-light .sb-lbl{color:var(--muted)}
+@media(max-width:1180px){.sb-copy{font-size:15.5px;max-width:500px}.offer-row{gap:12px 18px}.sb-cta{padding:12px 20px}}
+/* Under ~1040px the copy takes the full width and the countdown sits beside
+   the button, so the sticky bar never eats more than two rows of height. */
+@media(max-width:1040px){.offer-bar{padding:12px 0}.offer-row{flex-direction:column;gap:11px}.sb-copy{display:block;max-width:640px;text-align:center;font-size:15px}.sb-dot{display:inline-block;vertical-align:middle;margin:-2px 8px 0 0}.sb-actions{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}}
+@media(max-width:560px){.offer-bar{padding:11px 0}.offer-row{gap:10px}.sb-copy{font-size:13.5px;line-height:1.32;text-align:left}.sb-count{gap:5px}.sb-unit{min-width:38px;padding:4px 5px 5px}.sb-unit-sec{display:none}.sb-num{font-size:17px}.sb-lbl{font-size:8.5px}.sb-cta{font-size:11px;padding:11px 15px}.sb-actions{gap:10px}}
+/* Narrowest phones: trim the button and units so the actions stay on one row. */
+@media(max-width:400px){.sb-actions{gap:8px}.sb-unit{min-width:34px;padding:4px 4px 5px}.sb-cta{padding:11px 11px;letter-spacing:.05em}}
+@media(prefers-reduced-motion:reduce){.sb-dot{animation:none}}
 
 /* buttons */
 .btn{display:inline-block;font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.085em;text-transform:uppercase;text-decoration:none;border:none;border-radius:4px;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s,border-color .2s;white-space:nowrap}
@@ -103,27 +127,30 @@ nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px 
 
 /* replay banner */
 [hidden]{display:none!important}
-.replay-banner{background:var(--lime-lt);color:var(--text);padding:28px 0}
-@media(max-width:640px){.replay-banner{padding:22px 0}}
-.replay-cols{display:grid;grid-template-columns:1fr minmax(0,420px);gap:40px;align-items:center}
-.replay-embed{width:100%}
-@media(max-width:860px){.replay-cols{grid-template-columns:1fr;gap:22px}.replay-embed{max-width:520px;margin:0 auto}}
-.replay-eyebrow{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);margin-bottom:9px}
-.replay-h{font-size:clamp(1.3rem,2.3vw,1.7rem);color:var(--navy);margin-bottom:9px;line-height:1.22}
-.replay-sub{font-size:15px;color:var(--text);line-height:1.55;margin:0}
+.replay-banner{background:var(--lime-lt);color:var(--text);padding:52px 0 58px}
+@media(max-width:860px){.replay-banner{padding:40px 0 44px}}
+@media(max-width:640px){.replay-banner{padding:32px 0 36px}}
+/* Centred stack: eyebrow -> title -> subhead -> video, video doing the talking. */
+.replay-copy{max-width:760px;margin:0 auto 30px;text-align:center}
+@media(max-width:640px){.replay-copy{margin-bottom:24px}}
+.replay-embed{width:100%;max-width:780px;margin:0 auto}
+.replay-eyebrow{display:block;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);margin-bottom:14px}
+.replay-h{font-size:clamp(1.45rem,3vw,2.1rem);color:var(--navy);margin:0 auto 14px;line-height:1.2;max-width:700px}
+.replay-sub{font-size:16px;color:var(--text);line-height:1.6;margin:0 auto;max-width:600px}
+@media(max-width:640px){.replay-sub{font-size:15px}}
 .replay-frame{position:relative;width:100%;padding-bottom:56.25%;border-radius:var(--r-lg);overflow:hidden;background:var(--navy-dk);box-shadow:0 6px 22px rgba(0,0,0,.24)}
 .replay-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
 .replay-cover{position:absolute;inset:0;width:100%;height:100%;padding:0;border:none;background:none;cursor:pointer;display:block}
 .replay-cover:disabled{cursor:default}
 .replay-cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.replay-play{position:absolute;top:var(--play-y,50%);left:var(--play-x,50%);transform:translate(-50%,-50%);width:56px;height:56px;display:block;transition:transform .22s ease;filter:drop-shadow(0 2px 5px rgba(2,82,93,.3)) drop-shadow(0 10px 26px rgba(2,82,93,.28))}
+.replay-play{position:absolute;top:var(--play-y,50%);left:var(--play-x,50%);transform:translate(-50%,-50%);width:72px;height:72px;display:block;transition:transform .22s ease;filter:drop-shadow(0 2px 5px rgba(2,82,93,.3)) drop-shadow(0 10px 26px rgba(2,82,93,.28))}
 .replay-play svg{width:100%;height:100%;display:block}
 .replay-cover:not(:disabled):hover .replay-play{transform:translate(-50%,-50%) scale(1.12)}
 /* The button sits over the photo panel of the title card so it never covers
    the headline. Re-centre it by setting --play-x/--play-y back to 50%. */
 .replay-cover{--play-x:17.8%;--play-y:50%}
 .replay-cover:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
-@media(max-width:860px){.replay-play{width:60px;height:60px}}
+@media(max-width:860px){.replay-play{width:62px;height:62px}}
 @media(max-width:480px){.replay-play{width:48px;height:48px}}
 @media(prefers-reduced-motion:reduce){.replay-play{transition:none}}
 
@@ -635,24 +662,43 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 </head>
 <body>
 
-<!-- URGENCY BAR -->
-<div class="urgency-bar">
-  <a href="#pricing">
-    <span class="ub-dot"></span>
-    <span>Done-for-you funnel build · <span class="ub-was">$1,997</span> <span class="ub-count">$1,597</span> until [DATE]</span>
-    <span class="ub-arrow">→</span>
-  </a>
-</div>
+<!-- ══ STICKY OFFER BAR ════════════════════════════════════════════════
+     Offer + live countdown + button in one sticky band. This replaces the
+     old thin urgency strip and the white nav bar.
 
-<!-- NAV -->
-<nav>
+     DEADLINE lives in two places, keep them in step:
+       1. data-deadline on .sb-count below (ISO 8601, with UTC offset)
+       2. the written date in the .sb-copy sentence
+     Timezone is Eastern (-04:00 on that date). Change the offset if the
+     deadline should land in another zone.
+
+     WHITE VERSION: change class="offer-bar" to
+     class="offer-bar offer-bar-light".
+     WHEN THE DEADLINE PASSES: the countdown hides itself and the copy
+     falls back to the text in .sb-expired.
+════════════════════════════════════════════════════════════════════ -->
+<div class="offer-bar">
   <div class="wrap">
-    <div class="nav-row">
-      <a class="logo" href="#"><img src="Script-Navy.png" alt="Whitney Bateson" style="height:36px;width:auto;display:block;" /></a>
-      <a class="btn btn-sm" href="#pricing">Claim your spot</a>
+    <div class="offer-row">
+      <p class="sb-copy">
+        <span class="sb-dot"></span>
+        <span>
+          <span class="sb-live">Get your funnel plus <span class="sb-hl">$1,491 in bonuses and discounts</span> when you enroll by Friday, September 25.</span>
+          <span class="sb-expired" hidden>Get your funnel built for you &mdash; <span class="sb-hl">one team, start to launch.</span></span>
+        </span>
+      </p>
+      <div class="sb-actions">
+      <div class="sb-count" id="sb-count" data-deadline="2026-09-25T23:59:59-04:00" role="timer" aria-label="Time left to enroll">
+        <span class="sb-unit"><span class="sb-num" id="sb-d">--</span><span class="sb-lbl">Days</span></span>
+        <span class="sb-unit"><span class="sb-num" id="sb-h">--</span><span class="sb-lbl">Hrs</span></span>
+        <span class="sb-unit"><span class="sb-num" id="sb-m">--</span><span class="sb-lbl">Min</span></span>
+        <span class="sb-unit sb-unit-sec"><span class="sb-num" id="sb-s">--</span><span class="sb-lbl">Sec</span></span>
+      </div>
+      <a class="btn btn-p sb-cta" href="#pricing">Claim your spot</a>
+      </div>
     </div>
   </div>
-</nav>
+</div>
 
 
 <!-- ══ REPLAY BANNER ═══════════════════════════════════════════════════
@@ -670,19 +716,21 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 ════════════════════════════════════════════════════════════════════ -->
 <section class="replay-banner" id="replay">
   <div class="wrap">
-    <div class="replay-cols">
+    <div class="replay-stack">
       <div class="replay-copy">
-        <!-- Copy is a first pass - easy to swap. Deliberately no "limited time"
-             claim: only add one if the replay really does come down. -->
-        <span class="replay-eyebrow">Watch this first</span>
-        <h2 class="replay-h">Where your next client comes from when you're off social media.</h2>
-        <p class="replay-sub">The training behind this offer &mdash; the list-building system that brings in new leads without posting, pitching, or chasing anyone.</p>
+        <span class="replay-eyebrow">Watch the replay</span>
+        <h2 class="replay-h">The List Building System That Brings in Clients While You're Off Social Media</h2>
+        <p class="replay-sub">See how practitioners like you are growing audiences of future clients without endless posting, then scroll down for a special offer to have us build yours.</p>
       </div>
       <div class="replay-embed">
         <div class="replay-frame">
           <!-- WHEN THE REPLAY EXISTS: put the embed URL in data-video-src below
                (e.g. https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0).
                Until then the button is inert and the still just sits there. -->
+          <!-- The still is the branded title card, which repeats the headline now
+               sitting above the video. For a plain still of Whitney instead,
+               swap the src below for video-overlay.png and set
+               --play-x back to 50% on .replay-cover in the CSS. -->
           <button class="replay-cover" id="replay-cover" type="button" data-video-src="" aria-label="Play the training replay">
             <img class="replay-cover-img" src="Funnel%20Webinar%20V1%20(1).png" width="1920" height="1080"
                  alt="Free training: the list-building system that brings in clients while you're off social media" />
@@ -968,7 +1016,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
           <p>Your ads go live and we stay on them by email for a week – watching delivery, checking the tracking fires, and sorting anything the platform throws at a brand-new campaign.</p>
           <!-- FAST-ACTION BONUS: set the real date below. It appears twice -
                here and in the pricing list. Delete this <p> to drop the offer. -->
-          <p class="bonus-fast"><span class="bonus-fast-tag">Fast action</span> Buy before <strong>[DATE]</strong> and we stay on your ads for a <strong>second week</strong>.</p>
+          <p class="bonus-fast"><span class="bonus-fast-tag">Fast action</span> Buy before <strong>Friday, September 25</strong> and we stay on your ads for a <strong>second week</strong>.</p>
         </div>
         <div class="bonus-item">
           <span class="bonus-icon">🎓</span>
@@ -1067,7 +1115,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
     <div class="section-cta section-cta-left fi d2">
       <p class="section-cta-line">Want this running in the background of your practice?</p>
       <a class="btn btn-p" href="#pricing">Get started &middot; $1,597</a>
-      <p class="section-cta-sub">Special pricing ends [DATE].</p>
+      <p class="section-cta-sub">Special pricing ends Friday, September 25.</p>
     </div>
   </div>
 </section>
@@ -1350,7 +1398,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
            the fast-action bonus above. -->
       <span class="price-was">$1,997</span>
       <span class="price-big">$1,597</span>
-      <p class="price-note"><strong>Save $400.</strong> Special pricing ends [DATE].</p>
+      <p class="price-note"><strong>Save $400.</strong> Special pricing ends Friday, September 25.</p>
       <p class="p-caption">One-time payment. No ongoing fees from us.</p>
 
       <hr class="p-divider"/>
@@ -1363,7 +1411,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <li>Delivery email + 5-email welcome sequence, written and set up</li>
         <li>Facebook &amp; Instagram ad campaign – copy, creative, targeting, and launch</li>
         <li>BONUS: Your Funnel Command Center – Notion hub with walkthrough videos and every file we built</li>
-        <li><span>BONUS: 7 days of email support while your ads go live <span class="li-fast">&mdash; a second week if you buy before [DATE]</span></span></li>
+        <li><span>BONUS: 7 days of email support while your ads go live <span class="li-fast">&mdash; a second week if you buy before Friday, September 25</span></span></li>
         <li>BONUS: Ads Made Simple course – learn how to run, edit, and monitor your own ads</li>
       </ul>
 
@@ -1479,7 +1527,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
   <div class="wrap">
     <div class="fi">
       <h2>If you've been meaning to build this for a while, <span class="ul">this is the shortcut</span>.</h2>
-      <p class="sub"><span class="nb">$1,597 one-time, until [DATE].</span> <span class="nb">We do the work. You finally get a system bringing in new leads while you focus on your practice.</span></p>
+      <p class="sub"><span class="nb">$1,597 one-time, until Friday, September 25.</span> <span class="nb">We do the work. You finally get a system bringing in new leads while you focus on your practice.</span></p>
       <div class="close-ctas">
         <a class="btn btn-p" href="#pricing">Get started · $1,597</a>
         <a class="btn btn-s" href="https://whitneybateson.as.me/dfy-funnel-discovery">Book a call first</a>
@@ -1550,6 +1598,48 @@ els.forEach(el => io.observe(el));
   subs.addEventListener('input', update);
   conv.addEventListener('input', update);
   value.addEventListener('input', update);
+})();
+</script>
+
+<script>
+/* Sticky offer bar countdown. Deadline comes from data-deadline on
+   #sb-count, so the date only ever has to change in the markup. Once it
+   passes, the countdown is removed and the copy swaps to the evergreen
+   line. A missing or unparseable date just hides the countdown and leaves
+   the rest of the bar working. */
+(function(){
+  var box = document.getElementById('sb-count');
+  if(!box) return;
+  var target = Date.parse(box.getAttribute('data-deadline') || '');
+  var live    = document.querySelector('.sb-live');
+  var expired = document.querySelector('.sb-expired');
+
+  function expire(){
+    box.hidden = true;
+    if(live)    live.hidden = true;
+    if(expired) expired.hidden = false;
+  }
+  if(!target || isNaN(target)){ box.hidden = true; return; }
+
+  var out = {
+    d: document.getElementById('sb-d'),
+    h: document.getElementById('sb-h'),
+    m: document.getElementById('sb-m'),
+    s: document.getElementById('sb-s')
+  };
+  var pad = function(n){ return n < 10 ? '0' + n : String(n); };
+
+  function tick(){
+    var left = target - Date.now();
+    if(left <= 0){ clearInterval(timer); expire(); return; }
+    var secs = Math.floor(left / 1000);
+    out.d.textContent = String(Math.floor(secs / 86400));
+    out.h.textContent = pad(Math.floor(secs / 3600) % 24);
+    out.m.textContent = pad(Math.floor(secs / 60) % 60);
+    out.s.textContent = pad(secs % 60);
+  }
+  tick();
+  var timer = setInterval(tick, 1000);
 })();
 </script>
 
