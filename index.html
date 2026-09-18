@@ -604,11 +604,16 @@ footer a:hover{color:var(--white)}
 @media(max-width:980px){.bonuses{grid-template-columns:1fr;max-width:640px;margin:0 auto}}
 .bonus-item{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--hi-md);border-top:3px solid var(--coral);border-radius:var(--r);padding:30px 28px 28px;text-align:left;box-shadow:0 4px 18px rgba(2,82,93,.08)}
 @media(max-width:640px){.bonus-item{padding:26px 22px 24px}}
-.bonus-tag{display:block;font-size:10.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--coral);margin-bottom:16px}
-.bonus-icon{font-size:30px;margin-bottom:14px;line-height:1;display:block}
-.bonus-item h3{font-family:var(--head);font-size:1.4rem;font-weight:600;color:var(--navy);margin-bottom:12px;line-height:1.22}
-.bonus-value{display:inline-block;align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--navy);border:1px solid var(--hi-md);background:var(--hi-md);border-radius:4px;padding:4px 10px;margin-bottom:14px}
-.bonus-item p{font-size:15.5px;color:var(--text);line-height:1.65;margin:0}
+/* One dominant idea per card: the price, struck out. The old cards stacked a
+   tag, an emoji, a title, a value chip and a long paragraph, so nothing led
+   and three of them together read as noise rather than as an offer. */
+.bonus-price{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+.bonus-was{position:relative;font-family:var(--head);font-size:2.9rem;font-weight:700;color:var(--muted);line-height:1}
+.bonus-was::after{content:'';position:absolute;left:-3px;right:-3px;top:47%;height:3px;border-radius:2px;background:var(--coral)}
+.bonus-now{font-size:12.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--coral)}
+.bonus-item h3{font-family:var(--head);font-size:1.35rem;font-weight:600;color:var(--navy);margin-bottom:10px;line-height:1.22}
+.bonus-item p{font-size:15.5px;color:var(--text);line-height:1.6;margin:0}
+@media(max-width:640px){.bonus-was{font-size:2.5rem}}
 
 .bonus-total{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;max-width:620px;margin:32px auto 0;padding:24px 28px;background:var(--navy);border-radius:var(--r-lg)}
 .bonus-total-label{font-size:11.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.7)}
@@ -751,7 +756,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
    Add any new number display here too. */
 .comparison-list .c-price,
-.sb-num, .bonus-num, .bonus-total-num,
+.sb-num, .bonus-num, .bonus-total-num, .bonus-was,
 .cost-calc-out, .cost-calc-value,
 .price-was, .price-big,
 .funnel-cost dd{
@@ -1114,7 +1119,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <span class="bonus-eyebrow-dot"></span>Only until Friday, September 25
       </span>
       <h2>Enroll this week and these three come with it.</h2>
-      <p class="bonus-sub">Three add-ons that turn a finished funnel into one you can actually run: the hub that holds every file and walkthrough, a week of us watching your ads go live, and the course that hands you the controls. They are part of the offer until Friday. After that, they're not.</p>
+      <p class="bonus-sub">Three add-ons that turn a finished funnel into one you can actually run. They&rsquo;re part of the offer until Friday. After that, they&rsquo;re not.</p>
     </div>
 
     <!-- Countdown inherits the deadline from <body data-deadline>. -->
@@ -1130,25 +1135,28 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
     <div class="bonuses fi d2">
       <div class="bonus-item">
-        <span class="bonus-tag">Bonus 01</span>
-        <span class="bonus-icon">&#127916;</span>
+        <div class="bonus-price">
+          <span class="bonus-was">$397</span>
+          <span class="bonus-now">Yours free</span>
+        </div>
         <h3>Your Funnel Command Center</h3>
-        <span class="bonus-value">$397 value</span>
-        <p>Your personal Notion hub with video walkthroughs of your funnel, ad campaign, and email automations, plus every file we built. Nothing lives only in our heads &mdash; you can hand it to a VA, or come back to it in a year and still know how it works.</p>
+        <p>A Notion hub with every file we built and a video walkthrough of each piece, so none of it lives only in our heads.</p>
       </div>
       <div class="bonus-item">
-        <span class="bonus-tag">Bonus 02</span>
-        <span class="bonus-icon">&#128172;</span>
+        <div class="bonus-price">
+          <span class="bonus-was">$197</span>
+          <span class="bonus-now">Yours free</span>
+        </div>
         <h3>7 Days of Ad Support</h3>
-        <span class="bonus-value">$197 value</span>
-        <p>Your ads go live and we stay on them by email for a week &mdash; watching delivery, checking the tracking fires, and sorting anything the platform throws at a brand-new campaign. The week your ads launch is the week things go sideways, and you won't be on your own for it.</p>
+        <p>The week your ads go live is the week things go sideways. We&rsquo;re on email with you for all of it.</p>
       </div>
       <div class="bonus-item">
-        <span class="bonus-tag">Bonus 03</span>
-        <span class="bonus-icon">&#127891;</span>
+        <div class="bonus-price">
+          <span class="bonus-was">$497</span>
+          <span class="bonus-now">Yours free</span>
+        </div>
         <h3>Ads Made Simple Course</h3>
-        <span class="bonus-value">$497 value</span>
-        <p>Our full self-paced course on running your own ads. Learn how to make edits, read results, and tweak your campaign long after we hand it off &mdash; so you're never stuck paying someone else to change a headline.</p>
+        <p>The full course on running your own ads, so you&rsquo;re never stuck paying someone to change a headline.</p>
       </div>
     </div>
 
