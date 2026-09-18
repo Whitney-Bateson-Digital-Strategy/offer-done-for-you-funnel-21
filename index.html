@@ -734,6 +734,26 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 @keyframes fpFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 @media(max-width:900px){.cs-fp:nth-child(1){top:4%;left:4%}.cs-fp:nth-child(2){top:4%;right:4%;left:auto}.cs-fp:nth-child(3){top:auto;bottom:36%;left:4%}.cs-fp:nth-child(4){top:auto;bottom:18%;right:4%;left:auto}.cs-fp:nth-child(5){bottom:4%;left:4%}}
 
+/* ── RESULTS ───────────────────────────────────────────────────────
+   Nathalie's numbers, framed forward: the headline promises, the stats
+   evidence it, the closing line hands it back to the reader. Mirrors the
+   Heather case study's proportions but leads on the figures. */
+#results{background:var(--soft);padding:84px 0;border-top:1px solid var(--border)}
+@media(max-width:640px){#results{padding:60px 0}}
+.res-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:64px;align-items:center;max-width:1140px;margin:0 auto}
+@media(max-width:960px){.res-grid{grid-template-columns:1fr;gap:40px;max-width:640px}}
+.res-image img{width:100%;height:auto;display:block;border-radius:var(--r)}
+.res-content .slabel{margin-bottom:16px}
+.res-content h2{font-size:clamp(1.6rem,3.2vw,2.2rem);margin-bottom:18px;line-height:1.22}
+.res-intro{font-size:16.5px;color:var(--text);line-height:1.68;margin-bottom:28px}
+.res-stats{display:grid;gap:12px;margin-bottom:26px}
+.res-stat{display:flex;align-items:baseline;gap:16px;background:var(--white);border:1px solid var(--border);border-left:3px solid var(--coral);border-radius:var(--r);padding:16px 20px;box-shadow:var(--sh-sm)}
+.res-num{font-family:var(--head);font-size:2.3rem;font-weight:700;color:var(--navy);line-height:1;flex-shrink:0;min-width:104px;font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1}
+.res-lbl{font-size:15px;color:var(--text);line-height:1.5;font-weight:600}
+@media(max-width:480px){.res-stat{gap:12px;padding:14px 16px}.res-num{font-size:1.9rem;min-width:86px}.res-lbl{font-size:14px}}
+.res-foot{font-size:16.5px;color:var(--text);line-height:1.68;margin:0;padding-top:22px;border-top:1px solid var(--border)}
+.res-foot strong{color:var(--navy);font-weight:700}
+
 /* ── LINING FIGURES ────────────────────────────────────────────────
    Cormorant Garamond defaults to OLD-STYLE figures: the 1 looks like a
    small-cap I, and the 3/4/5/7/9 drop below the baseline. Lovely in running
@@ -1360,10 +1380,48 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
      Every figure here comes from the FAQ answers further down (onboarding
      questionnaire ~30 min, reviews 30-60 min, async/no calls, review before
      anything else is built). Keep the two in step if either changes. -->
+<!-- RESULTS - Nathalie's numbers, paired with her testimonial below so the
+     build, the result, and her words read as one unit.
+     FIGURES: 66 subscribers, $1.55/lead, ~$102 spend, 64% below comparable
+     ad sets. The 64% is Meta's own comparison, which is why it is attributed
+     to Meta rather than stated flat. Update all four together. -->
+<section id="results">
+  <div class="wrap">
+    <div class="res-grid fi">
+      <div class="res-image">
+        <img src="nathalie-funnel_mockup.webp" width="1585" height="878" loading="lazy" decoding="async"
+             alt="Nathalie's finished funnel: Facebook and Instagram ads, the Women's Wellness Rhythm Audit lead magnet, opt-in and thank you pages, and the automated welcome email sequence" />
+      </div>
+      <div class="res-content">
+        <span class="slabel">Another recent build</span>
+        <h2>In a few weeks, this could be yours.</h2>
+        <p class="res-intro">This is Nathalie's funnel, built exactly the way yours would be &mdash; lead magnet, ads, pages, and a welcome sequence, all running on their own. Here is what her first cold-traffic campaign did.</p>
+
+        <div class="res-stats">
+          <div class="res-stat">
+            <span class="res-num">66</span>
+            <span class="res-lbl">new subscribers from cold traffic</span>
+          </div>
+          <div class="res-stat">
+            <span class="res-num">$1.55</span>
+            <span class="res-lbl">per lead, on about $102 of ad spend</span>
+          </div>
+          <div class="res-stat">
+            <span class="res-num">64%</span>
+            <span class="res-lbl">below comparable ad sets, per Meta</span>
+          </div>
+        </div>
+
+        <p class="res-foot">Sixty-six people who had never heard of her now hear from her every week, for about a hundred dollars. <strong>That is the system we would build for you.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TESTIMONIAL - Nathalie. Must stay BELOW #about: she names Whitney and
      Priscilla, so she reads as a non sequitur any earlier. After #compare she
      is also answering exactly what that section argues. -->
-<section class="t-band t-band-soft">
+<section class="t-band t-band-white">
   <div class="wrap">
     <div class="t-card fi">
         <div class="t-person">
