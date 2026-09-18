@@ -602,8 +602,18 @@ footer a:hover{color:var(--white)}
 
 .bonuses{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
 @media(max-width:980px){.bonuses{grid-template-columns:1fr;max-width:640px;margin:0 auto}}
-.bonus-item{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--hi-md);border-top:3px solid var(--coral);border-radius:var(--r);padding:30px 28px 28px;text-align:left;box-shadow:0 4px 18px rgba(2,82,93,.08)}
-@media(max-width:640px){.bonus-item{padding:26px 22px 24px}}
+/* Padding moves to .bonus-body so the screenshot panel can bleed to the card
+   edges without negative-margin maths at every breakpoint. */
+.bonus-item{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--hi-md);border-top:3px solid var(--coral);border-radius:var(--r);padding:0;overflow:hidden;text-align:left;box-shadow:0 4px 18px rgba(2,82,93,.08)}
+/* The shots fill the panel width and bleed off the bottom, clipped by the
+   card - they read as real screenshots poking into the card rather than
+   thumbnails floating in a box. Top-anchored, because the top of each shot
+   is the part that says what it is. All three run 0.90-1.14 in aspect, so
+   the same treatment holds for each. */
+.bonus-shot{height:218px;flex-shrink:0;overflow:hidden;padding:14px 14px 0;background:var(--hi);border-bottom:1px solid var(--hi-md)}
+.bonus-shot img{display:block;width:100%;height:auto;border-radius:3px 3px 0 0}
+.bonus-body{display:flex;flex-direction:column;flex:1;padding:26px 28px 28px}
+@media(max-width:640px){.bonus-shot{height:215px}.bonus-body{padding:24px 22px 24px}}
 /* One dominant idea per card: the price, struck out. The old cards stacked a
    tag, an emoji, a title, a value chip and a long paragraph, so nothing led
    and three of them together read as noise rather than as an offer. */
@@ -1135,28 +1145,46 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
     <div class="bonuses fi d2">
       <div class="bonus-item">
-        <div class="bonus-price">
-          <span class="bonus-was">$397</span>
-          <span class="bonus-now">Yours free</span>
+        <div class="bonus-shot">
+          <img src="bonus-command-center.jpg" width="854" height="945" loading="lazy" decoding="async"
+               alt="A client&rsquo;s Funnel Command Center in Notion: the handoff page with every asset linked, the action items before going live, and video walkthroughs embedded" />
         </div>
-        <h3>Your Funnel Command Center</h3>
-        <p>A Notion hub with every file we built and a video walkthrough of each piece, so none of it lives only in our heads.</p>
+        <div class="bonus-body">
+          <div class="bonus-price">
+            <span class="bonus-was">$397</span>
+            <span class="bonus-now">Yours free</span>
+          </div>
+          <h3>Your Funnel Command Center</h3>
+          <p>A Notion hub with every file we built and a video walkthrough of each piece, so none of it lives only in our heads.</p>
+        </div>
       </div>
       <div class="bonus-item">
-        <div class="bonus-price">
-          <span class="bonus-was">$197</span>
-          <span class="bonus-now">Yours free</span>
+        <div class="bonus-shot">
+          <img src="bonus-ad-support.jpg" width="1373" height="1307" loading="lazy" decoding="async"
+               alt="Priscilla, our ads expert, beside a live campaign in Meta Ads Manager and the ad creative running in it" />
         </div>
-        <h3>7 Days of Ad Support</h3>
-        <p>The week your ads go live is the week things go sideways. We&rsquo;re on email with you for all of it.</p>
+        <div class="bonus-body">
+          <div class="bonus-price">
+            <span class="bonus-was">$197</span>
+            <span class="bonus-now">Yours free</span>
+          </div>
+          <h3>7 Days of Ad Support</h3>
+          <p>The week your ads go live is the week things go sideways. We&rsquo;re on email with you for all of it.</p>
+        </div>
       </div>
       <div class="bonus-item">
-        <div class="bonus-price">
-          <span class="bonus-was">$497</span>
-          <span class="bonus-now">Yours free</span>
+        <div class="bonus-shot">
+          <img src="bonus-ads-course.jpg" width="1101" height="966" loading="lazy" decoding="async"
+               alt="The Ads Made Simple course: modules on strategy, creative and reading your results, plus the full video walkthrough" />
         </div>
-        <h3>Ads Made Simple Course</h3>
-        <p>The full course on running your own ads, so you&rsquo;re never stuck paying someone to change a headline.</p>
+        <div class="bonus-body">
+          <div class="bonus-price">
+            <span class="bonus-was">$497</span>
+            <span class="bonus-now">Yours free</span>
+          </div>
+          <h3>Ads Made Simple Course</h3>
+          <p>The full course on running your own ads, so you&rsquo;re never stuck paying someone to change a headline.</p>
+        </div>
       </div>
     </div>
 
