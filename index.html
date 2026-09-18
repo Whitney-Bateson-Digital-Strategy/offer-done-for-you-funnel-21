@@ -122,6 +122,9 @@ section{padding:80px 0}
 .btn-s{background:var(--white);color:var(--navy);padding:12px 24px;border:1px solid rgba(2,82,93,.3)}
 .btn-s:hover{background:var(--soft);border-color:var(--navy);transform:translateY(-1px)}
 .btn-block{display:block;width:100%;text-align:center}
+/* The pricing CTA is the button the whole page points at, so it carries more
+   weight than the inline ones. */
+#pricing .btn-block{font-size:14.5px;letter-spacing:.07em;padding:18px 25px}
 
 /* labels */
 .pill{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:18px}
@@ -376,7 +379,7 @@ section{padding:80px 0}
 .beta-dot{width:7px;height:7px;border-radius:50%;background:var(--navy);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.82)}}
 /* The struck full price sits above, quiet, so the live one still reads first. */
-.price-was{display:block;font-family:var(--head);font-size:1.5rem;font-weight:600;color:var(--muted);line-height:1;margin-bottom:4px;text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(255,127,80,.6)}
+.price-was{display:block;font-family:var(--head);font-size:2.1rem;font-weight:600;color:var(--muted);line-height:1;margin-bottom:6px;text-decoration:line-through;text-decoration-thickness:3px;text-decoration-color:rgba(255,127,80,.85)}
 .price-big{font-family:var(--head);font-size:3.2rem;font-weight:600;color:var(--navy);line-height:1;display:block;margin-bottom:8px}
 .price-note{font-size:14.5px;color:var(--coral-dk);margin-bottom:6px;line-height:1.5}
 .price-note strong{color:var(--coral-dk);font-weight:700}
@@ -393,7 +396,15 @@ section{padding:80px 0}
 .price-note{font-size:16px;color:var(--text);font-style:italic;font-weight:600;margin-bottom:26px}
 .inc-list{list-style:none;margin:0}
 .inc-list li{display:flex;align-items:flex-start;gap:13px;margin-bottom:11px;font-size:16px;color:var(--text);line-height:1.5}
+
 .inc-list li::before{content:'✓';color:var(--coral);font-weight:700;flex-shrink:0;margin-top:2px}
+/* Bonus lines were indistinguishable from the deliverables they sat among,
+   which is the opposite of what a bonus is for. Tinted row, coral rule, star
+   instead of a tick, and the word BONUS as a badge. */
+.inc-list .inc-bonus{background:var(--hi);border-left:3px solid var(--coral);border-radius:var(--r);padding:11px 14px;margin-bottom:8px;align-items:flex-start}
+.inc-list .inc-bonus::before{content:'★';color:var(--coral);margin-top:1px}
+.inc-bonus-tag{display:inline-block;background:var(--coral);color:var(--white);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:3px;padding:3px 7px;margin-right:8px;vertical-align:2px}
+.inc-bonus strong{color:var(--navy);font-weight:700}
 .beta-terms{background:var(--cream);border:1px solid var(--border);border-radius:var(--r);padding:16px 22px;margin-bottom:26px;font-size:16px;color:var(--muted);line-height:1.62}
 .beta-terms strong{color:var(--text);font-weight:600}
 .cta-pair{display:flex;flex-direction:column;gap:10px}
@@ -476,11 +487,11 @@ p.ob-sub{font-size:17.5px;color:var(--text);max-width:640px;margin:0 auto 60px;l
 .faq-list{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;max-width:1100px}
 @media(max-width:760px){.faq-list{grid-template-columns:1fr;max-width:700px}}
 .faq-item{border:1px solid var(--border);border-radius:var(--r);background:var(--white);overflow:hidden;align-self:start}
-.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 26px;cursor:pointer;font-family:var(--head);font-size:1.03rem;font-weight:600;color:var(--text);list-style:none;user-select:none;transition:background .15s}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 26px;cursor:pointer;font-family:var(--head);font-size:1.2rem;font-weight:700;color:var(--navy);list-style:none;user-select:none;transition:background .15s}
 .faq-q:hover{background:var(--soft)}
 .faq-q::after{content:'+';font-family:var(--body);font-size:22px;color:var(--coral);flex-shrink:0;transition:transform .25s;line-height:1}
 details[open] .faq-q::after{transform:rotate(45deg)}
-.faq-a{padding:0 26px 22px;padding-top:18px;font-size:16px;color:var(--muted);line-height:1.68;border-top:1px solid var(--border)}
+.faq-a{padding:0 26px 22px;padding-top:18px;font-size:16.5px;color:var(--text);line-height:1.7;border-top:1px solid var(--border)}
 
 /* close */
 #close{background:var(--navy);text-align:center;padding:88px 0;position:relative;overflow:hidden}
@@ -604,10 +615,6 @@ footer a:hover{color:var(--white)}
 .bonus-cta-line{font-family:var(--head);font-style:italic;font-weight:600;font-size:clamp(1.2rem,2.5vw,1.5rem);color:var(--navy);margin:0 0 20px;line-height:1.4}
 .bonus-cta-sub{font-size:14.5px;color:var(--text);font-style:italic;font-weight:600;line-height:1.6;max-width:520px;margin:16px auto 0}
 
-/* price-was */
-.price-was{font-size:14px;color:var(--muted);font-style:italic;font-weight:600;margin-bottom:4px}
-.price-was s{text-decoration-color:rgba(92,92,92,.5)}
-
 /* no bold inside any card */
 .step-card strong, .step-card b,
 .step-card h3,
@@ -654,7 +661,10 @@ details[open] .comparison-toggle{background:var(--hi);border-style:solid;border-
 details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 .comparison-toggle::-webkit-details-marker{display:none}
 .comparison-toggle{list-style:none}
-.comparison-list{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:28px 32px;box-shadow:var(--sh-sm);margin-top:14px}
+/* #pricing is centred, which was centring every label in here. The list is
+   a two-column ledger, so it reads left. */
+.comparison-list{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:28px 32px;box-shadow:var(--sh-sm);margin-top:14px;text-align:left}
+/* See the LINING FIGURES rule near the bottom of this sheet. */
 @media(max-width:640px){.comparison-list{padding:22px 24px}}
 .comparison-intro{font-size:14px;color:var(--text);font-style:italic;font-weight:600;text-align:center;margin-bottom:18px;line-height:1.55}
 .comparison-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px dashed var(--border);font-size:16px}
@@ -666,7 +676,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 .comparison-sub .c-price{color:var(--navy);font-family:var(--head);font-size:1.15rem;font-weight:700;white-space:nowrap}
 .comparison-total{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0 6px;margin-top:6px;border-top:1px solid var(--border);font-size:16px}
 .comparison-total .c-label{color:var(--text);font-style:italic;font-weight:600}
-.comparison-total .c-price{color:var(--text);font-family:var(--head);font-size:1.25rem;font-weight:500;white-space:nowrap}
+.comparison-total .c-price{color:var(--text);font-family:var(--head);font-size:1.25rem;font-weight:700;white-space:nowrap}
 .comparison-ours{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 18px;margin-top:14px;background:var(--hi);border-radius:var(--r);border-left:3px solid var(--coral);font-size:16px}
 .comparison-ours .c-label{color:var(--text);font-weight:600}
 .comparison-ours .c-label .nb{color:var(--navy)}
@@ -719,6 +729,24 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 .cs-fp:nth-child(5){bottom:8%;left:4%;animation-delay:2.4s}
 @keyframes fpFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 @media(max-width:900px){.cs-fp:nth-child(1){top:4%;left:4%}.cs-fp:nth-child(2){top:4%;right:4%;left:auto}.cs-fp:nth-child(3){top:auto;bottom:36%;left:4%}.cs-fp:nth-child(4){top:auto;bottom:18%;right:4%;left:auto}.cs-fp:nth-child(5){bottom:4%;left:4%}}
+
+/* ── LINING FIGURES ────────────────────────────────────────────────
+   Cormorant Garamond defaults to OLD-STYLE figures: the 1 looks like a
+   small-cap I, and the 3/4/5/7/9 drop below the baseline. Lovely in running
+   prose, bad for anything you need to read as a number. Every numeric
+   display on the page uses Cormorant, so they all get lining, tabular
+   figures - lining so the digits are unambiguous, tabular so columns and
+   ticking countdowns do not jitter as the numbers change.
+
+   Add any new number display here too. */
+.comparison-list .c-price,
+.sb-num, .bonus-num, .bonus-total-num,
+.cost-calc-out, .cost-calc-value,
+.price-was, .price-big,
+.funnel-cost dd{
+  font-variant-numeric:lining-nums tabular-nums;
+  font-feature-settings:"lnum" 1,"tnum" 1;
+}
 </style>
 </head>
 <body data-deadline="2026-09-25T23:59:59-04:00">
@@ -1506,9 +1534,9 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <li>Thank you page</li>
         <li>Delivery email + 5-email welcome sequence, written and set up</li>
         <li>Facebook &amp; Instagram ad campaign – copy, creative, targeting, and launch</li>
-        <li>BONUS: Your Funnel Command Center – Notion hub with walkthrough videos and every file we built</li>
-        <li>BONUS: 7 days of email support while your ads go live</li>
-        <li>BONUS: Ads Made Simple course – learn how to run, edit, and monitor your own ads</li>
+        <li class="inc-bonus"><span><span class="inc-bonus-tag">Bonus</span><strong>Your Funnel Command Center</strong> – Notion hub with walkthrough videos and every file we built</span></li>
+        <li class="inc-bonus"><span><span class="inc-bonus-tag">Bonus</span><strong>7 days of email support</strong> while your ads go live</span></li>
+        <li class="inc-bonus"><span><span class="inc-bonus-tag">Bonus</span><strong>Ads Made Simple course</strong> – learn how to run, edit, and monitor your own ads</span></li>
       </ul>
 
       <hr class="p-divider"/>
