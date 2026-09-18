@@ -79,8 +79,9 @@ section{padding:80px 0}
    Replaces the old thin urgency strip AND the white nav: one sticky band
    carrying the offer, the countdown, and the button.
 
-   TO CHANGE THE DEADLINE: edit data-deadline on .sb-count in the markup
-   (ISO 8601 with offset) and the date in the .sb-copy line beside it.
+   TO CHANGE THE DEADLINE: edit data-deadline on <body>. It drives every
+   countdown on the page. Dates written out in copy are separate - search
+   the file for "September 25".
    TO SWITCH TO THE WHITE VERSION: add class="offer-bar offer-bar-light"
    on the <div class="offer-bar"> in the markup.
 ─────────────────────────────────────────────────────────────────── */
@@ -553,20 +554,49 @@ footer a:hover{color:var(--white)}
 .funnel-cost dt{font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--coral);margin-bottom:5px}
 .funnel-cost dd{margin:0;font-family:var(--head);font-size:1.15rem;font-weight:600;color:var(--navy);line-height:1.25}
 
-/* bonuses */
-/* Fast-action add-on, sits inside the ad-support bonus card. */
-.bonus-fast{margin-top:14px;padding-top:14px;border-top:1px dashed rgba(2,82,93,.22);font-size:13.5px;line-height:1.6;text-align:left}
-.bonus-fast-tag{display:inline-block;background:var(--coral);color:var(--white);font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;border-radius:3px;padding:3px 8px;margin-right:7px;vertical-align:1px}
-.bonus-fast strong{color:var(--navy);font-weight:700}
-.li-fast{color:var(--coral-dk);font-weight:600}
-.bonuses{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
-@media(max-width:860px){.bonuses{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.bonuses{grid-template-columns:1fr}}
-.bonus-item{background:var(--hi);border:1px solid var(--hi-md);border-radius:var(--r);padding:22px 24px;text-align:center}
-.bonus-icon{font-size:24px;margin-bottom:10px;line-height:1;display:block}
-.bonus-item h4{font-family:var(--head);font-size:1rem;font-weight:500;color:var(--navy);margin-bottom:6px}
-.bonus-item p{font-size:14px;color:var(--muted);line-height:1.55;margin:0 0 10px}
-.bonus-value{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--navy);border:1px solid var(--hi-md);background:var(--white);border-radius:4px;padding:2px 8px;margin:6px 0 12px}
+/* ── BONUSES AS A LIMITED-TIME STACK ───────────────────────────────
+   These are only worth anything if the page treats them as expiring, so
+   the section gets its own header, a live countdown, a stacked value, and
+   a CTA of its own rather than three quiet tiles under the funnel.
+
+   THE DEADLINE lives in ONE place: data-deadline on <body>. The written
+   dates in this section's copy still have to be changed by hand - search
+   for "September 25". */
+#included{padding-top:92px;padding-bottom:92px}
+@media(max-width:640px){#included{padding-top:64px;padding-bottom:64px}}
+.bonus-head{max-width:760px;margin:0 auto 30px;text-align:center}
+.bonus-eyebrow{display:inline-flex;align-items:center;gap:9px;background:var(--coral);color:var(--white);font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;border-radius:999px;padding:8px 18px;margin-bottom:20px}
+.bonus-eyebrow-dot{width:7px;height:7px;border-radius:50%;background:var(--white);animation:pulse 2s infinite}
+@media(prefers-reduced-motion:reduce){.bonus-eyebrow-dot{animation:none}}
+.bonus-sub{font-size:17.5px;line-height:1.7;color:var(--text);max-width:680px;margin:16px auto 0}
+@media(max-width:640px){.bonus-sub{font-size:16.5px}}
+
+.bonus-timer{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:36px}
+.bonus-timer-label{font-size:11.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.bonus-clock{display:flex;align-items:flex-start;gap:10px}
+.bonus-unit{display:flex;flex-direction:column;align-items:center;min-width:72px;padding:12px 10px 11px;background:var(--navy);border-radius:var(--r);line-height:1}
+.bonus-num{font-family:var(--head);font-size:2rem;font-weight:600;color:var(--lime);font-variant-numeric:tabular-nums}
+.bonus-lbl{margin-top:7px;font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+@media(max-width:560px){.bonus-clock{gap:7px}.bonus-unit{min-width:60px;padding:10px 7px 9px}.bonus-num{font-size:1.6rem}}
+
+.bonuses{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+@media(max-width:980px){.bonuses{grid-template-columns:1fr;max-width:640px;margin:0 auto}}
+.bonus-item{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--hi-md);border-top:3px solid var(--coral);border-radius:var(--r);padding:30px 28px 28px;text-align:left;box-shadow:0 4px 18px rgba(2,82,93,.08)}
+@media(max-width:640px){.bonus-item{padding:26px 22px 24px}}
+.bonus-tag{display:block;font-size:10.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--coral);margin-bottom:16px}
+.bonus-icon{font-size:30px;margin-bottom:14px;line-height:1;display:block}
+.bonus-item h3{font-family:var(--head);font-size:1.4rem;font-weight:600;color:var(--navy);margin-bottom:12px;line-height:1.22}
+.bonus-value{display:inline-block;align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--navy);border:1px solid var(--hi-md);background:var(--hi-md);border-radius:4px;padding:4px 10px;margin-bottom:14px}
+.bonus-item p{font-size:15.5px;color:var(--text);line-height:1.65;margin:0}
+
+.bonus-total{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;max-width:620px;margin:32px auto 0;padding:24px 28px;background:var(--navy);border-radius:var(--r-lg)}
+.bonus-total-label{font-size:11.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.bonus-total-num{font-family:var(--head);font-size:clamp(2.4rem,6vw,3.2rem);font-weight:600;color:var(--lime);line-height:1.05}
+.bonus-total-note{font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.88);font-weight:600;margin-top:6px}
+
+.bonus-cta{text-align:center;margin-top:34px}
+.bonus-cta-line{font-family:var(--head);font-style:italic;font-weight:600;font-size:clamp(1.2rem,2.5vw,1.5rem);color:var(--navy);margin:0 0 20px;line-height:1.4}
+.bonus-cta-sub{font-size:14.5px;color:var(--text);font-style:italic;font-weight:600;line-height:1.6;max-width:520px;margin:16px auto 0}
 
 /* price-was */
 .price-was{font-size:14px;color:var(--muted);font-style:italic;font-weight:600;margin-bottom:4px}
@@ -685,17 +715,16 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 @media(max-width:900px){.cs-fp:nth-child(1){top:4%;left:4%}.cs-fp:nth-child(2){top:4%;right:4%;left:auto}.cs-fp:nth-child(3){top:auto;bottom:36%;left:4%}.cs-fp:nth-child(4){top:auto;bottom:18%;right:4%;left:auto}.cs-fp:nth-child(5){bottom:4%;left:4%}}
 </style>
 </head>
-<body>
+<body data-deadline="2026-09-25T23:59:59-04:00">
 
 <!-- ══ STICKY OFFER BAR ════════════════════════════════════════════════
      Offer + live countdown + button in one sticky band. This replaces the
      old thin urgency strip and the white nav bar.
 
-     DEADLINE lives in two places, keep them in step:
-       1. data-deadline on .sb-count below (ISO 8601, with UTC offset)
-       2. the written date in the .sb-copy sentence
-     Timezone is Eastern (-04:00 on that date). Change the offset if the
-     deadline should land in another zone.
+     THE DEADLINE for the whole page is data-deadline on <body> (ISO 8601
+     with a UTC offset; Eastern, so -04:00 on that date). Every countdown
+     reads it. Dates WRITTEN OUT in copy are separate - search the file for
+     "September 25" and change those by hand.
 
      WHITE VERSION: change class="offer-bar" to
      class="offer-bar offer-bar-light".
@@ -713,11 +742,11 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         </span>
       </p>
       <div class="sb-actions">
-      <div class="sb-count" id="sb-count" data-deadline="2026-09-25T23:59:59-04:00" role="timer" aria-label="Time left to enroll">
-        <span class="sb-unit"><span class="sb-num" id="sb-d">--</span><span class="sb-lbl">Days</span></span>
-        <span class="sb-unit"><span class="sb-num" id="sb-h">--</span><span class="sb-lbl">Hrs</span></span>
-        <span class="sb-unit"><span class="sb-num" id="sb-m">--</span><span class="sb-lbl">Min</span></span>
-        <span class="sb-unit sb-unit-sec"><span class="sb-num" id="sb-s">--</span><span class="sb-lbl">Sec</span></span>
+      <div class="sb-count js-countdown" role="timer" aria-label="Time left to enroll">
+        <span class="sb-unit"><span class="sb-num" data-unit="d">--</span><span class="sb-lbl">Days</span></span>
+        <span class="sb-unit"><span class="sb-num" data-unit="h">--</span><span class="sb-lbl">Hrs</span></span>
+        <span class="sb-unit"><span class="sb-num" data-unit="m">--</span><span class="sb-lbl">Min</span></span>
+        <span class="sb-unit sb-unit-sec"><span class="sb-num" data-unit="s">--</span><span class="sb-lbl">Sec</span></span>
       </div>
       <a class="btn btn-p sb-cta" href="#pricing">Claim your spot</a>
       </div>
@@ -1034,36 +1063,62 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 <!-- INCLUDED -->
 <section id="included">
   <div class="wrap">
-    <div class="fi">
-      <h2>And a few things to keep it running.</h2>
-      <p class="inc-sub">Every build comes with these, at no extra cost.</p>
+
+    <div class="bonus-head fi">
+      <span class="bonus-eyebrow">
+        <span class="bonus-eyebrow-dot"></span>Only until Friday, September 25
+      </span>
+      <h2>Enroll this week and these three come with it.</h2>
+      <p class="bonus-sub">Three add-ons that turn a finished funnel into one you can actually run: the hub that holds every file and walkthrough, a week of us watching your ads go live, and the course that hands you the controls. They are part of the offer until Friday. After that, they're not.</p>
     </div>
 
-    <div style="margin-top:30px" class="fi d1">
-      <div class="bonuses">
-        <div class="bonus-item">
-          <span class="bonus-icon">🎬</span>
-          <h4>Your Funnel Command Center</h4>
-          <span class="bonus-value">Value: $397</span>
-          <p>Your personal Notion hub with video walkthroughs of your funnel, ad campaign, and email automations, plus every file we built.</p>
-        </div>
-        <div class="bonus-item">
-          <span class="bonus-icon">💬</span>
-          <h4>7 Days of Ad Support</h4>
-          <span class="bonus-value">Value: $197</span>
-          <p>Your ads go live and we stay on them by email for a week – watching delivery, checking the tracking fires, and sorting anything the platform throws at a brand-new campaign.</p>
-          <!-- FAST-ACTION BONUS: set the real date below. It appears twice -
-               here and in the pricing list. Delete this <p> to drop the offer. -->
-          <p class="bonus-fast"><span class="bonus-fast-tag">Fast action</span> Buy before <strong>Friday, September 25</strong> and we stay on your ads for a <strong>second week</strong>.</p>
-        </div>
-        <div class="bonus-item">
-          <span class="bonus-icon">🎓</span>
-          <h4>Ads Made Simple Course</h4>
-          <span class="bonus-value">Value: $497</span>
-          <p>Our full self-paced course on running your own ads. Learn how to make edits, read results, and tweak your campaign long after we hand it off.</p>
-        </div>
+    <!-- Countdown inherits the deadline from <body data-deadline>. -->
+    <div class="bonus-timer fi d1">
+      <span class="bonus-timer-label">Bonuses come off the offer in</span>
+      <div class="bonus-clock js-countdown" role="timer" aria-label="Time left to claim the bonuses">
+        <span class="bonus-unit"><span class="bonus-num" data-unit="d">--</span><span class="bonus-lbl">Days</span></span>
+        <span class="bonus-unit"><span class="bonus-num" data-unit="h">--</span><span class="bonus-lbl">Hrs</span></span>
+        <span class="bonus-unit"><span class="bonus-num" data-unit="m">--</span><span class="bonus-lbl">Min</span></span>
+        <span class="bonus-unit"><span class="bonus-num" data-unit="s">--</span><span class="bonus-lbl">Sec</span></span>
       </div>
     </div>
+
+    <div class="bonuses fi d2">
+      <div class="bonus-item">
+        <span class="bonus-tag">Bonus 01</span>
+        <span class="bonus-icon">&#127916;</span>
+        <h3>Your Funnel Command Center</h3>
+        <span class="bonus-value">$397 value</span>
+        <p>Your personal Notion hub with video walkthroughs of your funnel, ad campaign, and email automations, plus every file we built. Nothing lives only in our heads &mdash; you can hand it to a VA, or come back to it in a year and still know how it works.</p>
+      </div>
+      <div class="bonus-item">
+        <span class="bonus-tag">Bonus 02</span>
+        <span class="bonus-icon">&#128172;</span>
+        <h3>7 Days of Ad Support</h3>
+        <span class="bonus-value">$197 value</span>
+        <p>Your ads go live and we stay on them by email for a week &mdash; watching delivery, checking the tracking fires, and sorting anything the platform throws at a brand-new campaign. The week your ads launch is the week things go sideways, and you won't be on your own for it.</p>
+      </div>
+      <div class="bonus-item">
+        <span class="bonus-tag">Bonus 03</span>
+        <span class="bonus-icon">&#127891;</span>
+        <h3>Ads Made Simple Course</h3>
+        <span class="bonus-value">$497 value</span>
+        <p>Our full self-paced course on running your own ads. Learn how to make edits, read results, and tweak your campaign long after we hand it off &mdash; so you're never stuck paying someone else to change a headline.</p>
+      </div>
+    </div>
+
+    <div class="bonus-total fi d3">
+      <span class="bonus-total-label">Total bonus value</span>
+      <span class="bonus-total-num">$1,091</span>
+      <span class="bonus-total-note">Yours at no extra cost when you enroll by Friday, September 25.</span>
+    </div>
+
+    <div class="bonus-cta fi d3">
+      <p class="bonus-cta-line">All three are on the table until Friday.</p>
+      <a class="btn btn-p" href="#pricing">Claim your spot</a>
+      <p class="bonus-cta-sub">After Friday, September 25 the funnel build is still the funnel build. These three just aren't part of it.</p>
+    </div>
+
   </div>
 </section>
 
@@ -1432,8 +1487,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       </div>
 
       <!-- LIMITED-TIME PRICE. To go back to full price: delete .price-was and
-           .price-note, and set .price-big to $1,997. The date also appears on
-           the fast-action bonus above. -->
+           .price-note, and set .price-big to $1,997. -->
       <span class="price-was">$1,997</span>
       <span class="price-big">$1,597</span>
       <p class="price-note"><strong>Save $400.</strong> Special pricing ends Friday, September 25.</p>
@@ -1449,7 +1503,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <li>Delivery email + 5-email welcome sequence, written and set up</li>
         <li>Facebook &amp; Instagram ad campaign – copy, creative, targeting, and launch</li>
         <li>BONUS: Your Funnel Command Center – Notion hub with walkthrough videos and every file we built</li>
-        <li><span>BONUS: 7 days of email support while your ads go live <span class="li-fast">&mdash; a second week if you buy before Friday, September 25</span></span></li>
+        <li>BONUS: 7 days of email support while your ads go live</li>
         <li>BONUS: Ads Made Simple course – learn how to run, edit, and monitor your own ads</li>
       </ul>
 
@@ -1732,42 +1786,55 @@ els.forEach(el => io.observe(el));
 </script>
 
 <script>
-/* Sticky offer bar countdown. Deadline comes from data-deadline on
-   #sb-count, so the date only ever has to change in the markup. Once it
-   passes, the countdown is removed and the copy swaps to the evergreen
-   line. A missing or unparseable date just hides the countdown and leaves
-   the rest of the bar working. */
+/* Countdowns. Every .js-countdown on the page is driven from here: each one
+   reads data-deadline off itself, or off <body> when it has none, and fills
+   any [data-unit=d|h|m|s] inside it. One timer ticks them all.
+
+   When the deadline passes a clock hides itself, and any .sb-live/.sb-expired
+   pair in the same section swaps over. A missing or unparseable date just
+   hides that clock and leaves the rest of the page working. */
 (function(){
-  var box = document.getElementById('sb-count');
-  if(!box) return;
-  var target = Date.parse(box.getAttribute('data-deadline') || '');
-  var live    = document.querySelector('.sb-live');
-  var expired = document.querySelector('.sb-expired');
+  var clocks = Array.prototype.slice.call(document.querySelectorAll('.js-countdown'));
+  if(!clocks.length) return;
+  var pageDeadline = document.body.getAttribute('data-deadline') || '';
 
-  function expire(){
-    box.hidden = true;
-    if(live)    live.hidden = true;
-    if(expired) expired.hidden = false;
+  var live = clocks.map(function(el){
+    var target = Date.parse(el.getAttribute('data-deadline') || pageDeadline);
+    if(!target || isNaN(target)){ el.hidden = true; return null; }
+    return { el: el, target: target, out: {
+      d: el.querySelector('[data-unit="d"]'), h: el.querySelector('[data-unit="h"]'),
+      m: el.querySelector('[data-unit="m"]'), s: el.querySelector('[data-unit="s"]')
+    }};
+  }).filter(Boolean);
+  if(!live.length) return;
+
+  function pad(n){ return n < 10 ? '0' + n : String(n); }
+
+  function expire(c){
+    c.el.hidden = true;
+    /* Swap the copy beside this clock, where the section has a pair. */
+    var scope = (c.el.closest && c.el.closest('section, .offer-bar')) || document;
+    var on  = scope.querySelector('.sb-live');
+    var off = scope.querySelector('.sb-expired');
+    if(on)  on.hidden = true;
+    if(off) off.hidden = false;
   }
-  if(!target || isNaN(target)){ box.hidden = true; return; }
-
-  var out = {
-    d: document.getElementById('sb-d'),
-    h: document.getElementById('sb-h'),
-    m: document.getElementById('sb-m'),
-    s: document.getElementById('sb-s')
-  };
-  var pad = function(n){ return n < 10 ? '0' + n : String(n); };
 
   function tick(){
-    var left = target - Date.now();
-    if(left <= 0){ clearInterval(timer); expire(); return; }
-    var secs = Math.floor(left / 1000);
-    out.d.textContent = String(Math.floor(secs / 86400));
-    out.h.textContent = pad(Math.floor(secs / 3600) % 24);
-    out.m.textContent = pad(Math.floor(secs / 60) % 60);
-    out.s.textContent = pad(secs % 60);
+    var now = Date.now();
+    live = live.filter(function(c){
+      var left = c.target - now;
+      if(left <= 0){ expire(c); return false; }
+      var secs = Math.floor(left / 1000);
+      if(c.out.d) c.out.d.textContent = String(Math.floor(secs / 86400));
+      if(c.out.h) c.out.h.textContent = pad(Math.floor(secs / 3600) % 24);
+      if(c.out.m) c.out.m.textContent = pad(Math.floor(secs / 60) % 60);
+      if(c.out.s) c.out.s.textContent = pad(secs % 60);
+      return true;
+    });
+    if(!live.length) clearInterval(timer);
   }
+
   tick();
   var timer = setInterval(tick, 1000);
 })();
