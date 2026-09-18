@@ -707,11 +707,6 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 .cs-image img{width:100%;height:auto;display:block;border-radius:var(--r)}
 .cs-content .slabel{margin-bottom:16px}
 .cs-content h2{font-size:clamp(1.4rem,2.8vw,1.85rem);margin-bottom:20px;line-height:1.25}
-.cs-stat{background:var(--hi-md);border-left:3px solid var(--coral);border-radius:0 var(--r) var(--r) 0;padding:18px 22px;margin-bottom:22px}
-.cs-stat-h{font-size:16px;color:var(--text);line-height:1.55;margin:0 0 8px}
-.cs-stat-h strong{color:var(--navy);font-weight:700}
-.cs-stat-sub{font-size:14px;color:var(--muted);line-height:1.55;margin:0}
-.cs-stat-sub strong{color:var(--navy);font-weight:700}
 .cs-intro{font-size:16px;color:var(--text);line-height:1.65;margin-bottom:22px}
 .cs-quote{font-family:var(--head);font-size:1.15rem;font-weight:600;line-height:1.55;color:var(--text);font-style:italic;margin-bottom:20px;position:relative;padding-left:18px}
 .cs-quote::before{content:'"';position:absolute;left:-2px;top:-18px;font-family:var(--head);font-size:3rem;color:var(--navy);opacity:.18;line-height:1}
@@ -740,17 +735,23 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
    Heather case study's proportions but leads on the figures. */
 #results{background:var(--soft);padding:84px 0;border-top:1px solid var(--border)}
 @media(max-width:640px){#results{padding:60px 0}}
-.res-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:64px;align-items:center;max-width:1140px;margin:0 auto}
-@media(max-width:960px){.res-grid{grid-template-columns:1fr;gap:40px;max-width:640px}}
+/* Heather runs image-left; this one runs image-right, so scrolling past both
+   does not read as the same block twice. Stacks image-first when narrow. */
+.res-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:center;max-width:1140px;margin:0 auto}
+.res-grid .res-image{order:2}
+.res-grid .res-content{order:1}
+@media(max-width:960px){.res-grid{grid-template-columns:1fr;gap:40px;max-width:640px}.res-grid .res-image{order:1}.res-grid .res-content{order:2}}
 .res-image img{width:100%;height:auto;display:block;border-radius:var(--r)}
 .res-content .slabel{margin-bottom:16px}
 .res-content h2{font-size:clamp(1.6rem,3.2vw,2.2rem);margin-bottom:18px;line-height:1.22}
 .res-intro{font-size:16.5px;color:var(--text);line-height:1.68;margin-bottom:28px}
-.res-stats{display:grid;gap:12px;margin-bottom:26px}
-.res-stat{display:flex;align-items:baseline;gap:16px;background:var(--white);border:1px solid var(--border);border-left:3px solid var(--coral);border-radius:var(--r);padding:16px 20px;box-shadow:var(--sh-sm)}
-.res-num{font-family:var(--head);font-size:2.3rem;font-weight:700;color:var(--navy);line-height:1;flex-shrink:0;min-width:104px;font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1}
-.res-lbl{font-size:15px;color:var(--text);line-height:1.5;font-weight:600}
-@media(max-width:480px){.res-stat{gap:12px;padding:14px 16px}.res-num{font-size:1.9rem;min-width:86px}.res-lbl{font-size:14px}}
+/* Shared by BOTH case studies - one stat treatment on the page, so the two
+   builds read as the same kind of evidence. */
+.stat-cards{display:grid;gap:12px;margin-bottom:26px}
+.stat-card{display:flex;align-items:baseline;gap:16px;background:var(--white);border:1px solid var(--border);border-left:3px solid var(--coral);border-radius:var(--r);padding:16px 20px;box-shadow:var(--sh-sm)}
+.stat-num{font-family:var(--head);font-size:2.3rem;font-weight:700;color:var(--navy);line-height:1;flex-shrink:0;min-width:104px;font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1}
+.stat-lbl{font-size:15px;color:var(--text);line-height:1.5;font-weight:600}
+@media(max-width:480px){.stat-card{gap:12px;padding:14px 16px}.stat-num{font-size:1.9rem;min-width:86px}.stat-lbl{font-size:14px}}
 .res-foot{font-size:16.5px;color:var(--text);line-height:1.68;margin:0;padding-top:22px;border-top:1px solid var(--border)}
 .res-foot strong{color:var(--navy);font-weight:700}
 
@@ -1199,9 +1200,19 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <span class="slabel">A recent build</span>
         <h2>What we built for Heather, a kidney health practitioner.</h2>
 
-        <div class="cs-stat">
-          <p class="cs-stat-h">In her first weeks, Heather's funnel added <strong>~50 new email subscribers a week</strong>, for under $25 in ad spend.</p>
-          <p class="cs-stat-sub">That's <strong>$0.47 per subscriber</strong>. Roughly <strong>10× better</strong> than the industry average for health &amp; nutrition Meta ads.</p>
+        <div class="stat-cards">
+          <div class="stat-card">
+            <span class="stat-num">~50</span>
+            <span class="stat-lbl">new subscribers a week, in her first weeks live</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">$0.47</span>
+            <span class="stat-lbl">per subscriber, on under $25 a week of ad spend</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">10×</span>
+            <span class="stat-lbl">better than the health &amp; nutrition average on Meta</span>
+          </div>
         </div>
 
         <p class="cs-intro">Heather Smith, RD came to us with a kidney nutrition practice and no real system for reaching new patients. Once her funnel was live, the leads started coming in immediately.</p>
@@ -1397,18 +1408,18 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <h2>In a few weeks, this could be yours.</h2>
         <p class="res-intro">This is Nathalie's funnel, built exactly the way yours would be &mdash; lead magnet, ads, pages, and a welcome sequence, all running on their own. Here is what her first cold-traffic campaign did.</p>
 
-        <div class="res-stats">
-          <div class="res-stat">
-            <span class="res-num">66</span>
-            <span class="res-lbl">new subscribers from cold traffic</span>
+        <div class="stat-cards">
+          <div class="stat-card">
+            <span class="stat-num">66</span>
+            <span class="stat-lbl">new subscribers from cold traffic</span>
           </div>
-          <div class="res-stat">
-            <span class="res-num">$1.55</span>
-            <span class="res-lbl">per lead, on about $102 of ad spend</span>
+          <div class="stat-card">
+            <span class="stat-num">$1.55</span>
+            <span class="stat-lbl">per lead, on about $102 of ad spend</span>
           </div>
-          <div class="res-stat">
-            <span class="res-num">64%</span>
-            <span class="res-lbl">below comparable ad sets, per Meta</span>
+          <div class="stat-card">
+            <span class="stat-num">64%</span>
+            <span class="stat-lbl">below comparable ad sets, per Meta</span>
           </div>
         </div>
 
