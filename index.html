@@ -502,9 +502,38 @@ footer a:hover{color:var(--white)}
 /* funnel flow */
 #funnel-flow{background:var(--soft);padding:48px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .funnel-label{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);margin-bottom:20px;text-align:center}
-.funnel-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
-@media(max-width:940px){.funnel-steps{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:620px){.funnel-steps{grid-template-columns:1fr}}
+.how-intro{max-width:740px;margin-bottom:44px}
+@media(max-width:620px){.how-intro{margin-bottom:32px}}
+.how-intro p{font-size:17.5px;line-height:1.7;color:var(--text);margin-bottom:17px}
+.how-intro p:last-child{margin-bottom:0}
+.how-lead{font-size:19px!important;font-weight:600;color:var(--navy)!important}
+.how-close{font-weight:600;color:var(--navy)!important}
+@media(max-width:620px){.how-intro p{font-size:16.5px}.how-lead{font-size:17.5px!important}}
+
+/* ── WHAT WE BUILD SLIDER ──────────────────────────────────────────
+   A native scroll-snap track: one row of cards that overflows, snapping
+   card by card. grid-auto-columns sets how many fit, so "3 at a time" is
+   one number per breakpoint. Vertical padding keeps the card shadows from
+   being clipped by the scroll container. */
+.funnel-slider{position:relative}
+.funnel-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 40px)/3);gap:20px;align-items:stretch;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding:8px 2px 18px;scrollbar-width:none;-ms-overflow-style:none}
+.funnel-track::-webkit-scrollbar{display:none}
+.funnel-track:focus-visible{outline:3px solid var(--coral);outline-offset:4px;border-radius:var(--r)}
+.funnel-step{scroll-snap-align:start}
+@media(max-width:940px){.funnel-track{grid-auto-columns:calc((100% - 20px)/2)}}
+@media(max-width:620px){.funnel-track{grid-auto-columns:86%;gap:16px;align-items:start}}
+/* Nav is injected by JS, so nothing here shows up without it. */
+.funnel-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:6px}
+.funnel-arrow{width:42px;height:42px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--white);color:var(--navy);border:1px solid rgba(2,82,93,.3);border-radius:50%;cursor:pointer;font-size:17px;line-height:1;transition:background .15s,border-color .15s,transform .12s,opacity .15s}
+.funnel-arrow:hover:not(:disabled){background:var(--soft);border-color:var(--navy);transform:translateY(-1px)}
+.funnel-arrow:disabled{opacity:.3;cursor:default}
+.funnel-arrow:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.funnel-dots{display:flex;align-items:center;gap:9px}
+.funnel-dot{width:9px;height:9px;padding:0;border:none;border-radius:50%;background:rgba(2,82,93,.25);cursor:pointer;transition:background .15s,transform .15s}
+.funnel-dot:hover{background:rgba(2,82,93,.45)}
+.funnel-dot[aria-current="true"]{background:var(--coral);transform:scale(1.25)}
+.funnel-dot:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.funnel-arrow,.funnel-dot{transition:none}}
 .funnel-step{display:flex;flex-direction:column;text-align:left;background:var(--white);border:1px solid var(--border);border-radius:var(--r);box-shadow:0 4px 18px rgba(2,82,93,.10);padding:26px 26px 22px}
 @media(max-width:620px){.funnel-step{padding:24px 22px 20px}}
 .funnel-num{display:block;font-family:var(--head);font-size:2rem;font-weight:700;color:var(--coral);line-height:1;margin-bottom:16px}
@@ -521,21 +550,8 @@ footer a:hover{color:var(--white)}
 .funnel-why{font-size:14px;color:var(--navy);font-weight:700;line-height:1.5;margin-bottom:20px;display:flex;align-items:flex-start;gap:7px}
 .funnel-why::before{content:'\21B3';flex-shrink:0}
 .funnel-cost{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:auto 0 0;padding-top:16px;border-top:1px solid var(--border)}
-.funnel-cost-full{grid-template-columns:1fr}
 .funnel-cost dt{font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--coral);margin-bottom:5px}
 .funnel-cost dd{margin:0;font-family:var(--head);font-size:1.15rem;font-weight:600;color:var(--navy);line-height:1.25}
-/* The result card is the payoff, so it keeps the coral outline that marks
-   it out from the five deliverables. */
-.funnel-step-result{border:2px solid var(--coral);box-shadow:0 6px 24px rgba(255,127,80,.18)}
-.funnel-step-result .funnel-mock{background:var(--hi)}
-.funnel-step-result .funnel-cost{border-top-color:rgba(255,127,80,.35)}
-/* It carries a price comparison instead of the DIY/outsource pair the
-   deliverable cards use, so it stacks rather than sitting in two columns. */
-.funnel-cost-result{grid-template-columns:1fr;gap:12px}
-.funnel-cost-result dt{color:var(--muted)}
-.funnel-cost-result .fc-was{font-size:1.15rem;color:var(--muted);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(255,127,80,.65)}
-.funnel-cost-result div:last-child dt{color:var(--coral)}
-.funnel-cost-result .fc-now{font-size:1.75rem;color:var(--coral-dk)}
 
 /* bonuses */
 /* Fast-action add-on, sits inside the ad-support bonus card. */
@@ -936,7 +952,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
       <div class="section-cta fi d1">
         <p class="section-cta-line">Ready to see what we'd build for you?</p>
-        <a class="btn btn-light" href="#pricing">Get started · $1,597</a>
+        <a class="btn btn-light" href="#pricing">Get started</a>
         <p class="section-cta-sub">Or keep reading. We'll walk you through exactly what's included.</p>
       </div>
     </div>
@@ -949,11 +965,27 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
   <div class="wrap">
     <div class="fi">
       <h2>Here's the funnel we'll <span class="ul">build for you</span>.</h2>
-      <p style="color:var(--muted);font-size:18.5px;max-width:640px;margin-bottom:40px;line-height:1.7">This is what's running for you 24/7 once we hand it off. Every piece below – the lead magnet, the ad, the pages, the emails – gets built, written, and connected by our team. You don't touch a thing.</p>
+      <div class="how-intro">
+        <p class="how-lead">You'll be part of the process, because this should still sound and feel like your business.</p>
+        <p>We'll start by getting clear on your audience, your offer, your voice, and what you want this funnel to do. You'll give us your input and feedback along the way. Then our team takes that and does the heavy lifting.</p>
+        <p>We'll create the lead magnet, write the ads, build the pages, write the emails, and connect everything behind the scenes.</p>
+        <p class="how-close">Your voice and expertise are all over it. You just don't have to be the one figuring out how to build it.</p>
+      </div>
     </div>
 
-    <div class="funnel-steps fi d1">
-      <div class="funnel-step">
+    <!-- ══ WHAT WE BUILD - SLIDER ═════════════════════════
+         Five cards, three visible at a time on desktop (two on tablet, one
+         on phone). The track is a native scroll-snap carousel, so swipe and
+         trackpad scroll work on their own; the arrows and dots are added by
+         JS and only show up if it runs.
+
+         TO REORDER OR ADD A CARD: move or add the .funnel-step markup and fix
+         the .funnel-num labels. The nav counts the cards at runtime.
+    ═════════════════════════════════════════════════ -->
+    <div class="funnel-slider fi d1">
+      <div class="funnel-track" id="funnel-track" role="list" tabindex="0"
+           aria-label="The five pieces we build - scroll or use the arrows">
+      <div class="funnel-step" role="listitem">
         <span class="funnel-num">01</span>
         <div class="funnel-mock"><img src="lead-magnet_mockup.png" alt="A designed lead magnet PDF guide" loading="lazy" decoding="async" /></div>
         <div class="funnel-step-title">Lead Magnet</div>
@@ -961,53 +993,40 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <p class="funnel-why">Without something worth signing up for, you can't get leads.</p>
         <dl class="funnel-cost"><div><dt>Time to DIY</dt><dd>12&ndash;20 hrs</dd></div><div><dt>Cost to outsource</dt><dd>$1,500+</dd></div></dl>
       </div>
-      <div class="funnel-step">
+      <div class="funnel-step" role="listitem">
         <span class="funnel-num">02</span>
-        <div class="funnel-mock"><img src="ads_mockup.png" alt="Facebook and Instagram ad mockups on phones" loading="lazy" decoding="async" /></div>
-        <div class="funnel-step-title">Ad</div>
-        <div class="funnel-step-desc">Copy written, graphic designed, targeting set up, and the campaign launched. Runs at a small daily budget (e.g. $5/day) &ndash; you own the account and can pause anytime.</div>
-        <p class="funnel-why">Without traffic, a funnel just sits there. This is what makes it work every day.</p>
-        <dl class="funnel-cost"><div><dt>Time to DIY</dt><dd>8&ndash;12 hrs</dd></div><div><dt>Cost to outsource</dt><dd>$1,500+</dd></div></dl>
-      </div>
-      <div class="funnel-step">
-        <span class="funnel-num">03</span>
         <div class="funnel-mock"><img src="opt-in_mockup.png" alt="Opt-in landing page shown on a phone" loading="lazy" decoding="async" /></div>
         <div class="funnel-step-title">Opt-In Page</div>
         <div class="funnel-step-desc">A focused landing page with copy written for your audience, connected to your email platform so everything flows automatically.</div>
         <p class="funnel-why">This is where strangers become leads.</p>
         <dl class="funnel-cost"><div><dt>Time to DIY</dt><dd>6&ndash;10 hrs</dd></div><div><dt>Cost to outsource</dt><dd>$1,100+</dd></div></dl>
       </div>
-      <div class="funnel-step">
-        <span class="funnel-num">04</span>
+      <div class="funnel-step" role="listitem">
+        <span class="funnel-num">03</span>
         <div class="funnel-mock"><img src="thank-you_mockup.png" alt="Thank you page confirming the guide is on its way" loading="lazy" decoding="async" /></div>
         <div class="funnel-step-title">Thank You Page</div>
         <div class="funnel-step-desc">Confirms the resource is on its way and gives the new subscriber a clear next step.</div>
         <p class="funnel-why">Keeps the momentum going right after someone signs up.</p>
         <dl class="funnel-cost"><div><dt>Time to DIY</dt><dd>2&ndash;3 hrs</dd></div><div><dt>Cost to outsource</dt><dd>$350+</dd></div></dl>
       </div>
-      <div class="funnel-step">
-        <span class="funnel-num">05</span>
+      <div class="funnel-step" role="listitem">
+        <span class="funnel-num">04</span>
         <div class="funnel-mock"><img src="delivery-sequence_mockup.png" alt="Lead magnet delivery email and the automated sequence behind it" loading="lazy" decoding="async" /></div>
         <div class="funnel-step-title">Delivery Email &amp; Welcome Series</div>
         <div class="funnel-step-desc">A delivery email the moment someone signs up, then a 5-email welcome sequence over three weeks &ndash; introducing you, sharing your perspective, and warming subscribers to what you offer.</div>
         <p class="funnel-why">Most people aren't ready to book right away. This keeps them engaged until they are.</p>
         <dl class="funnel-cost"><div><dt>Time to DIY</dt><dd>12&ndash;18 hrs</dd></div><div><dt>Cost to outsource</dt><dd>$1,600+</dd></div></dl>
       </div>
-      <!-- The outcome rather than a deliverable, so it carries the price
-           comparison instead of a DIY/outsource pair. -->
-      <div class="funnel-step funnel-step-result">
-        <span class="funnel-num">06</span>
-        <div class="funnel-mock"><svg viewBox="0 0 200 126" role="img" aria-label="Mockup of a booked discovery call in a calendar" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="126" rx="5" fill="#fff" stroke="#e2e7e9"/><path d="M0 5a5 5 0 0 1 5-5h190a5 5 0 0 1 5 5v17H0z" fill="#02525d"/><rect x="14" y="9" width="44" height="5" rx="2.5" fill="#fff" opacity=".85"/><rect x="13" y="32" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="49" y="32" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="85" y="32" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="121" y="32" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="157" y="32" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="13" y="60" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="49" y="60" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="121" y="60" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="157" y="60" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="13" y="88" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="49" y="88" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="85" y="88" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="121" y="88" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="157" y="88" width="30" height="22" rx="3" fill="#eef1f2"/><rect x="85" y="60" width="30" height="22" rx="3" fill="#ff7f50"/><path d="M93 71l4 4 8-9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div class="funnel-step-title">New Client</div>
-        <div class="funnel-step-desc">They book a call &ndash; or stay on your list, hear from you again and again, get to know you, and become a client when the time is right</div>
-        <dl class="funnel-cost funnel-cost-result">
-          <div><dt>Outsourced piece by piece</dt><dd class="fc-was">$6,050+</dd></div>
-          <div><dt>The whole funnel, done for you</dt><dd class="fc-now">$1,597</dd></div>
-        </dl>
+      <div class="funnel-step" role="listitem">
+        <span class="funnel-num">05</span>
+        <div class="funnel-mock"><img src="ads_mockup.png" alt="Facebook and Instagram ad mockups on phones" loading="lazy" decoding="async" /></div>
+        <div class="funnel-step-title">Ad</div>
+        <div class="funnel-step-desc">Copy written, graphic designed, targeting set up, and the campaign launched. Runs at a small daily budget (e.g. $5/day) &ndash; you own the account and can pause anytime.</div>
+        <p class="funnel-why">Without traffic, a funnel just sits there. This is what makes it work every day.</p>
+        <dl class="funnel-cost"><div><dt>Time to DIY</dt><dd>8&ndash;12 hrs</dd></div><div><dt>Cost to outsource</dt><dd>$1,500+</dd></div></dl>
+      </div>
       </div>
     </div>
-
-    <p class="fi d2" style="margin-top:18px;font-size:18px;color:var(--muted);text-align:center;max-width:620px;margin-left:auto;margin-right:auto"><span class="nb">Your job:</span> tell us about your practice and your audience.<br/><span class="nb">Our job:</span> everything you see above.</p>
   </div>
 </section>
 
@@ -1133,7 +1152,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
     <div class="section-cta section-cta-left fi d2">
       <p class="section-cta-line">Want this running in the background of your practice?</p>
-      <a class="btn btn-p" href="#pricing">Get started &middot; $1,597</a>
+      <a class="btn btn-p" href="#pricing">Get started</a>
       <p class="section-cta-sub">Special pricing ends Friday, September 25.</p>
     </div>
   </div>
@@ -1621,6 +1640,94 @@ els.forEach(el => io.observe(el));
   conv.addEventListener('input', update);
   value.addEventListener('input', update);
   update();   // keeps the rendered caption honest if the defaults ever change
+})();
+</script>
+
+<script>
+/* What-we-build slider. The track scrolls and snaps on its own; this only
+   adds the arrows and dots, so with JS off the cards are still swipeable.
+   "How many are visible" is read back from the rendered layout rather than
+   hardcoded, so the CSS breakpoints stay the single source of truth. */
+(function(){
+  var track = document.getElementById('funnel-track');
+  if(!track) return;
+  var cards = Array.prototype.slice.call(track.children);
+  if(cards.length < 2) return;
+
+  var nav = document.createElement('div');
+  nav.className = 'funnel-nav';
+  var prev = document.createElement('button');
+  var next = document.createElement('button');
+  prev.type = next.type = 'button';
+  prev.className = next.className = 'funnel-arrow';
+  prev.innerHTML = '\u2190'; next.innerHTML = '\u2192';
+  prev.setAttribute('aria-label','Previous');
+  next.setAttribute('aria-label','Next');
+  var dotWrap = document.createElement('div');
+  dotWrap.className = 'funnel-dots';
+
+  var dots = cards.map(function(card, i){
+    var d = document.createElement('button');
+    d.type = 'button';
+    d.className = 'funnel-dot';
+    d.setAttribute('aria-label','Go to ' + (i + 1) + ' of ' + cards.length);
+    d.addEventListener('click', function(){ scrollToCard(i); });
+    dotWrap.appendChild(d);
+    return d;
+  });
+
+  nav.appendChild(prev); nav.appendChild(dotWrap); nav.appendChild(next);
+  track.parentNode.appendChild(nav);
+
+  /* Card pitch including the gap - measured, so the gap value only lives
+     in the CSS. Two cards is enough to derive it. */
+  function pitch(){
+    return cards.length > 1
+      ? cards[1].offsetLeft - cards[0].offsetLeft
+      : cards[0].offsetWidth;
+  }
+  function perView(){
+    return Math.max(1, Math.round(track.clientWidth / pitch()));
+  }
+  /* Last card that can sit flush left before the track runs out of scroll. */
+  function maxIndex(){
+    return Math.max(0, cards.length - perView());
+  }
+  function currentIndex(){
+    return Math.min(maxIndex(), Math.round(track.scrollLeft / pitch()));
+  }
+  function scrollToCard(i){
+    track.scrollTo({
+      left: Math.min(i, maxIndex()) * pitch(),
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+    });
+  }
+
+  prev.addEventListener('click', function(){ scrollToCard(currentIndex() - perView()); });
+  next.addEventListener('click', function(){ scrollToCard(currentIndex() + perView()); });
+
+  function sync(){
+    var i = currentIndex(), last = maxIndex();
+    prev.disabled = i <= 0;
+    next.disabled = i >= last;
+    /* A dot is current when its card is on screen. */
+    var visible = perView();
+    dots.forEach(function(d, n){
+      d.setAttribute('aria-current', (n >= i && n < i + visible) ? 'true' : 'false');
+      /* Nothing to navigate to past the last reachable position. */
+      d.hidden = n > last && visible >= cards.length;
+    });
+    nav.hidden = last === 0;   /* everything already fits */
+  }
+
+  var queued = false;
+  track.addEventListener('scroll', function(){
+    if(queued) return;
+    queued = true;
+    requestAnimationFrame(function(){ queued = false; sync(); });
+  });
+  window.addEventListener('resize', sync);
+  sync();
 })();
 </script>
 
