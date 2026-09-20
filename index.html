@@ -307,7 +307,9 @@ section{padding:80px 0}
 /* about */
 #about{background:var(--white)}
 /* about - the experts */
-#about{background:var(--white);padding-bottom:0}
+#about{background:var(--white);padding-bottom:72px}
+@media(max-width:640px){#about{padding-bottom:52px}}
+#about .pull-quote{background:var(--cream)}
 #about .about-head{text-align:center;max-width:640px;margin:0 auto 48px}
 #about .about-head h2{font-size:clamp(1.75rem,4vw,2.6rem);margin-bottom:14px;line-height:1.25}
 #about .about-head p{font-size:17px;color:var(--muted);line-height:1.6}
@@ -456,8 +458,6 @@ p.ob-sub{font-size:17.5px;color:var(--text);line-height:1.65;margin:0}
 .ob-quote-inline p{font-size:1.12rem}
 .ob-quote-inline cite{margin-top:8px}
 @media(max-width:640px){.ob-quote-inline{margin-left:39px;padding:16px 18px}.ob-quote-inline p{font-size:1.02rem}}
-.ob-foot{margin-top:28px;font-size:16.5px;color:var(--muted);line-height:1.65;max-width:640px;margin-left:auto;margin-right:auto}
-.ob-foot strong{color:var(--navy);font-weight:700}
 
 /* Standalone pull quote, reused under the bonuses and the comparison panel. */
 .pull-quote{max-width:660px;margin:36px auto 0;padding:26px 30px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);text-align:center}
@@ -512,6 +512,8 @@ p.ob-sub{font-size:17.5px;color:var(--text);line-height:1.65;margin:0}
 .faq-q::after{content:'+';font-family:var(--body);font-size:22px;color:var(--coral);flex-shrink:0;transition:transform .25s;line-height:1}
 details[open] .faq-q::after{transform:rotate(45deg)}
 .faq-a{padding:0 26px 22px;padding-top:18px;font-size:16.5px;color:var(--text);line-height:1.7;border-top:1px solid var(--border)}
+.faq-a p{margin:0 0 14px}
+.faq-a p:last-child{margin-bottom:0}
 
 /* close */
 #close{background:var(--navy);text-align:center;padding:88px 0;position:relative;overflow:hidden}
@@ -1369,6 +1371,13 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         </div>
       </div>
     </div>
+
+    <figure class="pull-quote fi d2">
+      <blockquote>
+        &ldquo;Whitney and her team understand dietitians, our businesses, and how to communicate our value. <strong>This is by far one of the best decisions I have made in my business.</strong>&rdquo;
+      </blockquote>
+      <figcaption><span class="pull-quote-name">Jessica</span><span class="pull-quote-role">Registered Dietitian Nutritionist, The Eat Well Studio</span></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -1520,7 +1529,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       <h2>Here&rsquo;s what this looks like on your end.</h2>
       <div class="ob-intro">
         <p class="ob-lead">Your total time on this is about 90 minutes, spread across three points.</p>
-        <p class="ob-sub">Everything else happens behind the scenes with our team.</p>
+        <p class="ob-sub">Everything else happens behind the scenes with our team. And because the whole process is asynchronous, there are no kickoff calls to schedule or weekly meetings to squeeze between client sessions.</p>
       </div>
     </div>
 
@@ -1578,8 +1587,6 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         </div>
       </div>
     </div>
-
-    <p class="ob-foot fi d2">And because the whole process is asynchronous, there are no kickoff calls to schedule or weekly meetings to squeeze between client sessions.</p>
   </div>
 </section>
 
@@ -1633,19 +1640,14 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
           <span class="c-label">Hiring it all out, separately</span>
           <span class="c-price">$7,141+</span>
         </div>
+        <!-- Standard price on purpose: this row compares like for like against
+             hiring it out. The sale price is revealed in .p-box just below. -->
         <div class="comparison-ours">
           <span class="c-label"><span class="nb">What we do.</span> One team, start to launch.</span>
-          <span class="c-price">$1,597</span>
+          <span class="c-price">$1,997</span>
         </div>
       </div>
     </details>
-
-    <figure class="pull-quote fi d1">
-      <blockquote>
-        &ldquo;Whitney and her team understand dietitians, our businesses, and how to communicate our value. <strong>This is by far one of the best decisions I have made in my business.</strong>&rdquo;
-      </blockquote>
-      <figcaption><span class="pull-quote-name">Jessica</span><span class="pull-quote-role">Registered Dietitian Nutritionist, The Eat Well Studio</span></figcaption>
-    </figure>
 
     <div class="p-box fi d1">
       <div class="beta-badge">
@@ -1670,7 +1672,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <li>Delivery email + welcome sequence, written and set up</li>
         <li>Facebook &amp; Instagram ad campaign – copy, creative, targeting, and launch</li>
         <li class="inc-bonus"><span><span class="inc-bonus-tag">Bonus</span><strong>Your Funnel Command Center</strong> – Notion hub with walkthrough videos and every file we built</span></li>
-        <li class="inc-bonus"><span><span class="inc-bonus-tag">Bonus</span><strong>7 days of email support</strong> while your ads go live</span></li>
+        <li class="inc-bonus"><span><span class="inc-bonus-tag">Bonus</span><strong>7 days of support</strong> while your ads go live</span></li>
         <li class="inc-bonus"><span><span class="inc-bonus-tag">Bonus</span><strong>Ads Made Simple course</strong> – learn how to run, edit, and monitor your own ads</span></li>
       </ul>
 
@@ -1749,6 +1751,17 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       <details class="faq-item">
         <summary class="faq-q">Will there be any live calls involved?</summary>
         <div class="faq-a">We don't anticipate needing to get on any calls. All of the work is done asynchronously – we get started, you check this off your to-do list! Everything is communicated through our project tools and email, so there's no scheduling required on your end.</div>
+      </details>
+
+      <!-- If you want a concrete build window here (e.g. "about four weeks"),
+           drop it into the first sentence of the second paragraph. -->
+      <details class="faq-item">
+        <summary class="faq-q">How long will the process take?</summary>
+        <div class="faq-a">
+          <p>The first thing you get after you purchase is a project schedule: every milestone, what we need from you at each one, and the date your funnel goes live. You review it and sign off, so you know exactly what's happening when and we're both working toward the same date.</p>
+          <p>From there, the main thing that moves that date is turnaround time. There are two points where the project sits with you – your onboarding questionnaire at the start, and your review of the lead magnet and emails in the middle. When those come back quickly, we launch on schedule. If a busy week means they sit for a while, the launch shifts by about that much, and we'll adjust the schedule with you so it stays realistic.</p>
+          <p>Everything in between is on us, and we don't stall waiting on our own work.</p>
+        </div>
       </details>
 
       <details class="faq-item">
