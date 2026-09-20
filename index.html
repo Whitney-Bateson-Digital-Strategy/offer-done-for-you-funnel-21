@@ -356,6 +356,7 @@ section{padding:80px 0}
 .fit-head{text-align:center;max-width:640px;margin:0 auto 40px}
 .fit-head h2{font-size:clamp(1.75rem,4vw,2.6rem);line-height:1.25;margin:0}
 .fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:980px;margin:0 auto;align-items:start}
+.fit-cta{text-align:center;margin-top:38px}
 @media(max-width:760px){.fit-grid{grid-template-columns:1fr;gap:18px;max-width:520px}}
 .fit-col{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px 30px;box-shadow:var(--sh-sm)}
 .fit-col h3{font-family:var(--head);font-size:1.2rem;font-weight:500;color:var(--navy);margin-bottom:18px;line-height:1.3}
@@ -449,8 +450,23 @@ p.ob-sub{font-size:17.5px;color:var(--text);line-height:1.65;margin:0}
 .ob-quote p::before{content:'\201C'}
 .ob-quote p::after{content:'\201D'}
 .ob-quote cite{display:block;margin-top:10px;font-style:normal;font-size:13.5px;color:var(--muted)}
+/* Holly's quote sits inside .flow under step 1, so it is indented to line up
+   with .flow-body (24px dot + 20px gap) and lets the timeline rule show. */
+.ob-quote-inline{margin:0 0 0 44px;max-width:none;text-align:left;padding:20px 24px;background:var(--cream);border-left:3px solid var(--coral);border-radius:0 var(--r) var(--r) 0}
+.ob-quote-inline p{font-size:1.12rem}
+.ob-quote-inline cite{margin-top:8px}
+@media(max-width:640px){.ob-quote-inline{margin-left:39px;padding:16px 18px}.ob-quote-inline p{font-size:1.02rem}}
 .ob-foot{margin-top:28px;font-size:16.5px;color:var(--muted);line-height:1.65;max-width:640px;margin-left:auto;margin-right:auto}
 .ob-foot strong{color:var(--navy);font-weight:700}
+
+/* Standalone pull quote, reused under the bonuses and the comparison panel. */
+.pull-quote{max-width:660px;margin:36px auto 0;padding:26px 30px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);text-align:center}
+.pull-quote blockquote{margin:0;font-family:var(--head);font-style:italic;font-weight:600;font-size:clamp(1.05rem,2.1vw,1.22rem);line-height:1.5;color:var(--navy)}
+.pull-quote blockquote strong{font-weight:700}
+.pull-quote figcaption{margin-top:14px;font-size:13px;line-height:1.45;color:var(--muted)}
+.pull-quote-name{display:block;font-size:14px;font-weight:700;color:var(--navy)}
+.pull-quote-role{display:block}
+@media(max-width:640px){.pull-quote{padding:20px;margin-top:28px}}
 
 /* testimonials */
 /* Testimonials are distributed through the page rather than pooled in one
@@ -537,6 +553,11 @@ footer a:hover{color:var(--white)}
    card by card. grid-auto-columns sets how many fit, so "3 at a time" is
    one number per breakpoint. Vertical padding keeps the card shadows from
    being clipped by the scroll container. */
+/* Running total under the slider. The figures are the sum of the five
+   .funnel-cost rows above (40-63 hrs, $6,050+), so keep them in step. */
+.funnel-tally{max-width:700px;margin:26px auto 0;padding:22px 28px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);text-align:center;font-size:17px;line-height:1.65;color:var(--text)}
+.funnel-tally strong{font-family:var(--head);font-size:1.22rem;font-weight:700;color:var(--navy);white-space:nowrap}
+@media(max-width:640px){.funnel-tally{padding:18px 20px;font-size:16px}}
 .funnel-slider{position:relative}
 .funnel-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 40px)/3);gap:20px;align-items:stretch;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding:8px 2px 18px;scrollbar-width:none;-ms-overflow-style:none}
 .funnel-track::-webkit-scrollbar{display:none}
@@ -589,11 +610,9 @@ footer a:hover{color:var(--white)}
 .bonus-eyebrow{display:inline-flex;align-items:center;gap:9px;background:var(--coral);color:var(--white);font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;border-radius:999px;padding:8px 18px;margin-bottom:20px}
 .bonus-eyebrow-dot{width:7px;height:7px;border-radius:50%;background:var(--white);animation:pulse 2s infinite}
 @media(prefers-reduced-motion:reduce){.bonus-eyebrow-dot{animation:none}}
-.bonus-sub{font-size:17.5px;line-height:1.7;color:var(--text);max-width:680px;margin:16px auto 0}
-@media(max-width:640px){.bonus-sub{font-size:16.5px}}
 
 .bonus-timer{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:36px}
-.bonus-timer-label{font-size:11.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.bonus-timer-label{font-size:13.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--navy)}
 .bonus-clock{display:flex;align-items:flex-start;gap:10px}
 .bonus-unit{display:flex;flex-direction:column;align-items:center;min-width:72px;padding:12px 10px 11px;background:var(--navy);border-radius:var(--r);line-height:1}
 .bonus-num{font-family:var(--head);font-size:2rem;font-weight:600;color:var(--lime);font-variant-numeric:tabular-nums}
@@ -632,7 +651,6 @@ footer a:hover{color:var(--white)}
 
 .bonus-cta{text-align:center;margin-top:34px}
 .bonus-cta-line{font-family:var(--head);font-style:italic;font-weight:600;font-size:clamp(1.2rem,2.5vw,1.5rem);color:var(--navy);margin:0 0 20px;line-height:1.4}
-.bonus-cta-sub{font-size:14.5px;color:var(--text);font-style:italic;font-weight:600;line-height:1.6;max-width:520px;margin:16px auto 0}
 
 /* no bold inside any card */
 .step-card strong, .step-card b,
@@ -1012,7 +1030,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <blockquote>
           &ldquo;I now have <strong>over 2K subscribers</strong>&hellip; I went from not having a clue how to get subscribers to a clear system and strategy on gaining subscribers, keeping them, and generating leads.&rdquo;
         </blockquote>
-        <figcaption><span class="calc-proof-name">Jessica</span><span class="calc-proof-role">The Eat Well Studio</span></figcaption>
+        <figcaption><span class="calc-proof-name">Jessica</span><span class="calc-proof-role">Registered Dietitian Nutritionist, The Eat Well Studio</span></figcaption>
       </figure>
 
     </div><!-- /.prob-wrap -->
@@ -1118,6 +1136,8 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       </div>
       </div>
     </div>
+
+    <p class="funnel-tally fi d2">All together, building a funnel like this could take <strong>40+ hours</strong> to DIY, or <strong>over $6K</strong> to hire out.</p>
   </div>
 </section>
 
@@ -1130,13 +1150,12 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       <span class="bonus-eyebrow">
         <span class="bonus-eyebrow-dot"></span>Only until Friday, September 25
       </span>
-      <h2>Enroll this week and these three come with it.</h2>
-      <p class="bonus-sub">Three add-ons that turn a finished funnel into one you can actually run. They&rsquo;re part of the offer until Friday. After that, they&rsquo;re not.</p>
+      <h2>Plus, these come with it.</h2>
     </div>
 
     <!-- Countdown inherits the deadline from <body data-deadline>. -->
     <div class="bonus-timer fi d1">
-      <span class="bonus-timer-label">Bonuses come off the offer in</span>
+      <span class="bonus-timer-label">Bonuses expire in</span>
       <div class="bonus-clock js-countdown" role="timer" aria-label="Time left to claim the bonuses">
         <span class="bonus-unit"><span class="bonus-num" data-unit="d">--</span><span class="bonus-lbl">Days</span></span>
         <span class="bonus-unit"><span class="bonus-num" data-unit="h">--</span><span class="bonus-lbl">Hrs</span></span>
@@ -1196,10 +1215,16 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       <span class="bonus-total-note">Yours at no extra cost when you enroll by Friday, September 25.</span>
     </div>
 
+    <figure class="pull-quote fi d3">
+      <blockquote>
+        &ldquo;I didn&rsquo;t just walk away with one finished funnel. Because of what I learned throughout the process, <strong>I now have a strategy and a guide I can use when I create future funnels</strong>, which has given me so much more confidence moving forward.&rdquo;
+      </blockquote>
+      <figcaption><span class="pull-quote-name">Jessica</span><span class="pull-quote-role">Registered Dietitian Nutritionist, The Eat Well Studio</span></figcaption>
+    </figure>
+
     <div class="bonus-cta fi d3">
-      <p class="bonus-cta-line">All three are on the table until Friday.</p>
+      <p class="bonus-cta-line">Yours when you enroll by Friday.</p>
       <a class="btn btn-p" href="#pricing">Claim your spot</a>
-      <p class="bonus-cta-sub">After Friday, September 25 the funnel build is still the funnel build. These three just aren't part of it.</p>
     </div>
 
   </div>
@@ -1280,7 +1305,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       </div>
       <div class="outcome-item">
         <span class="o-emoji">📈</span>
-        <span class="o-text"><strong>Build an email list you actually own</strong> &ndash; working in the background between launches</span>
+        <span class="o-text"><strong>Build an email list you actually own</strong> &ndash; working in the background between launches and busy seasons</span>
       </div>
       <div class="outcome-item">
         <span class="o-emoji">😮‍💨</span>
@@ -1482,6 +1507,9 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         </ul>
       </div>
     </div>
+    <div class="fit-cta fi d3">
+      <a class="btn btn-p" href="#pricing">Ready? Grab Your Spot &rarr;</a>
+    </div>
   </div>
 </section>
 
@@ -1506,6 +1534,11 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
           <span class="flow-when">About 30 minutes, whenever you have time.</span>
         </div>
       </div>
+
+      <blockquote class="ob-quote ob-quote-inline">
+        <p>Answering questions via the chatbot felt way more fun than filling out a form.</p>
+        <cite>&ndash; Holly, registered dietitian</cite>
+      </blockquote>
 
       <div class="flow-step flow-step-us">
         <span class="flow-dot"></span>
@@ -1545,11 +1578,6 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         </div>
       </div>
     </div>
-
-    <blockquote class="ob-quote fi d2">
-      <p>Answering questions via the chatbot felt way more fun than filling out a form.</p>
-      <cite>&ndash; Holly, registered dietitian</cite>
-    </blockquote>
 
     <p class="ob-foot fi d2">And because the whole process is asynchronous, there are no kickoff calls to schedule or weekly meetings to squeeze between client sessions.</p>
   </div>
@@ -1611,6 +1639,13 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         </div>
       </div>
     </details>
+
+    <figure class="pull-quote fi d1">
+      <blockquote>
+        &ldquo;Whitney and her team understand dietitians, our businesses, and how to communicate our value. <strong>This is by far one of the best decisions I have made in my business.</strong>&rdquo;
+      </blockquote>
+      <figcaption><span class="pull-quote-name">Jessica</span><span class="pull-quote-role">Registered Dietitian Nutritionist, The Eat Well Studio</span></figcaption>
+    </figure>
 
     <div class="p-box fi d1">
       <div class="beta-badge">
