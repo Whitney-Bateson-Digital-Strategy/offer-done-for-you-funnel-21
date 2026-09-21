@@ -857,7 +857,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
      TO HIDE THE WHOLE BANNER: add `hidden` to the <section> tag below.
      Headline and subhead are placeholder copy - swap for real wording.
 ════════════════════════════════════════════════════════════════════ -->
-<section class="replay-banner" id="replay">
+<section class="replay-banner" id="replay" hidden>
   <div class="wrap">
     <div class="replay-stack">
       <div class="replay-copy">
@@ -1535,12 +1535,13 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
   <div class="wrap">
     <div class="fi">
       <span class="slabel">After you buy</span>
-      <h2>Here&rsquo;s what this looks like on your end.</h2>
+      <h2>Here&rsquo;s your part.</h2>
       <div class="ob-intro">
-        <!-- TOTAL TIME: the sum of the five .flow-when figures below
-             (30+ / 15 / 15 / 30-60 / 10). Keep the two in step. -->
-        <p class="ob-lead">Your total time on this is about two hours, spread across five short points.</p>
-        <p class="ob-sub">Everything else happens behind the scenes. The whole process is asynchronous, so there are no kickoff calls to schedule or weekly meetings to squeeze between clients.</p>
+        <!-- TOTAL TIME: the sum of the .flow-when figures below
+             (30+ / 15 / 30-60 / 10, plus the two-day edit window on the
+             build step). Keep the two in step. -->
+        <p class="ob-lead">It&rsquo;s about two hours total, spread over five short check-ins.</p>
+        <p class="ob-sub">Everything is async, so you won&rsquo;t be scheduling kickoff calls or squeezing weekly meetings in between clients.</p>
       </div>
     </div>
 
@@ -1548,9 +1549,9 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       <div class="flow-step">
         <span class="flow-dot"></span>
         <div class="flow-body">
-          <h3>You tell Sam about your business</h3>
-          <p>Sam is our onboarding assistant. She&rsquo;ll have a few short conversations with you about your practice, your clients, your offer, and how you talk about your work. She responds to what you tell her, so she goes deeper where it matters and skips the 47 questions that don&rsquo;t apply to a dietitian. Do them whenever you have a few minutes, and pick up where you left off.</p>
-          <span class="flow-when"><svg class="flow-when-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg><span>Plan on 30+ minutes, wrapped up within three business days of purchase, along with access to your email and website platforms.</span></span>
+          <h3>Tell us about your business</h3>
+          <p>You&rsquo;ll start by answering questions in a short chat about your practice, your clients, your offer, and how you talk about your work. Do it in one sitting or a few, whatever works for you. It saves where you left off.</p>
+          <span class="flow-when"><svg class="flow-when-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg><span>Plan on 30+ minutes, done within three business days of purchase. We&rsquo;ll also need access to your email and website platforms.</span></span>
         </div>
       </div>
 
@@ -1562,36 +1563,27 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       <div class="flow-step">
         <span class="flow-dot"></span>
         <div class="flow-body">
-          <h3>You get your dates and connect your accounts</h3>
-          <p>Once Sam has what she needs, we&rsquo;ll send your project schedule: every milestone, what we need from you at each one, and the date your funnel goes live. Look it over and flag anything that won&rsquo;t work.</p>
-          <p>It comes with a link to connect your Meta ad account: click it, approve the access, and you&rsquo;re done, with no digging through Business Manager permissions.</p>
+          <h3>Get your schedule and connect your accounts</h3>
+          <p>Once we have what we need, we&rsquo;ll send your project schedule with every milestone, what we need from you at each one, and your go-live date. Look it over and let us know if any dates won&rsquo;t work.</p>
+          <p>You&rsquo;ll also get a link to connect your Meta ad account. Click it, approve access, and you&rsquo;re set. No digging through Business Manager. Within two business days, we&rsquo;ll send the title and a quick summary of your lead magnet so you know what we&rsquo;re building.</p>
           <span class="flow-when"><svg class="flow-when-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg><span>About 15 minutes, before production starts.</span></span>
-        </div>
-      </div>
-
-      <div class="flow-step">
-        <span class="flow-dot"></span>
-        <div class="flow-body">
-          <h3>We map the lead magnet, you approve the direction</h3>
-          <p>You&rsquo;ll get a direction for your lead magnet, built on what you already told Sam. Approve it, or tell us what&rsquo;s off and why.</p>
-          <span class="flow-when"><svg class="flow-when-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg><span>About 15 minutes, within two business days.</span></span>
         </div>
       </div>
 
       <div class="flow-step flow-step-us">
         <span class="flow-dot"></span>
         <div class="flow-body">
-          <h3>We write the lead magnet and emails</h3>
-          <p>Your answers become the funnel: your language, the questions your clients actually ask, and the places they get stuck. You&rsquo;ll get the lead magnet, the delivery email, and your welcome sequence.</p>
-          <span class="flow-when"><svg class="flow-when-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg><span>Nothing needed from you. Go back to your actual work while we write.</span></span>
+          <h3>We write your lead magnet and emails</h3>
+          <p>We take everything you&rsquo;ve shared and write your lead magnet, delivery email, and welcome sequence, using your words and the questions your clients actually ask you.</p>
+          <span class="flow-when"><svg class="flow-when-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg><span>Nothing needed from you here.</span></span>
         </div>
       </div>
 
       <div class="flow-step">
         <span class="flow-dot"></span>
         <div class="flow-body">
-          <h3>You review the copy</h3>
-          <p>Before we build pages or ads, you read through the lead magnet and all the emails. Note what feels right, what doesn&rsquo;t, and what you&rsquo;d say differently, then send it in one message and we&rsquo;ll do the rewriting. This is where we make sure it sounds like you, before the rest gets built around it.</p>
+          <h3>Review the copy</h3>
+          <p>Read through the lead magnet and emails, then send us your notes in one message. Tell us what you love, what feels off, and anything you&rsquo;d say differently. We&rsquo;ll make the changes. Once the copy sounds like you, we build the pages and ads around it.</p>
           <span class="flow-when"><svg class="flow-when-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg><span>About 30 to 60 minutes, within three business days.</span></span>
         </div>
       </div>
@@ -1600,16 +1592,16 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
         <span class="flow-dot"></span>
         <div class="flow-body">
           <h3>We build the rest</h3>
-          <p>Your opt-in and thank you pages, the email platform connection, the automation that moves leads from Meta into your list, and your ads, built in your own ad account and submitted to Meta for review. We test the whole thing from opt-in to inbox before it reaches you, and we write the ads to Meta&rsquo;s health and nutrition rules from the start, so your copy isn&rsquo;t carrying the personal attribute language that gets most practitioners flagged.</p>
-          <span class="flow-when"><svg class="flow-when-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg><span>Two business days to send edits to the pages, ad copy, and creative, in one message.</span></span>
+          <p>We build your opt-in and thank you pages, connect your email platform, set up the automation that sends leads from Meta to your list, and create your ads in your own ad account. Your ads are written to Meta&rsquo;s health and nutrition rules from day one, so they steer clear of the personal attribute language that gets so many practitioners flagged. We test the whole thing from opt-in to inbox before it gets to you.</p>
+          <span class="flow-when"><svg class="flow-when-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg><span>You&rsquo;ll have two business days to send any edits on the pages, ad copy, and creative, in one message.</span></span>
         </div>
       </div>
 
       <div class="flow-step">
         <span class="flow-dot"></span>
         <div class="flow-body">
-          <h3>You turn it on</h3>
-          <p>We start you at $5 a day, and you can adjust from there. Meta reviews the ads before they run, so activate as soon as you&rsquo;re ready. Your ad account, your payment method, and your spending stay yours the whole time. For the next seven business days we&rsquo;re on email with you for anything to do with the campaign, with a reply inside one business day.</p>
+          <h3>Turn it on</h3>
+          <p>We start you at $5 a day, and you can adjust from there. Meta reviews every ad before it runs, so turn it on whenever you&rsquo;re ready. The ad account and payment method are yours the whole time. For seven business days after launch, email us with any campaign questions and we&rsquo;ll get back to you within one business day.</p>
           <span class="flow-when"><svg class="flow-when-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg><span>About 10 minutes.</span></span>
         </div>
       </div>
@@ -1795,7 +1787,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
       <details class="faq-item">
         <summary class="faq-q">How much work will I need to do?</summary>
-        <div class="faq-a">Not much, and it's spread out. About 30 minutes of conversations with Sam up front, 15 to look over your project schedule and connect your accounts, 15 to approve the lead magnet direction, and 30 to 60 minutes to review the copy once it's written. Roughly two hours in total, on your own time. We handle everything else.</div>
+        <div class="faq-a">Not much, and it's spread out. About 30 minutes answering questions about your business up front, 15 to look over your project schedule and connect your accounts, 30 to 60 minutes to review the copy once it's written, and about 10 to turn the ads on. Roughly two hours in total, on your own time. We handle everything else.</div>
       </details>
 
       <details class="faq-item">
@@ -1841,7 +1833,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
 <footer>
   <div class="wrap">
-    <p>© 2026 Whitney Bateson &nbsp;·&nbsp; <a href="https://whitneybateson.com/privacy">Privacy Policy</a> &nbsp;·&nbsp; <a href="https://whitneybateson.com/terms-conditions-dfy-funnel/">Terms &amp; Conditions</a></p>
+    <p>© 2026 Whitney Bateson &nbsp;·&nbsp; <a href="https://whitneybateson.com/privacy">Privacy Policy</a> &nbsp;·&nbsp; <a href="https://whitneybateson.com/terms-conditions-dfy-funnel/" target="_blank" rel="noopener">Terms &amp; Conditions</a></p>
   </div>
 </footer>
 
