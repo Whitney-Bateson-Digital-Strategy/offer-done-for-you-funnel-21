@@ -845,11 +845,11 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
 
 
 <!-- ══ REPLAY BANNER ═══════════════════════════════════════════════════
-     VISIBLE, with a placeholder standing in for the replay player.
+     VISIBLE, with the replay wired up: the title card below swaps for
+     the embed on click.
 
-     WHEN THE REPLAY EXISTS: delete the .replay-placeholder div below and
-     uncomment the <iframe> under it, putting the URL in its src
-     (e.g. https://www.youtube.com/embed/VIDEO_ID?rel=0).
+     TO SWAP THE VIDEO: change the ID in data-video-src on #replay-cover
+     (https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0).
 
      The old hero overview video, if you want it here in the meantime:
      https://www.youtube.com/embed/p16fu7r4zuc?rel=0
@@ -857,7 +857,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
      TO HIDE THE WHOLE BANNER: add `hidden` to the <section> tag below.
      Headline and subhead are placeholder copy - swap for real wording.
 ════════════════════════════════════════════════════════════════════ -->
-<section class="replay-banner" id="replay" hidden>
+<section class="replay-banner" id="replay">
   <div class="wrap">
     <div class="replay-stack">
       <div class="replay-copy">
@@ -867,14 +867,11 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
       </div>
       <div class="replay-embed">
         <div class="replay-frame">
-          <!-- WHEN THE REPLAY EXISTS: put the embed URL in data-video-src below
-               (e.g. https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0).
-               Until then the button is inert and the still just sits there. -->
           <!-- The still is the branded title card, which repeats the headline now
                sitting above the video. For a plain still of Whitney instead,
                swap the src below for video-overlay.png and set
                --play-x back to 50% on .replay-cover in the CSS. -->
-          <button class="replay-cover" id="replay-cover" type="button" data-video-src="" aria-label="Play the training replay">
+          <button class="replay-cover" id="replay-cover" type="button" data-video-src="https://www.youtube.com/embed/FRNAHlJ1anA?autoplay=1&amp;rel=0" aria-label="Play the training replay">
             <img class="replay-cover-img" src="Funnel%20Webinar%20V1%20(1).png" width="1920" height="1080"
                  alt="Free training: the list-building system that brings in clients while you're off social media" />
             <span class="replay-play">
@@ -884,7 +881,7 @@ details[open] .comparison-toggle .c-toggle-icon{transform:rotate(45deg)}
               </svg>
             </span>
           </button>
-          <iframe id="replay-iframe" src="" title="Replay" hidden loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe id="replay-iframe" src="" title="The List Building System That Brings in Clients While You&rsquo;re Off Social Media" hidden loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
       </div>
     </div>
